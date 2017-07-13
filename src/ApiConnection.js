@@ -95,7 +95,7 @@ export default class ApiConnection {
             let req = this.buildRequest('DELETE', path);
             fetch(req).then((httpResp) => {
                 ApiConnection.handleErrors(httpResp);
-                if (undefined === transformFunction)
+                if (transformFunction === null || undefined === transformFunction)
                     return resolve(httpResp);
                 return resolve(transformFunction(httpResp));
             }).catch((err) => reject(err));
