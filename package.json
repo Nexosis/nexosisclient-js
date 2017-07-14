@@ -2,7 +2,7 @@
     "name": "nexosis-api-client",
     "description": "client for interacting with the Nexosis API",
     "author": "Nexosis Inc.",
-    "version": "0.3.0",
+    "version": "0.9.1",
     "main": "dist/NexosisClient.js",
     "license": "Apache-2.0",
     "repository": {
@@ -15,7 +15,9 @@
         "url": "https://github.com/Nexosis/nexosisclient-js/issues"
     },
     "keywords": [
-        "nexosis", "machine learning", "api client"
+        "nexosis",
+        "machine learning",
+        "api client"
     ],
     "scripts": {
         "build:source": "babel src/ --out-dir dist/",
@@ -24,8 +26,9 @@
         "build": "npm run build:source && npm run build:tests"
     },
     "dependencies": {
+        "es6-promise": "^4.1.1",
         "isomorphic-fetch": "^2.2.1",
-        "whatwg-fetch": "^2.0.3"
+        "url-search-params": "^0.9.0"
     },
     "files": [
         "dist",
@@ -38,7 +41,6 @@
         "babel-preset-latest": "^6.24.1",
         "babel-preset-stage-3": "^6.24.1",
         "chai": "^4.0.2",
-        "es6-promise": "^4.1.1",
         "eslint": "^4.0.0",
         "eslint-loader": "^1.8.0",
         "mocha": "^3.4.2",

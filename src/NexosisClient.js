@@ -2,6 +2,10 @@ import ApiClientBase from './ApiClientBase';
 import DataSetClient from './DataSetClient';
 import SessionClient from './SessionClient';
 import ImportClient from './ImportClient';
+import Promise from "es6-promise";
+import "isomorphic-fetch";
+
+Promise.polyfill();
 /**
  * Main class used to access features of the Nexosis API.
  */
