@@ -2,3 +2,5 @@ node_modules/
 .vs/
 doc/
 **/*.log
+/dist
+/test-dist

@@ -2,8 +2,8 @@
     "name": "nexosis-api-client",
     "description": "client for interacting with the Nexosis API",
     "author": "Nexosis Inc.",
-    "version": "0.2.0",
-    "main": "index.js",
+    "version": "0.3.0",
+    "main": "dist/NexosisClient.js",
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
@@ -11,41 +11,40 @@
     },
     "homepage": "https://github.com/Nexosis/nexosisclient-js",
     "bugs": {
-        "email": "",
+        "email": "support@nexosis.com",
         "url": "https://github.com/Nexosis/nexosisclient-js/issues"
     },
     "keywords": [
         "nexosis", "machine learning", "api client"
     ],
     "scripts": {
-        "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --open --env development\"",
+        "build:source": "babel src/ --out-dir dist/",
+        "build:tests": "babel tests/ --out-dir test-dist/",
         "test:mocha": "mocha --compilers js:babel-core/register tests",
-        "test:mocha:web": "webpack-dev-server --hot --open --config webpack.mocha.js",
-        "build:npm": "webpack --config webpack.npm.js"
+        "build": "npm run build:source && npm run build:tests"
     },
     "dependencies": {
         "isomorphic-fetch": "^2.2.1",
         "whatwg-fetch": "^2.0.3"
     },
+    "files": [
+        "dist",
+        "test-dist"
+    ],
     "devDependencies": {
         "babel-core": "^6.25.0",
         "babel-loader": "^7.1.1",
         "babel-preset-env": "^1.6.0",
         "babel-preset-latest": "^6.24.1",
         "babel-preset-stage-3": "^6.24.1",
-        "babili-webpack-plugin": "^0.1.2",
         "chai": "^4.0.2",
         "es6-promise": "^4.1.1",
         "eslint": "^4.0.0",
         "eslint-loader": "^1.8.0",
-        "html-webpack-plugin": "^2.28.0",
         "mocha": "^3.4.2",
         "mocha-loader": "^1.1.1",
         "nodemon": "^1.11.0",
         "url-search-params-polyfill": "^2.0.0",
-        "webpack": "^3.0.0",
-        "webpack-dev-server": "^2.4.5",
-        "webpack-merge": "^4.1.0",
         "xmlhttprequest": "^1.8.0"
     }
 }
