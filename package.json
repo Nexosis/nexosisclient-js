@@ -22,7 +22,7 @@
     "scripts": {
         "build:source": "babel src/ --out-dir dist/",
         "build:tests": "babel tests/ --out-dir test-dist/",
-        "test:mocha": "mocha --compilers js:babel-core/register tests",
+        "test": "mocha --compilers js:babel-core/register tests",
         "build": "npm run build:source && npm run build:tests"
     },
     "dependencies": {
