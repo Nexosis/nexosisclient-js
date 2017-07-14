@@ -134,11 +134,14 @@ export default class SessionClient extends ApiClientBase {
      * @param {*} transformFunc - function to transform results data from the request
      * @return {Promise<object,any>} The session result object with details on what was submitted
      */
-    list(dataSetName, eventName, requestedAfterDate, requestedBeforeDate, transformFunc) {
-        var parameters = {};
-        if (datasetName) {
-            Object.defineProperty(parameters, 'datasetName', {
-                value: datasetName,
+    list(dataSetName, eventName, requestedAfterDate, requestedBeforeDate, page = 0, pageSize = 30, transformFunc = undefined) {
+        var parameters = {
+            page: page,
+            pageSize: pageSize
+        };
+        if (dataSetName) {
+            Object.defineProperty(parameters, 'dataSetName', {
+                value: dataSetName,
                 enumerable: true
             });
         }

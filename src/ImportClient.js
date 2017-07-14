@@ -16,7 +16,7 @@ export default class ImportClient extends ApiClientBase {
     /**
      * Import data into Axon from a file on Amazon S3
      * 
-     * @param {string} datasetName - the name to give to the dataset created by this import
+     * @param {string} dataSetName - the name to give to the dataset created by this import
      * @param {string} bucket - the S3 bucket name
      * @param {string} path - the path to the file to import in S3, often the filename
      * @param {string} region - the amazon region in which this bucket exists. 
@@ -48,9 +48,9 @@ export default class ImportClient extends ApiClientBase {
      */
     list(dataSetName = '', requestedAfterDate = '', requestedBeforeDate = '', transformFunc = undefined) {
         var parameters = {};
-        if (datasetName) {
-            Object.defineProperty(parameters, 'datasetName', {
-                value: datasetName,
+        if (dataSetName) {
+            Object.defineProperty(parameters, 'dataSetName', {
+                value: dataSetName,
                 enumerable: true
             });
         }
