@@ -91,7 +91,7 @@ export default class ApiConnection {
         });
     }
 
-    delete(path, transformFunc, parameters = {}) {
+    delete(path, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('DELETE', path);
             fetch(req).then((httpResp) => {
