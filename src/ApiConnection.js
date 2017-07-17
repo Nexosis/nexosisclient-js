@@ -3,7 +3,7 @@ import URLSearchParams from "url-search-params";
 
 export default class ApiConnection {
     constructor({ endpoint, key }) {
-        this._endpoint = endpoint;
+        this._endpoint = endpoint || ApiConnectionOptions.BASE_URL;
         this._key = key;
     }
 
