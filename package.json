@@ -1,52 +1,53 @@
 {
-    "name": "nexosis-api-client",
-    "description": "client for interacting with the Nexosis API",
-    "author": "Nexosis Inc.",
-    "version": "1.0.0",
-    "main": "dist/NexosisClient.js",
-    "license": "Apache-2.0",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Nexosis/nexosisclient-js"
-    },
-    "homepage": "https://github.com/Nexosis/nexosisclient-js",
-    "bugs": {
-        "email": "support@nexosis.com",
-        "url": "https://github.com/Nexosis/nexosisclient-js/issues"
-    },
-    "keywords": [
-        "nexosis",
-        "machine learning",
-        "api client"
-    ],
-    "scripts": {
-        "build:source": "babel src/ --out-dir dist/",
-        "build:tests": "babel tests/ --out-dir test-dist/",
-        "test": "mocha --compilers js:babel-core/register tests",
-        "build": "npm run build:source && npm run build:tests"
-    },
-    "dependencies": {
-        "es6-promise": "^4.1.1",
-        "isomorphic-fetch": "^2.2.1",
-        "url-search-params": "^0.9.0"
-    },
-    "files": [
-        "dist",
-        "test-dist"
-    ],
-    "devDependencies": {
-        "babel-core": "^6.25.0",
-        "babel-loader": "^7.1.1",
-        "babel-preset-env": "^1.6.0",
-        "babel-preset-latest": "^6.24.1",
-        "babel-preset-stage-3": "^6.24.1",
-        "chai": "^4.0.2",
-        "eslint": "^4.0.0",
-        "eslint-loader": "^1.8.0",
-        "mocha": "^3.4.2",
-        "mocha-loader": "^1.1.1",
-        "nodemon": "^1.11.0",
-        "url-search-params-polyfill": "^2.0.0",
-        "xmlhttprequest": "^1.8.0"
-    }
+  "name": "nexosis-api-client",
+  "description": "client for interacting with the Nexosis API",
+  "author": "Nexosis Inc.",
+  "version": "1.0.0",
+  "main": "dist/NexosisClient.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nexosis/nexosisclient-js"
+  },
+  "homepage": "https://github.com/Nexosis/nexosisclient-js",
+  "bugs": {
+    "email": "support@nexosis.com",
+    "url": "https://github.com/Nexosis/nexosisclient-js/issues"
+  },
+  "keywords": [
+    "nexosis",
+    "machine learning",
+    "api client"
+  ],
+  "scripts": {
+    "build:source": "babel src/ --out-dir dist/",
+    "build:tests": "babel tests/ --out-dir test-dist/",
+    "test": "mocha --compilers js:babel-core/register tests",
+    "build": "npm run build:source && npm run build:tests"
+  },
+  "dependencies": {
+    "es6-promise": "^4.1.1",
+    "isomorphic-fetch": "^2.2.1",
+    "url-search-params": "^0.9.0"
+  },
+  "files": [
+    "dist",
+    "test-dist"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "chai": "^4.0.2",
+    "eslint": "^4.0.0",
+    "eslint-loader": "^1.8.0",
+    "mocha": "^3.4.2",
+    "mocha-loader": "^1.1.1",
+    "nodemon": "^1.11.0",
+    "url-search-params-polyfill": "^2.0.0",
+    "xmlhttprequest": "^1.8.0"
+  }
 }
