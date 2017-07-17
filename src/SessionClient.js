@@ -125,7 +125,7 @@ export default class SessionClient extends ApiClientBase {
     }
 
     /**
-     * List all sessions, optionally limited by search params
+     * List all sessions, optionally limited by search params. Will return all sessions otherwise.
      * 
      * @param {string} dataSetName - return only sessions run on this dataset
      * @param {string} eventName - return impact sessions only run on this event
@@ -134,15 +134,40 @@ export default class SessionClient extends ApiClientBase {
      * @param {*} transformFunc - function to transform results data from the request
      * @return {Promise<object,any>} The session result object with details on what was submitted
      */
-    list(dataSetName, eventName, requestedAfterDate, requestedBeforeDate, transformFunc) {
+    list(dataSetName, eventName, requestedAfterDate, requestedBeforeDate, page = 0, pageSize = 30, transformFunc = undefined) {
         var parameters = {
-            dataSetName: dataSetName,
-            eventName: eventName,
-            requestedAfterDate: requestedAfterDate,
-            requestedBeforeDate: requestedBeforeDate
+            page: page,
+            pageSize: pageSize
         };
+        if (dataSetName) {
+            Object.defineProperty(parameters, 'dataSetName', {
+                value: dataSetName,
+                enumerable: true
+            });
+        }
 
-        this._apiConnection.get('sessions', transformFunc, parameters);
+        if (eventName) {
+            Object.defineProperty(parameters, 'eventName', {
+                value: eventName,
+                enumerable: true
+            });
+        }
+
+        if (requestedAfterDate) {
+            Object.defineProperty(parameters, 'requestedAfterDate', {
+                value: requestedAfterDate,
+                enumerable: true
+            });
+        }
+
+        if (requestedBeforeDate) {
+            Object.defineProperty(parameters, 'requestedBeforeDate', {
+                value: requestedBeforeDate,
+                enumerable: true
+            });
+        }
+
+        return this._apiConnection.get('sessions', transformFunc, parameters);
     }
 }
 

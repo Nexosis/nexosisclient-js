@@ -1,4 +1,5 @@
 import ApiConnectionOptions from './ApiConnectionOptions';
+import URLSearchParams from "url-search-params";
 
 export default class ApiConnection {
     constructor({ endpoint, key }) {
