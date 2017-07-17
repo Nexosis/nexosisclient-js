@@ -40,13 +40,14 @@ export default class ApiConnection {
     get(path, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('GET', path, parameters);
+            let returnFunc = resolve;
             fetch(req).then((httpResp) => {
-                ApiConnection.handleErrors(httpResp);
+                returnFunc = ApiConnection.handleErrors(httpResp, resolve, reject);
                 return httpResp.json();
             }).then((data) => {
                 if (undefined === transformFunction)
-                    return resolve(data);
-                return resolve(transformFunction(data));
+                    return returnFunc(data);
+                return returnFunc(transformFunction(data));
             }).catch((err) => reject(err));
         });
     }
@@ -54,11 +55,12 @@ export default class ApiConnection {
     head(path, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('HEAD', path, parameters);
+            let returnFunc = resolve;
             fetch(req).then((httpResp) => {
-                ApiConnection.handleErrors(httpResp);
+                returnFunc = ApiConnection.handleErrors(httpResp, resolve, reject);
                 if (undefined === transformFunction)
-                    return resolve(httpResp.headers);
-                return resolve(transformFunction(httpResp.headers));
+                    return returnFunc(httpResp.headers);
+                return returnFunc(transformFunction(httpResp.headers));
             }).catch((err) => reject(err));
         });
     }
@@ -66,13 +68,14 @@ export default class ApiConnection {
     post(path, payload, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('POST', path, parameters, payload);
+            let returnFunc = resolve;
             fetch(req).then((httpResp) => {
-                ApiConnection.handleErrors(httpResp);
+                returnFunc = ApiConnection.handleErrors(httpResp, resolve, reject);
                 return httpResp.json();
             }).then((data) => {
                 if (undefined === transformFunction)
-                    return resolve(data);
-                return resolve(transformFunction(data));
+                    return returnFunc(data);
+                return returnFunc(transformFunction(data));
             }).catch((err) => reject(err));
         });
     }
@@ -80,13 +83,14 @@ export default class ApiConnection {
     put(path, payload, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('PUT', path, parameters, payload);
+            let returnFunc = resolve;
             fetch(req).then((httpResp) => {
-                ApiConnection.handleErrors(httpResp);
+                returnFunc = ApiConnection.handleErrors(httpResp, resolve, reject);
                 return httpResp.json();
             }).then((data) => {
                 if (undefined === transformFunction)
-                    return resolve(data);
-                return resolve(transformFunction(data));
+                    return returnFunc(data);
+                return returnFunc(transformFunction(data));
             }).catch((err) => reject(err));
         });
     }
@@ -94,19 +98,20 @@ export default class ApiConnection {
     delete(path, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('DELETE', path);
+            let returnFunc = resolve;
             fetch(req).then((httpResp) => {
-                ApiConnection.handleErrors(httpResp);
+                returnFunc = ApiConnection.handleErrors(httpResp, resolve, reject);
                 if (transformFunction === null || undefined === transformFunction)
-                    return resolve(httpResp);
-                return resolve(transformFunction(httpResp));
+                    return returnFunc(httpResp);
+                return returnFunc(transformFunction(httpResp));
             }).catch((err) => reject(err));
         });
     }
 
-    static handleErrors(response) {
+    static handleErrors(response, resolve, reject) {
         if (!response.ok) {
-            throw Error(response.statusText);
+            return reject;
         }
-        return response;
+        return resolve;
     }
 }
