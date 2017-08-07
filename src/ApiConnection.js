@@ -37,6 +37,13 @@ export default class ApiConnection {
         return new Request(`${this._endpoint}/${path}${queryString}`, options);
     }
 
+    getHeaders(path, transformFunction, parameters = {}) {
+        let req = this.buildRequest('GET', path, parameters);
+        return fetch(req).then((httpResp) => {
+            return httpResp.headers;
+        });
+    }
+
     get(path, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('GET', path, parameters);
