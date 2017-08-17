@@ -11,23 +11,25 @@ import DataSetClient from '../src/DataSetClient';
 import ViewClient from '../src/ViewClient'
 
 
-describe('View tests', () => {
+describe('View tests', function () {
     let client = new ViewClient({ endpoint: process.env.NEXOSIS_API_TESTURI, key: process.env.NEXOSIS_API_TESTKEY });
     let dataSetClient = new DataSetClient({ endpoint: process.env.NEXOSIS_API_TESTURI, key: process.env.NEXOSIS_API_TESTKEY });
+    this.timeout(5000);
 
-    before(function() {
+    before(function(done) {
 
         var dataSets = [
             dataSetClient.create('testJavascript', testDataSetDetail),            
             dataSetClient.create('testJavascript2', testDataSetDetail),
         ];
 
-        return Promise.all(dataSets);//.then(res=> {done()}).catch((err) => { done(err); });
+        Promise.all(dataSets).then(res=>done()).catch((err) => { done(err); });
 
     });
 
     after(function() {
         client.remove("testJavascriptView");
+        client.remove("testJavascriptViewJoins");
         dataSetClient.remove("testJavascript");
         dataSetClient.remove("testJavascript2");
     });
@@ -59,6 +61,8 @@ describe('View tests', () => {
         return client.create('testJavascriptViewJoins', view).then((data) => {
                 expect(data.viewName).to.equal('testJavascriptViewJoins');
                 expect(data.joins[0].dataSet.name).to.equal("testJavascript2");
+            }).catch(err=> {
+                console.log(err);
             });
     });
 
@@ -69,8 +73,8 @@ describe('View tests', () => {
             dataSetName : "testJavascript"
         };
 
-        return client.create('testJavascriptview', view).then(returnedView=> {
-            return client.get('testJavscriptview');
+        return client.create('testJavascriptView', view).then(returnedView=> {
+            return client.get('testJavascriptView');
         }).then(results=> {
             expect(results.viewName).to.equal('testJavascriptView');
             expect(results.data.length).to.be.greaterThan(0)
