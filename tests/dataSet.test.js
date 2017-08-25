@@ -9,17 +9,6 @@ const testDataSetDetail = require('./dataGenerator');
 
 import DataSetClient from '../src/DataSetClient';
 
-describe('Polyfill tests', () => {
-    it('can use url search params', (done) => {
-        var parameters = { partialName: 'es' };
-        var urlParams = new URLSearchParams();
-        Object.keys(parameters).forEach((p) => urlParams.append(p, parameters[p]));
-        expect(urlParams.toString()).to.equal('partialName=es');
-        urlParams.append('startDate', '2017-06-29');
-        expect(urlParams.toString()).to.equal('partialName=es&startDate=2017-06-29');
-        done();
-    });
-});
 
 describe('DataSet tests', () => {
     let client = new DataSetClient({ endpoint: process.env.NEXOSIS_API_TESTURI, key: process.env.NEXOSIS_API_TESTKEY });

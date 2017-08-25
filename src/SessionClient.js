@@ -180,7 +180,7 @@ const prepareParameters = function(startDate, endDate, datasetName = '', targetC
     };
 
     if (datasetName.length > 0) {
-        Object.defineProperty(parameters, 'datasetName', {
+        Object.defineProperty(parameters, 'dataSourceName', {
             value: datasetName,
             enumerable: true
         });
