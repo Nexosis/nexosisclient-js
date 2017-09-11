@@ -24,7 +24,8 @@ export default class ViewClient {
      * @param {Array} include - optional string array of column names to include in result. Leave empty to return all columns.
      * @param {function} transformFunc - function to transform results data from the request
      * @return {Promise<object,any>} The view data
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f232 (TODO : FIX)
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59a096c3e0ef6e0dec8a4f10
+     * @see http://docs.nexosis.com/guides/views
      */
     get(viewName, startDate = null, endDate = null, page = 0, pageSize = 30, include = [], transformFunc = undefined) {
         var parameters = {
@@ -59,7 +60,8 @@ export default class ViewClient {
      * @param {string} viewName - Name of the view to create
      * @param {object} view - A json object containing the view definition. Conforms to view definition schema. {"dataSetName" : "myDataSet", "columns": {"col1" : {"dataType" : "numeric", "role" : "target"}}, "joins": [{"dataSet" : {"name" : "myDataSet2"}}]}
      * @param {function} transformFunc - function to transform results data from the request
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f233 TODO : FIX
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59a096c3e0ef6e0dec8a4f11
+     * @see http://docs.nexosis.com/guides/views
      */
     create(viewName, view, transformFunc) {
         return this._apiConnection.put(`views/${viewName}`, view, transformFunc);
@@ -73,7 +75,7 @@ export default class ViewClient {
      * @param {integer} page - page of results to retrieve, defaults to first page = 0
      * @param {integer} pageSize - how many results per page, defaults to 30
      * @param {function} transformFunc - function to transform results data from the request
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f231 TODO : FIX
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59a096c2e0ef6e0dec8a4f0f
      */
     list(viewPartialName = '', dataSetName = '', page = 0, pageSize = 30, transformFunc = undefined) {
         var parameters = {
@@ -101,7 +103,7 @@ export default class ViewClient {
      * 
      * @param {string} viewName - Name of the dataset from which to remove data
      * @param {string} options - Delete options. If provided, should be object literal conforming to following schema: {"cascade" : "session"}
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/SOMETHING TODO : FIX
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59a096c3e0ef6e0dec8a4f12
      */
     remove(viewName, options) {
         var parameters = {
