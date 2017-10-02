@@ -6,76 +6,67 @@ const chai = require('chai');
 const expect = chai.expect;
 const testDataSetDetail = require('./dataGenerator');
 
-
 import DataSetClient from '../src/DataSetClient';
 import ViewClient from '../src/ViewClient'
 
-
 describe('View tests', function () {
-    let client = new ViewClient({ endpoint: process.env.NEXOSIS_API_TESTURI, key: process.env.NEXOSIS_API_TESTKEY });
-    let dataSetClient = new DataSetClient({ endpoint: process.env.NEXOSIS_API_TESTURI, key: process.env.NEXOSIS_API_TESTKEY });
+    let client = new ViewClient({ endpoint: 'http://localhost:8080', key: process.env.NEXOSIS_API_TESTKEY });
+    let dataSetClient = new DataSetClient({ endpoint: 'http://localhost:8080', key: process.env.NEXOSIS_API_TESTKEY });
     this.timeout(5000);
 
-    before(function(done) {
+    before(function (done) {
 
         var dataSets = [
-            dataSetClient.create('testJavascript', testDataSetDetail),            
-            dataSetClient.create('testJavascript2', testDataSetDetail),
+            dataSetClient.create('testJavascriptViewDataset', testDataSetDetail),
+            dataSetClient.create('testJavascriptViewDataSet2', testDataSetDetail),
         ];
 
-        Promise.all(dataSets).then(res=>done()).catch((err) => { done(err); });
+        Promise.all(dataSets).then(_ => done()).catch((err) => { done(err); });
 
-    });
-
-    after(function() {
-        client.remove("testJavascriptView");
-        client.remove("testJavascriptViewJoins");
-        dataSetClient.remove("testJavascript");
-        dataSetClient.remove("testJavascript2");
     });
 
     it('can create view', () => {
 
         var view = {
-            dataSetName : "testJavascript"
+            dataSetName: "testJavascriptViewDataset"
         };
 
         return client.create('testJavascriptView', view).then((data) => {
-                expect(data.viewName).to.equal('testJavascriptView');
-            });
+            expect(data.viewName).to.equal('testJavascriptView');
+        });
     });
 
     it('can create view with joins', () => {
 
         var view = {
-            dataSetName : "testJavascript",
-            joins : [
+            dataSetName: "testJavascriptViewDataset",
+            joins: [
                 {
-                    dataSet : {
-                        name : "testJavascript2"
+                    dataSet: {
+                        name: "testJavascriptViewDataset2"
                     }
                 }
             ]
         };
 
         return client.create('testJavascriptViewJoins', view).then((data) => {
-                expect(data.viewName).to.equal('testJavascriptViewJoins');
-                expect(data.joins[0].dataSet.name).to.equal("testJavascript2");
-            }).catch(err=> {
-                console.log(err);
-            });
+            expect(data.viewName).to.equal('testJavascriptViewJoins');
+            expect(data.joins[0].dataSet.name).to.equal("testJavascriptViewDataset2");
+        }).catch(err => {
+            console.log(err);
+        });
     });
 
-    
+
     it('can get view data', () => {
 
         var view = {
-            dataSetName : "testJavascript"
+            dataSetName: "testJavascriptViewDataset"
         };
 
-        return client.create('testJavascriptView', view).then(returnedView=> {
+        return client.create('testJavascriptView', view).then(returnedView => {
             return client.get('testJavascriptView');
-        }).then(results=> {
+        }).then(results => {
             expect(results.viewName).to.equal('testJavascriptView');
             expect(results.data.length).to.be.greaterThan(0)
         });
@@ -83,9 +74,19 @@ describe('View tests', function () {
 
     it('should list views', (done) => {
         client.list().then((data) => {
-                expect(data.items).to.not.equal(0);
-            }).then(done)
+            expect(data.items).to.not.equal(0);
+        }).then(done)
             .catch((err) => done(err));
     });
-        
+
+    after(function (done) {
+        var removePromises = [
+            client.remove("testJavascriptView"),
+            client.remove("testJavascriptViewJoins"),
+            dataSetClient.remove("testJavascriptViewDataset"),
+            dataSetClient.remove("testJavascriptViewDataset2")
+        ];
+
+        Promise.all(removePromises).then(() => done()).catch((err) => { done(err) });
+    });
 });

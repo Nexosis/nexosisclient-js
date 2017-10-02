@@ -1,0 +1,42 @@
+{
+    meta: {
+        createdAt: "2017-10-02T14:16:26.395Z",
+        host: "https://ml.nexosis.com/v1/",
+        reqHumanReadable: true
+    },
+    req: {
+        url: "/data/testJavascriptViewDataset",
+        method: "DELETE",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*",
+            "content-length": "0"
+        },
+        body: ""
+    },
+    res: {
+        status: 204,
+        headers: {
+            "content-length": [
+                "0"
+            ],
+            "nexosis-account-balance": [
+                "49.75 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 02 Oct 2017 14:16:26 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: ""
+    }
+}
