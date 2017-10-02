@@ -1,0 +1,49 @@
+{
+    meta: {
+        createdAt: "2017-10-02T14:16:24.852Z",
+        host: "https://ml.nexosis.com/v1/",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/views/testJavascriptViewJoins",
+        method: "PUT",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*",
+            "content-length": "103"
+        },
+        body: "{\"dataSetName\":\"testJavascriptViewDataset\",\"joins\":[{\"dataSet\":{\"name\":\"testJavascriptViewDataset2\"}}]}"
+    },
+    res: {
+        status: 201,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            location: [
+                "http://gateway.prod.nexosisdev.com/views/testJavascriptViewJoins"
+            ],
+            "nexosis-account-balance": [
+                "49.75 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 02 Oct 2017 14:16:25 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"viewName\":\"testJavascriptViewJoins\",\"dataSetName\":\"testJavascriptViewDataset\",\"columns\":{\"time\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"es6-client\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"joins\":[{\"dataSet\":{\"name\":\"testJavascriptViewDataset2\"},\"columnOptions\":{}}]}"
+    }
+}

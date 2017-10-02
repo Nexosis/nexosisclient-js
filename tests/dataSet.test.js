@@ -11,37 +11,37 @@ import DataSetClient from '../src/DataSetClient';
 
 
 describe('DataSet tests', () => {
-    let client = new DataSetClient({ endpoint: process.env.NEXOSIS_API_TESTURI, key: process.env.NEXOSIS_API_TESTKEY });
+    let client = new DataSetClient({ endpoint: 'http://localhost:8080', key: process.env.NEXOSIS_API_TESTKEY });
 
-    after(function() {
+    after(function () {
         client.remove("testJavascript");
     });
 
     it('can create dataset', (done) => {
         client.create('testJavascript', testDataSetDetail).then((data) => {
-                expect(data.dataSetName).to.equal('testJavascript');
-            }).then(done)
+            expect(data.dataSetName).to.equal('testJavascript');
+        }).then(done)
             .catch((err) => { done(err); });
     });
 
     it('should find dataset', (done) => {
         client.get('testJavascript').then((ds) => {
-                expect(ds.dataSetName).to.equal('testJavascript');
-            }).then(done)
+            expect(ds.dataSetName).to.equal('testJavascript');
+        }).then(done)
             .catch((err) => done(err));
     });
 
     it('should find dataset with transform', (done) => {
         client.get('testJavascript', null, null, 0, 30, [], (data) => { return data.dataSetName; }).then((str) => {
-                expect(str).to.equal('testJavascript');
-            }).then(done)
+            expect(str).to.equal('testJavascript');
+        }).then(done)
             .catch((err) => done(err));
     });
 
     it('should list datasets', (done) => {
         client.list('test').then((data) => {
-                expect(data.items).to.not.equal(0);
-            }).then(done)
+            expect(data.items).to.not.equal(0);
+        }).then(done)
             .catch((err) => done(err));
     });
 });
