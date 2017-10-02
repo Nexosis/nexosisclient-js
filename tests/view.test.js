@@ -9,7 +9,7 @@ const testDataSetDetail = require('./dataGenerator');
 import DataSetClient from '../src/DataSetClient';
 import ViewClient from '../src/ViewClient'
 
-describe.only('View tests', function () {
+describe('View tests', function () {
     let client = new ViewClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
     let dataSetClient = new DataSetClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
     this.timeout(5000);
