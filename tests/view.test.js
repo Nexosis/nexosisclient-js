@@ -9,20 +9,33 @@ const testDataSetDetail = require('./dataGenerator');
 import DataSetClient from '../src/DataSetClient';
 import ViewClient from '../src/ViewClient'
 
-describe('View tests', function () {
-    let client = new ViewClient({ endpoint: 'http://localhost:8080', key: process.env.NEXOSIS_API_TESTKEY });
-    let dataSetClient = new DataSetClient({ endpoint: 'http://localhost:8080', key: process.env.NEXOSIS_API_TESTKEY });
+describe.only('View tests', function () {
+    let client = new ViewClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
+    let dataSetClient = new DataSetClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
     this.timeout(5000);
 
     before(function (done) {
 
         var dataSets = [
             dataSetClient.create('testJavascriptViewDataset', testDataSetDetail),
-            dataSetClient.create('testJavascriptViewDataSet2', testDataSetDetail),
+            dataSetClient.create('testJavascriptViewDataset2', testDataSetDetail),
         ];
 
-        Promise.all(dataSets).then(_ => done()).catch((err) => { done(err); });
+        Promise.all(dataSets).then(() => done()).catch((err) => { done(err); });
 
+    });
+
+    after(function (done) {
+        var removePromises = [
+            () => client.remove("testJavascriptView"),
+            () => client.remove("testJavascriptViewJoins"),
+            () => dataSetClient.remove("testJavascriptViewDataset"),
+            () => dataSetClient.remove("testJavascriptViewDataset2")
+        ];
+
+        removePromises.reduce((prev, cur) => { return prev.then(cur) }, Promise.resolve())
+            .then(() => done())
+            .catch(err => done(err));
     });
 
     it('can create view', () => {
@@ -77,16 +90,5 @@ describe('View tests', function () {
             expect(data.items).to.not.equal(0);
         }).then(done)
             .catch((err) => done(err));
-    });
-
-    after(function (done) {
-        var removePromises = [
-            client.remove("testJavascriptView"),
-            client.remove("testJavascriptViewJoins"),
-            dataSetClient.remove("testJavascriptViewDataset"),
-            dataSetClient.remove("testJavascriptViewDataset2")
-        ];
-
-        Promise.all(removePromises).then(() => done()).catch((err) => { done(err) });
     });
 });

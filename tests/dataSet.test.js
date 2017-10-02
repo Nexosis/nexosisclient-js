@@ -11,7 +11,7 @@ import DataSetClient from '../src/DataSetClient';
 
 
 describe('DataSet tests', () => {
-    let client = new DataSetClient({ endpoint: 'http://localhost:8080', key: process.env.NEXOSIS_API_TESTKEY });
+    let client = new DataSetClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
 
     after(function () {
         client.remove("testJavascript");

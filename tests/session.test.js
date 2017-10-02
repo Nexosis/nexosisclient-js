@@ -11,8 +11,8 @@ import SessionClient from '../src/SessionClient';
 import DataSetClient from '../src/DataSetClient';
 
 describe('Session tests', () => {
-    var client = new SessionClient({ endpoint: 'http://localhost:8080', key: process.env.NEXOSIS_API_TESTKEY });
-    var dataClient = new DataSetClient({ endpoint: 'http://localhost:8080', key: process.env.NEXOSIS_API_TESTKEY });
+    var client = new SessionClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
+    var dataClient = new DataSetClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
     before(function (done) {
         dataClient.create("TestNode", { "data": [{ "timestamp": "1-1-2017", "sales": 135.32 }, { "timestamp": "1-2-2017", "sales": 235.31 }, { "timestamp": "1-3-2017", "sales": 335.42 }, { "timestamp": "1-04-2017", "sales": 65.98 }, { "timestamp": "1-05-2017", "sales": 255.23 }] })
             .then(response => { })
