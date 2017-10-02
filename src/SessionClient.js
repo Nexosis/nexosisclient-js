@@ -106,7 +106,7 @@ export default class SessionClient extends ApiClientBase {
      * Remove a session and its results from your account
      * 
      * @param {string} id - a session id returned from a previous request to start a session. 
-     * @see  https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/593949c4e0ef6e0cb481aa31
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/593949c4e0ef6e0cb481aa31
      */
     remove(id) {
         return this._apiConnection.delete(`sessions/${id}`, undefined);
@@ -133,6 +133,7 @@ export default class SessionClient extends ApiClientBase {
      * @param {*} requestedBeforeDate - return sessions requested before this date
      * @param {*} transformFunc - function to transform results data from the request
      * @return {Promise<object,any>} The session result object with details on what was submitted
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a6
      */
     list(dataSetName, eventName, requestedAfterDate, requestedBeforeDate, page = 0, pageSize = 30, transformFunc = undefined) {
         var parameters = {
@@ -171,7 +172,7 @@ export default class SessionClient extends ApiClientBase {
     }
 }
 
-const prepareParameters = function(startDate, endDate, datasetName = '', targetColumn = '', eventName = '', resultInterval = 'day', isEstimate = false, statusCallbackUrl = '') {
+const prepareParameters = function (startDate, endDate, datasetName = '', targetColumn = '', eventName = '', resultInterval = 'day', isEstimate = false, statusCallbackUrl = '') {
     var parameters = {
         startDate: startDate,
         endDate: endDate,
