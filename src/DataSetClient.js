@@ -97,9 +97,8 @@ export default class DataSetClient {
      * @param {string} cascade - Options for cascading the delete. Options are 'forecast', 'sessions', 'cascade'
      */
     remove(dataSetName, startDate, endDate, cascade) {
-        var parameters = {
-            dataSetName: dataSetName
-        };
+        var parameters = {};
+
         if (startDate) {
             Object.defineProperty(parameters, 'startDate', {
                 value: startDate,

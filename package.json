@@ -23,6 +23,7 @@
     "build:source": "babel src/ --out-dir dist/",
     "build:tests": "babel tests/ --out-dir test-dist/",
     "test": "mocha --compilers js:babel-core/register tests",
+    "test:integration": "set NODE_ENV=integration&& npm run test",
     "build": "npm run build:source && npm run build:tests"
   },
   "dependencies": {
