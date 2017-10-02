@@ -4,7 +4,7 @@ require('url-search-params-polyfill');
 
 const chai = require('chai');
 const expect = chai.expect;
-const testDataSetDetail = require('./dataGenerator');
+const testDataSetDetail = require('./fixtures/time-series.json');
 
 import DataSetClient from '../src/DataSetClient';
 import ViewClient from '../src/ViewClient'
@@ -17,20 +17,21 @@ describe('View tests', function () {
     before(function (done) {
 
         var dataSets = [
-            dataSetClient.create('testJavascriptViewDataset', testDataSetDetail),
-            dataSetClient.create('testJavascriptViewDataset2', testDataSetDetail),
+            () => { return dataSetClient.create('testJavascriptViewDataset', testDataSetDetail) },
+            () => { return dataSetClient.create('testJavascriptViewDataset2', testDataSetDetail) },
         ];
 
-        Promise.all(dataSets).then(() => done()).catch((err) => { done(err); });
-
+        dataSets.reduce((prev, cur) => { return prev.then(cur) }, Promise.resolve())
+            .then(() => done())
+            .catch(err => done(err));
     });
 
     after(function (done) {
         var removePromises = [
-            () => client.remove("testJavascriptView"),
-            () => client.remove("testJavascriptViewJoins"),
-            () => dataSetClient.remove("testJavascriptViewDataset"),
-            () => dataSetClient.remove("testJavascriptViewDataset2")
+            () => { return client.remove("testJavascriptView") },
+            () => { return client.remove("testJavascriptViewJoins") },
+            () => { return dataSetClient.remove("testJavascriptViewDataset") },
+            () => { return dataSetClient.remove("testJavascriptViewDataset2") }
         ];
 
         removePromises.reduce((prev, cur) => { return prev.then(cur) }, Promise.resolve())

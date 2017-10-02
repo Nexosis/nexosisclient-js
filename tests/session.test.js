@@ -4,8 +4,7 @@ require('url-search-params-polyfill');
 
 const chai = require('chai');
 const expect = chai.expect;
-const testDataSetDetail = require('./dataGenerator');
-
+const testDataSetDetail = require('./fixtures/time-series.json');
 
 import SessionClient from '../src/SessionClient';
 import DataSetClient from '../src/DataSetClient';
