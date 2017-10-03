@@ -18,8 +18,8 @@ describe('Session tests', () => {
             .then(done, done);
     });
 
-    after(function () {
-        dataClient.remove("TestNode");
+    after(function (done) {
+        dataClient.remove("TestNode").then(() => done()).catch(err => done(err));
     });
 
     it('can create an impact session', (done) => {

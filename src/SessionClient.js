@@ -43,6 +43,16 @@ export default class SessionClient extends ApiClientBase {
         return this._apiConnection.post('sessions/forecast', columnMetadata, transformFunc, parameters);
     }
 
+    trainModel(dataSourceName, targetColumn, predictionDomain, statusCallbackUrl, transformFunc, columnMetadata = {}) {
+        var body = {
+            dataSourceName: dataSourceName,
+            targetColumn: targetColumn,
+            predictionDomain: predictionDomain
+        };
+
+        return this._apiConnection.post('sessions/model', body, transformFunc);
+    }
+
     /**
      * Estimate the cost of a forecast session on a named dataset with the given parameters
      * 

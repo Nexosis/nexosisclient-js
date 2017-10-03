@@ -1,0 +1,44 @@
+{
+    meta: {
+        createdAt: "2017-10-03T14:37:04.740Z",
+        host: "https://ml.nexosis.com/v1/",
+        reqHumanReadable: true
+    },
+    req: {
+        url: "/sessions/015ee3a7-45ce-468b-bf39-cd8038b59020",
+        method: "HEAD",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "content-length": [
+                "0"
+            ],
+            "nexosis-session-status": [
+                "Completed"
+            ],
+            "nexosis-account-balance": [
+                "141.34 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Tue, 03 Oct 2017 14:37:05 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: ""
+    }
+}
