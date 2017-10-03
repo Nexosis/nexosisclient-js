@@ -94,7 +94,6 @@ describe.only('Model Client', () => {
                 done('expected failure');
             }).catch(err => {
                 expect(err.status).to.equal(404);
-                //expect(err.message).to.equal(`Item of type model with identifier ${modelId} was not found`);
                 done();
             });
         });
