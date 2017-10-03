@@ -15,9 +15,9 @@
             "accept-encoding": "gzip,deflate",
             connection: "close",
             accept: "*/*",
-            "content-length": "95"
+            "content-length": "124"
         },
-        body: "{\"dataSourceName\":\"js-housing-data\",\"targetColumn\":\"SalePrice\",\"predictionDomain\":\"regression\"}"
+        body: "{\"isEstimate\":false,\"datasetName\":\"js-housing-data\",\"targetColumn\":\"SalePrice\",\"predictionDomain\":\"regression\",\"columns\":{}}"
     },
     res: {
         status: 200,
