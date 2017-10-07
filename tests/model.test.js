@@ -12,7 +12,7 @@ import ModelClient from '../src/ModelClient';
 import SessionClient from '../src/SessionClient';
 import DataSetClient from '../src/DataSetClient';
 
-describe.only('Model Client', () => {
+describe('Model Client', () => {
     let client;
     let dataClient;
     let sessionClient;
