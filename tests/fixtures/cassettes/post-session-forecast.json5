@@ -1,0 +1,46 @@
+{
+    meta: {
+        createdAt: "2017-10-02T13:52:41.264Z",
+        host: "https://ml.nexosis.com/v1/",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/sessions/forecast?startDate=1-06-2017&endDate=1-07-2017&isEstimate=false&resultInterval=day&dataSourceName=TestNode&targetColumn=sales",
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*",
+            "content-length": "0"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-request-cost": [
+                "0.01 USD"
+            ],
+            "nexosis-account-balance": [
+                "49.76 USD"
+            ],
+            date: [
+                "Mon, 02 Oct 2017 13:52:40 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"sessionId\":\"015edd5c-3637-43b4-8e3a-0a461831ee8a\",\"type\":\"forecast\",\"status\":\"requested\",\"startDate\":\"2017-01-06T00:00:00+00:00\",\"endDate\":\"2017-01-07T00:00:00+00:00\",\"resultInterval\":\"day\",\"requestedDate\":\"2017-10-02T13:52:41.527748+00:00\",\"statusHistory\":[{\"date\":\"2017-10-02T13:52:41.527748+00:00\",\"status\":\"requested\"}],\"extraParameters\":{},\"messages\":[],\"columns\":{\"sales\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"},\"timestamp\":{\"dataType\":\"date\",\"role\":\"timestamp\"}},\"dataSourceName\":\"TestNode\",\"dataSetName\":\"TestNode\",\"targetColumn\":\"sales\",\"isEstimate\":false,\"links\":[{\"rel\":\"results\",\"href\":\"https://ml.nexosis.com/v1/sessions/015edd5c-3637-43b4-8e3a-0a461831ee8a/results\"},{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/TestNode\"}]}"
+    }
+}

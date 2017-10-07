@@ -1,0 +1,45 @@
+{
+    meta: {
+        createdAt: "2017-10-02T14:16:26.155Z",
+        host: "https://ml.nexosis.com/v1/",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/views?page=0&pageSize=30",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-account-balance": [
+                "49.75 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 02 Oct 2017 14:16:26 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"items\":[{\"viewName\":\"Electric_Demand_Holidays\",\"dataSetName\":\"Electric_Demand\",\"columns\":{\"eventTimestamp\":{\"dataType\":\"date\"},\"eventName\":{\"dataType\":\"string\",\"role\":\"feature\",\"imputation\":\"mode\",\"aggregation\":\"max\"},\"calendarName\":{\"dataType\":\"string\",\"role\":\"feature\",\"imputation\":\"mode\",\"aggregation\":\"max\"},\"Demand\":{\"dataType\":\"numericMeasure\",\"role\":\"target\",\"imputation\":\"mean\",\"aggregation\":\"mean\"},\"timestamp\":{\"dataType\":\"date\",\"role\":\"timestamp\"}},\"joins\":[{\"calendar\":{\"name\":\"Nexosis.Holidays-US\"},\"columnOptions\":{\"eventTimestamp\":{\"joinInterval\":\"hour\"}}}]},{\"viewName\":\"LocationWithHolidays-A\",\"dataSetName\":\"storePromotion\",\"columns\":{\"eventTimestamp\":{\"dataType\":\"date\"},\"eventName\":{\"dataType\":\"string\",\"role\":\"feature\",\"imputation\":\"mode\",\"aggregation\":\"max\"},\"calendarName\":{\"dataType\":\"string\",\"role\":\"feature\",\"imputation\":\"mode\",\"aggregation\":\"max\"},\"sales\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"},\"promotion\":{\"dataType\":\"logical\",\"imputation\":\"mode\",\"aggregation\":\"mode\"},\"timeStamp\":{\"dataType\":\"date\",\"role\":\"timestamp\"}},\"joins\":[{\"calendar\":{\"name\":\"Nexosis.Holidays-US\"},\"columnOptions\":{}}]},{\"viewName\":\"testJavascriptView\",\"dataSetName\":\"testJavascriptViewDataset\",\"columns\":{\"time\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"es6-client\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}}},{\"viewName\":\"testJavascriptViewJoins\",\"dataSetName\":\"testJavascriptViewDataset\",\"columns\":{\"time\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"es6-client\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"joins\":[{\"dataSet\":{\"name\":\"testJavascriptViewDataset2\"},\"columnOptions\":{}}]}]}"
+    }
+}

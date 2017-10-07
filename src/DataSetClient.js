@@ -98,9 +98,8 @@ export default class DataSetClient {
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f235
      */
     remove(dataSetName, startDate, endDate, cascade) {
-        var parameters = {
-            dataSetName: dataSetName
-        };
+        var parameters = {};
+
         if (startDate) {
             Object.defineProperty(parameters, 'startDate', {
                 value: startDate,
