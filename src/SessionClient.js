@@ -44,6 +44,21 @@ export default class SessionClient extends ApiClientBase {
     }
 
     /**
+     * Start a new model model-building session.
+     * 
+     * @param {string} dataSourceName - Name of existing datasource to use for this session.
+     * @param {string} targetColumn  - Column in the specified data source to predict with the generated model
+     * @param {string} predictionDomain - Type of prediction the built model is intended to make.
+     * @param {string} statusCallbackUrl - A url which will be requested when status changes.
+     * @param {function} transformFunc - Function to transform results data from the request.
+     * @param {object} columnMetadata - A json object consistent with metadata schema  ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
+     */
+    trainModel(dataSourceName, targetColumn, predictionDomain, statusCallbackUrl, transformFunc, columnMetadata = {}) {
+        var body = prepareModelBody(dataSourceName, targetColumn, predictionDomain, false, statusCallbackUrl, columnMetadata)
+        return this._apiConnection.post('sessions/model', body, transformFunc);
+    }
+
+    /**
      * Estimate the cost of a forecast session on a named dataset with the given parameters
      * 
      * @param {object} dataSetName - Name of existing dataset to use for this session
@@ -76,6 +91,21 @@ export default class SessionClient extends ApiClientBase {
     estimateImpact(dataSetName, eventName, startDate, endDate, targetColumn, resultInterval, transformFunc) {
         var parameters = prepareParameters.call(this, startDate, endDate, dataSetName, targetColumn, eventName, resultInterval, true, null);
         return this._apiConnection.post('sessions/impact', {}, transformFunc, parameters);
+    }
+
+    /**
+     * Start a new model model-building session.
+     * 
+     * @param {string} dataSourceName - Name of existing datasource to use for this session.
+     * @param {string} targetColumn  - Column in the specified data source to predict with the generated model
+     * @param {string} predictionDomain - Type of prediction the built model is intended to make.
+     * @param {string} statusCallbackUrl - A url which will be requested when status changes.
+     * @param {function} transformFunc - Function to transform results data from the request.
+     * @param {object} columnMetadata - A json object consistent with metadata schema  ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
+     */
+    estimateModel(dataSourceName, targetColumn, predictionDomain, statusCallbackUrl, transformFunc, columnMetadata = {}) {
+        var parameters = prepareModelParameters(dataSourceName, targetColumn, predictionDomain, true, statusCallbackUrl, columnMetadata)
+        return this._apiConnection.post('sessions/model', body, transformFunc);
     }
 
     /**
@@ -209,3 +239,28 @@ const prepareParameters = function (startDate, endDate, datasetName = '', target
     }
     return parameters;
 };
+
+const prepareModelBody = function (dataSetName, targetColumn, predictionDomain, isEstimate = false, statusCallbackUrl = '', columnMetadata = undefined) {
+    var body = {
+        isEstimate: isEstimate,
+        datasetName: dataSetName,
+        targetColumn: targetColumn,
+        predictionDomain: predictionDomain
+    };
+
+    if (statusCallbackUrl.length > 0) {
+        Object.defineProperty(body, 'callbackUrl', {
+            value: statusCallbackUrl,
+            enumerable: true
+        });
+    }
+
+    if (columnMetadata !== undefined) {
+        Object.defineProperty(body, 'columns', {
+            value: columnMetadata,
+            enumerable: true
+        });
+    }
+
+    return body;
+}

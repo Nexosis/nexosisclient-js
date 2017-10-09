@@ -2,6 +2,7 @@ import ApiClientBase from './ApiClientBase';
 import DataSetClient from './DataSetClient';
 import SessionClient from './SessionClient';
 import ImportClient from './ImportClient';
+import ModelClient from './ModelClient';
 import Promise from "es6-promise";
 import "isomorphic-fetch";
 
@@ -11,7 +12,6 @@ Promise.polyfill();
  */
 export default class NexosisClient extends ApiClientBase {
     getAccountBalance(transformFunc) {
-        console.log("in get account bal");
         return this._apiConnection.getHeaders('data?page=0&pageSize=1', transformFunc, {})
             .then(headers => headers.get('nexosis-account-balance'));
     }
@@ -26,5 +26,9 @@ export default class NexosisClient extends ApiClientBase {
 
     get Imports() {
         return new ImportClient(this._apiConnection);
+    }
+
+    get Models() {
+        return new ModelClient(this._apiConnection);
     }
 }

@@ -1,5 +1,5 @@
-module.exports = {
-    "Data": [
+{
+    "data": [
         {
             "time": "2017-04-01T00:00:00.0000000Z",
             "es6-client": "59.1096082511868"
@@ -361,14 +361,14 @@ module.exports = {
             "es6-client": "77.7922607854904"
         }
     ],
-    "Columns": {
+    "columns": {
         "es6-client": {
-            "DataType": 1,
-            "Role": 2
+            "DataType": "numeric",
+            "Role": "target"
         },
         "time": {
-            "DataType": 3,
-            "Role": 1
+            "DataType": "date",
+            "Role": "timestamp"
         }
     }
 }
