@@ -155,6 +155,19 @@ export default class SessionClient extends ApiClientBase {
     }
 
     /**
+     * Get the specific interval results of a session
+     * 
+     * @param {string} id - a session id returned from a previous request to start a session. 
+     * @param {string} predictionInterval - a specific interval from the session's availablePredictionIntervals
+     * @param {function} transformFunc - function to transform results data from the request
+     * @return {Promise<object,any>} The session with all result rows
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a7
+     */
+    resultsByInterval(id, predictionInterval, transformFunc) {
+        return this._apiConnection.get(`sessions/${id}/results`, transformFunc, { "predictionInterval": predictionInterval });
+    }
+
+    /**
      * List all sessions, optionally limited by search params. Will return all sessions otherwise.
      * 
      * @param {string} dataSetName - return only sessions run on this dataset

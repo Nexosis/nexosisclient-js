@@ -39,4 +39,19 @@ describe('Session tests', () => {
         }).then(done)
             .catch((err) => { done(err); });
     });
+
+    it('can get results by interval', (done) => {
+        var sessions = client.list().then(function(value){
+            var existing = null;
+            for(var index = 0; index < sessions.length ; index++){
+                session = sessions[index];
+                if(session.status === "completed" && session.type == "forecast")
+                {
+                    existing = session;
+                    break;
+                }
+            }
+        }).then(done)
+            .catch((err) => { done(err); });;
+    });
 });
