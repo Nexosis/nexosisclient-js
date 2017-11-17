@@ -40,13 +40,12 @@ describe('Session tests', () => {
             .catch((err) => { done(err); });
     });
 
-    it('can get results by interval', (done) => {
-        var sessions = client.list().then(function(value){
+    it.only('can get results by interval', (done) => {
+        client.list().then(function (value) {
             var existing = null;
-            for(var index = 0; index < sessions.length ; index++){
-                session = sessions[index];
-                if(session.status === "completed" && session.type == "forecast")
-                {
+            for (var index = 0; index < value.length; index++) {
+                session = value[index];
+                if (session.status === "completed" && session.type == "forecast") {
                     existing = session;
                     break;
                 }
