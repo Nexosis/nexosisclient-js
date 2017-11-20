@@ -40,9 +40,8 @@ describe('Session tests', () => {
             .catch((err) => { done(err); });
     });
 
-    it.only('can get results by interval', (done) => {
+    it('can get results by interval', (done) => {
         client.list().then(function (value) {
-            console.log(value)
             var existing = null;
             for (var index = 0; index < value.items.length; index++) {
                 var session = value.items[index];
@@ -55,6 +54,24 @@ describe('Session tests', () => {
             result.then((session_result) => {
                 expect(session_result.data).not.toBeNull();
             }).then(done)
+        }).then(done)
+            .catch((err) => { done(err); });;
+    });
+
+    it('can get confusion matrix', (done) => {
+        client.list().then(function (value) {
+            var existing = null;
+            for (var index = 0; index < value.items.length; index++) {
+                var session = value.items[index];
+                if (session.status === "completed" && session.type === "model" && session.predictionDomain.toLowerCase() === "classification") {
+                    existing = session;
+                    break;
+                }
+            }
+            var result = client.confusionMatrixResults(existing.sessionId);
+            result.then((classResult) => {
+                expect(classResult.confusionMatrix).not.toBeNull();
+            })
         }).then(done)
             .catch((err) => { done(err); });;
     });

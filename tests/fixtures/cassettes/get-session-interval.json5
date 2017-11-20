@@ -1,6 +1,6 @@
 {
     meta: {
-        createdAt: "2017-11-20T18:30:22.910Z",
+        createdAt: "2017-11-20T19:17:55.776Z",
         host: "https://api.uat.nexosisdev.com/v1",
         reqHumanReadable: true,
         resHumanReadable: true
@@ -52,7 +52,7 @@
                 "0.00 USD"
             ],
             date: [
-                "Mon, 20 Nov 2017 18:30:23 GMT"
+                "Mon, 20 Nov 2017 19:17:55 GMT"
             ],
             connection: [
                 "close"
