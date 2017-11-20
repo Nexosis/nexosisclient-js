@@ -42,14 +42,19 @@ describe('Session tests', () => {
 
     it.only('can get results by interval', (done) => {
         client.list().then(function (value) {
+            console.log(value)
             var existing = null;
-            for (var index = 0; index < value.length; index++) {
-                session = value[index];
-                if (session.status === "completed" && session.type == "forecast") {
+            for (var index = 0; index < value.items.length; index++) {
+                var session = value.items[index];
+                if (session.status === "completed" && session.type === "forecast") {
                     existing = session;
                     break;
                 }
             }
+            var result = client.resultsByInterval(existing.sessionId, existing.availablePredictionIntervals[0]);
+            result.then((session_result) => {
+                expect(session_result.data).not.toBeNull();
+            }).then(done)
         }).then(done)
             .catch((err) => { done(err); });;
     });
