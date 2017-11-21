@@ -2,6 +2,7 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 require('url-search-params-polyfill');
 
+const mochaAsync = require('./mochaAsync');
 const chai = require('chai');
 const expect = chai.expect;
 const testDataSetDetail = require('./fixtures/time-series.json');
@@ -40,39 +41,32 @@ describe('Session tests', () => {
             .catch((err) => { done(err); });
     });
 
-    it('can get results by interval', (done) => {
-        client.list().then(function (value) {
-            var existing = null;
-            for (var index = 0; index < value.items.length; index++) {
-                var session = value.items[index];
-                if (session.status === "completed" && session.type === "forecast") {
-                    existing = session;
-                    break;
-                }
+    it('can get results by interval', mochaAsync(async () => {
+        const value = await client.list();
+        var existing = null;
+        for (var index = 0; index < value.items.length; index++) {
+            var session = value.items[index];
+            if (session.status === "completed" && session.type === "forecast") {
+                existing = session;
+                break;
             }
-            var result = client.resultsByInterval(existing.sessionId, existing.availablePredictionIntervals[0]);
-            result.then((session_result) => {
-                expect(session_result.data).not.toBeNull();
-            }).then(done)
-        }).then(done)
-            .catch((err) => { done(err); });;
-    });
+        }
+        var session_result = await client.resultsByInterval(existing.sessionId, existing.availablePredictionIntervals[0]);
+        expect(session_result.data).not.to.be.null;
+    }));
 
-    it('can get confusion matrix', (done) => {
-        client.list().then(function (value) {
-            var existing = null;
-            for (var index = 0; index < value.items.length; index++) {
-                var session = value.items[index];
-                if (session.status === "completed" && session.type === "model" && session.predictionDomain.toLowerCase() === "classification") {
-                    existing = session;
-                    break;
-                }
+    it('can get confusion matrix', mochaAsync(async () => {
+        const value = await client.list();
+        var existing = null;
+
+        for (var index = 0; index < value.items.length; index++) {
+            var session = value.items[index];
+            if (session.status === "completed" && session.type === "model" && session.predictionDomain.toLowerCase() === "classification") {
+                existing = session;
+                break;
             }
-            var result = client.confusionMatrixResults(existing.sessionId);
-            result.then((classResult) => {
-                expect(classResult.confusionMatrix).not.toBeNull();
-            })
-        }).then(done)
-            .catch((err) => { done(err); });;
-    });
+        }
+        const matrixResult = await client.confusionMatrixResults(existing.sessionId);
+        expect(matrixResult.confusionMatrix).not.to.be.null;
+    }));
 });
