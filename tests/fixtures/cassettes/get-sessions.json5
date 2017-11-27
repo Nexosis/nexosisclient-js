@@ -1,0 +1,63 @@
+{
+    meta: {
+        createdAt: "2017-11-27T14:31:34.879Z",
+        host: "https://api.uat.nexosisdev.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/sessions?page=0&pageSize=30",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "2"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "4"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 27 Nov 2017 14:31:34 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"items\":[{\"columns\":{\"sales\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"},\"timeStamp\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"transactions\":{\"dataType\":\"numeric\",\"role\":\"feature\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"sessionId\":\"015fda10-f5be-4fdd-958f-4ad2f8ca05d1\",\"type\":\"forecast\",\"status\":\"completed\",\"availablePredictionIntervals\":[\"0.5\"],\"startDate\":\"2015-05-01T00:00:00+00:00\",\"endDate\":\"2015-06-01T00:00:00+00:00\",\"resultInterval\":\"day\",\"requestedDate\":\"2017-11-20T15:34:25.468488+00:00\",\"statusHistory\":[{\"date\":\"2017-11-20T15:34:25.468488+00:00\",\"status\":\"requested\"},{\"date\":\"2017-11-20T15:34:28.0989046+00:00\",\"status\":\"started\"},{\"date\":\"2017-11-20T15:44:48.8728777+00:00\",\"status\":\"completed\"}],\"extraParameters\":{},\"messages\":[{\"severity\":\"informational\",\"message\":\"879 daily observations were found in the dataset before 2015-06-01T23:59:59.9999999.\"}],\"dataSourceName\":\"Location-A\",\"dataSetName\":\"Location-A\",\"targetColumn\":\"sales\",\"isEstimate\":false,\"links\":[{\"rel\":\"results\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015fda10-f5be-4fdd-958f-4ad2f8ca05d1/results\"},{\"rel\":\"data\",\"href\":\"https://api.uat.nexosisdev.com/v1/data/Location-A\"}]},{\"columns\":{\"ny\":{\"dataType\":\"numeric\",\"role\":\"feature\",\"imputation\":\"mode\",\"aggregation\":\"mode\"},\"cali\":{\"dataType\":\"numeric\",\"role\":\"feature\",\"imputation\":\"mode\",\"aggregation\":\"mode\"},\"Profit\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"},\"florida\":{\"dataType\":\"numeric\",\"role\":\"feature\",\"imputation\":\"mode\",\"aggregation\":\"mode\"},\"R.D.Spend\":{\"dataType\":\"numeric\",\"role\":\"feature\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"},\"Administration\":{\"dataType\":\"numeric\",\"role\":\"feature\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"},\"Marketing.Spend\":{\"dataType\":\"numeric\",\"role\":\"feature\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"sessionId\":\"015fe055-b076-4719-aa4f-6d9b47dfb9c6\",\"type\":\"model\",\"status\":\"completed\",\"predictionDomain\":\"regression\",\"availablePredictionIntervals\":[\"0.5\"],\"modelId\":\"76271397-1aec-4167-bfab-0b05320cae68\",\"requestedDate\":\"2017-11-21T20:47:13.012352+00:00\",\"statusHistory\":[{\"date\":\"2017-11-21T20:47:13.012352+00:00\",\"status\":\"requested\"},{\"date\":\"2017-11-21T20:47:13.0383666+00:00\",\"status\":\"started\"},{\"date\":\"2017-11-21T20:47:43.9134508+00:00\",\"status\":\"completed\"}],\"extraParameters\":{},\"messages\":[{\"severity\":\"informational\",\"message\":\"200 observations were found in the dataset.\"}],\"dataSourceName\":\"50Startups\",\"dataSetName\":\"50Startups\",\"targetColumn\":\"profit\",\"isEstimate\":false,\"links\":[{\"rel\":\"results\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015fe055-b076-4719-aa4f-6d9b47dfb9c6/results\"},{\"rel\":\"data\",\"href\":\"https://api.uat.nexosisdev.com/v1/data/50Startups\"},{\"rel\":\"model\",\"href\":\"https://api.uat.nexosisdev.com/v1/models/76271397-1aec-4167-bfab-0b05320cae68\"}]},{\"columns\":{\"Salary\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"},\"YearsExperience\":{\"dataType\":\"numeric\",\"role\":\"feature\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"sessionId\":\"015fe058-86bd-4011-aa1f-f747c6960879\",\"type\":\"model\",\"status\":\"completed\",\"predictionDomain\":\"regression\",\"availablePredictionIntervals\":[\"0.5\"],\"modelId\":\"ea6b14dd-8a5a-4752-9ad8-72502de56ce5\",\"requestedDate\":\"2017-11-21T20:50:18.93931+00:00\",\"statusHistory\":[{\"date\":\"2017-11-21T20:50:18.93931+00:00\",\"status\":\"requested\"},{\"date\":\"2017-11-21T20:50:18.7526716+00:00\",\"status\":\"started\"},{\"date\":\"2017-11-21T20:51:07.5454737+00:00\",\"status\":\"completed\"}],\"extraParameters\":{},\"messages\":[{\"severity\":\"informational\",\"message\":\"30 observations were found in the dataset.\"}],\"dataSourceName\":\"Salary\",\"dataSetName\":\"Salary\",\"targetColumn\":\"salary\",\"isEstimate\":false,\"links\":[{\"rel\":\"results\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015fe058-86bd-4011-aa1f-f747c6960879/results\"},{\"rel\":\"data\",\"href\":\"https://api.uat.nexosisdev.com/v1/data/Salary\"},{\"rel\":\"model\",\"href\":\"https://api.uat.nexosisdev.com/v1/models/ea6b14dd-8a5a-4752-9ad8-72502de56ce5\"}]},{\"columns\":{\"Age\":{\"dataType\":\"numeric\",\"role\":\"feature\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"},\"Gender\":{\"dataType\":\"string\",\"role\":\"feature\",\"imputation\":\"mode\",\"aggregation\":\"mode\"},\"TookAction\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"mode\",\"aggregation\":\"mode\"}},\"sessionId\":\"015fe058-ee3b-4d2d-bc2a-e03d5e2555f6\",\"type\":\"model\",\"status\":\"completed\",\"predictionDomain\":\"classification\",\"balance\":true,\"availablePredictionIntervals\":[\"0.5\"],\"modelId\":\"983057c7-6be4-4bf7-95a0-f061fb439a62\",\"requestedDate\":\"2017-11-21T20:50:45.4338+00:00\",\"statusHistory\":[{\"date\":\"2017-11-21T20:50:45.4338+00:00\",\"status\":\"requested\"},{\"date\":\"2017-11-21T20:50:45.4479341+00:00\",\"status\":\"started\"},{\"date\":\"2017-11-21T20:53:19.8806013+00:00\",\"status\":\"completed\"}],\"extraParameters\":{},\"messages\":[{\"severity\":\"informational\",\"message\":\"100 observations were found in the dataset.\"}],\"dataSourceName\":\"Email\",\"dataSetName\":\"Email\",\"targetColumn\":\"tookaction\",\"isEstimate\":false,\"links\":[{\"rel\":\"results\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015fe058-ee3b-4d2d-bc2a-e03d5e2555f6/results\"},{\"rel\":\"data\",\"href\":\"https://api.uat.nexosisdev.com/v1/data/Email\"},{\"rel\":\"model\",\"href\":\"https://api.uat.nexosisdev.com/v1/models/983057c7-6be4-4bf7-95a0-f061fb439a62\"},{\"rel\":\"confusionMatrix\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015fe058-ee3b-4d2d-bc2a-e03d5e2555f6/results/confusionmatrix\"}]}],\"pageNumber\":0,\"totalPages\":1,\"pageSize\":30,\"totalCount\":4,\"links\":[{\"rel\":\"self\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=30\"},{\"rel\":\"first\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=30&page=0\"},{\"rel\":\"last\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=30&page=0\"}]}"
+    }
+}
