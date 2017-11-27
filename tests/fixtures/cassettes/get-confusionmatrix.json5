@@ -1,0 +1,66 @@
+{
+    meta: {
+        createdAt: "2017-11-27T14:31:35.402Z",
+        host: "https://api.uat.nexosisdev.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/sessions/015fe058-ee3b-4d2d-bc2a-e03d5e2555f6/results/confusionmatrix",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-session-status": [
+                "Completed"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "2"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "4"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 27 Nov 2017 14:31:34 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"classes\":[\"0\",\"1\"],\"confusionMatrix\":[[11,1],[0,8]],\"sessionId\":\"015fe058-ee3b-4d2d-bc2a-e03d5e2555f6\",\"type\":\"model\",\"status\":\"completed\",\"predictionDomain\":\"classification\",\"balance\":true,\"availablePredictionIntervals\":[\"0.5\"],\"modelId\":\"983057c7-6be4-4bf7-95a0-f061fb439a62\",\"requestedDate\":\"2017-11-21T20:50:45.4338+00:00\",\"statusHistory\":[{\"date\":\"2017-11-21T20:50:45.4338+00:00\",\"status\":\"requested\"},{\"date\":\"2017-11-21T20:50:45.4479341+00:00\",\"status\":\"started\"},{\"date\":\"2017-11-21T20:53:19.8806013+00:00\",\"status\":\"completed\"}],\"extraParameters\":{},\"messages\":[{\"severity\":\"informational\",\"message\":\"100 observations were found in the dataset.\"}],\"dataSourceName\":\"Email\",\"dataSetName\":\"Email\",\"targetColumn\":\"tookaction\",\"isEstimate\":false,\"links\":[{\"rel\":\"self\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015fe058-ee3b-4d2d-bc2a-e03d5e2555f6/results/confusionmatrix\"},{\"rel\":\"model\",\"href\":\"https://api.uat.nexosisdev.com/v1/models/983057c7-6be4-4bf7-95a0-f061fb439a62\"},{\"rel\":\"confusionMatrix\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015fe058-ee3b-4d2d-bc2a-e03d5e2555f6/results/confusionmatrix\"},{\"rel\":\"prediction-interval:0.5\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015fe058-ee3b-4d2d-bc2a-e03d5e2555f6?predictionInterval=0.5\"}]}"
+    }
+}

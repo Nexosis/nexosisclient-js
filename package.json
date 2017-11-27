@@ -2,7 +2,7 @@
   "name": "nexosis-api-client",
   "description": "client for interacting with the Nexosis API",
   "author": "Nexosis Inc.",
-  "version": "1.0.3",
+  "version": "1.2.1",
   "main": "dist/NexosisClient.js",
   "license": "Apache-2.0",
   "repository": {

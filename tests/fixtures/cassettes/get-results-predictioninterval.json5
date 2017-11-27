@@ -1,0 +1,66 @@
+{
+    meta: {
+        createdAt: "2017-11-27T14:25:32.895Z",
+        host: "https://api.uat.nexosisdev.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/sessions/015fda10-f5be-4fdd-958f-4ad2f8ca05d1/results?predictionInterval=0.5",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-session-status": [
+                "Completed"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "2"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "4"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 27 Nov 2017 14:25:32 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"metrics\":{\"meanAbsoluteError\":153.49916675672657,\"meanAbsolutePercentError\":0.035558297139067337,\"meanAbsoluteScaledError\":0.15634862598346189,\"rootMeanSquareError\":193.15423962196519},\"data\":[{\"timeStamp\":\"2015-05-01T00:00:00.0000000Z\",\"sales\":\"5646.49987266898\",\"sales:actual\":\"6008.33\",\"transactions\":\"849\"},{\"timeStamp\":\"2015-05-02T00:00:00.0000000Z\",\"sales\":\"3853.42382386863\",\"sales:actual\":\"4340.3\",\"transactions\":\"543\"},{\"timeStamp\":\"2015-05-03T00:00:00.0000000Z\",\"sales\":\"2494.76929191921\",\"sales:actual\":\"2565.46\",\"transactions\":\"340\"},{\"timeStamp\":\"2015-05-04T00:00:00.0000000Z\",\"sales\":\"5024.6402329496\",\"sales:actual\":\"5087.17\",\"transactions\":\"793\"},{\"timeStamp\":\"2015-05-05T00:00:00.0000000Z\",\"sales\":\"4942.32535296133\",\"sales:actual\":\"4743.43\",\"transactions\":\"778\"},{\"timeStamp\":\"2015-05-06T00:00:00.0000000Z\",\"sales\":\"5270.96389177424\",\"sales:actual\":\"5327.19\",\"transactions\":\"833\"},{\"timeStamp\":\"2015-05-07T00:00:00.0000000Z\",\"sales\":\"5294.19691652607\",\"sales:actual\":\"5503.36\",\"transactions\":\"827\"},{\"timeStamp\":\"2015-05-08T00:00:00.0000000Z\",\"sales\":\"5787.49922499531\",\"sales:actual\":\"5950.29\",\"transactions\":\"871\"},{\"timeStamp\":\"2015-05-09T00:00:00.0000000Z\",\"sales\":\"3075.37078852474\",\"sales:actual\":\"3060.94\",\"transactions\":\"416\"},{\"timeStamp\":\"2015-05-10T00:00:00.0000000Z\",\"sales\":\"2235.64779716812\",\"sales:actual\":\"2022.55\",\"transactions\":\"289\"},{\"timeStamp\":\"2015-05-11T00:00:00.0000000Z\",\"sales\":\"4700.63561527619\",\"sales:actual\":\"4560.59\",\"transactions\":\"746\"},{\"timeStamp\":\"2015-05-12T00:00:00.0000000Z\",\"sales\":\"5080.86176791059\",\"sales:actual\":\"5271.2\",\"transactions\":\"808\"},{\"timeStamp\":\"2015-05-13T00:00:00.0000000Z\",\"sales\":\"5043.33758844604\",\"sales:actual\":\"5119.25\",\"transactions\":\"803\"},{\"timeStamp\":\"2015-05-14T00:00:00.0000000Z\",\"sales\":\"5211.51459566466\",\"sales:actual\":\"5506.02\",\"transactions\":\"815\"},{\"timeStamp\":\"2015-05-15T00:00:00.0000000Z\",\"sales\":\"5499.11861215995\",\"sales:actual\":\"5768.81\",\"transactions\":\"831\"},{\"timeStamp\":\"2015-05-16T00:00:00.0000000Z\",\"sales\":\"3148.87106679162\",\"sales:actual\":\"3285.56\",\"transactions\":\"434\"},{\"timeStamp\":\"2015-05-17T00:00:00.0000000Z\",\"sales\":\"2359.88649325788\",\"sales:actual\":\"2312.28\",\"transactions\":\"317\"},{\"timeStamp\":\"2015-05-18T00:00:00.0000000Z\",\"sales\":\"4831.19946382699\",\"sales:actual\":\"4698.94\",\"transactions\":\"769\"},{\"timeStamp\":\"2015-05-19T00:00:00.0000000Z\",\"sales\":\"4772.9490533714\",\"sales:actual\":\"4948.22\",\"transactions\":\"753\"},{\"timeStamp\":\"2015-05-20T00:00:00.0000000Z\",\"sales\":\"4955.43478534803\",\"sales:actual\":\"4915.93\",\"transactions\":\"782\"},{\"timeStamp\":\"2015-05-21T00:00:00.0000000Z\",\"sales\":\"5297.27117744439\",\"sales:actual\":\"5225.82\",\"transactions\":\"831\"},{\"timeStamp\":\"2015-05-22T00:00:00.0000000Z\",\"sales\":\"5412.40127792583\",\"sales:actual\":\"5846.1\",\"transactions\":\"805\"},{\"timeStamp\":\"2015-05-23T00:00:00.0000000Z\",\"sales\":\"3018.32412774721\",\"sales:actual\":\"2859.92\",\"transactions\":\"404\"},{\"timeStamp\":\"2015-05-24T00:00:00.0000000Z\",\"sales\":\"2292.32236354743\",\"sales:actual\":\"2357.79\",\"transactions\":\"302\"},{\"timeStamp\":\"2015-05-25T00:00:00.0000000Z\",\"sales\":\"2065.26430324636\",\"sales:actual\":\"1996.22\",\"transactions\":\"292\"},{\"timeStamp\":\"2015-05-26T00:00:00.0000000Z\",\"sales\":\"4827.19210576553\",\"sales:actual\":\"5082.79\",\"transactions\":\"781\"},{\"timeStamp\":\"2015-05-27T00:00:00.0000000Z\",\"sales\":\"4785.27427929725\",\"sales:actual\":\"4815.27\",\"transactions\":\"755\"},{\"timeStamp\":\"2015-05-28T00:00:00.0000000Z\",\"sales\":\"5152.21486517354\",\"sales:actual\":\"5282.93\",\"transactions\":\"806\"},{\"timeStamp\":\"2015-05-29T00:00:00.0000000Z\",\"sales\":\"5762.5683253716\",\"sales:actual\":\"5966.04\",\"transactions\":\"892\"},{\"timeStamp\":\"2015-05-30T00:00:00.0000000Z\",\"sales\":\"3052.35846325007\",\"sales:actual\":\"3054.22\",\"transactions\":\"409\"},{\"timeStamp\":\"2015-05-31T00:00:00.0000000Z\",\"sales\":\"2316.52166167514\",\"sales:actual\":\"2202.8\",\"transactions\":\"314\"},{\"timeStamp\":\"2015-06-01T00:00:00.0000000Z\",\"sales\":\"4517.63061088358\",\"sales:actual\":\"4557.82\",\"transactions\":\"725\"}],\"sessionId\":\"015fda10-f5be-4fdd-958f-4ad2f8ca05d1\",\"type\":\"forecast\",\"status\":\"completed\",\"availablePredictionIntervals\":[\"0.5\"],\"startDate\":\"2015-05-01T00:00:00+00:00\",\"endDate\":\"2015-06-01T00:00:00+00:00\",\"resultInterval\":\"day\",\"requestedDate\":\"2017-11-20T15:34:25.468488+00:00\",\"statusHistory\":[{\"date\":\"2017-11-20T15:34:25.468488+00:00\",\"status\":\"requested\"},{\"date\":\"2017-11-20T15:34:28.0989046+00:00\",\"status\":\"started\"},{\"date\":\"2017-11-20T15:44:48.8728777+00:00\",\"status\":\"completed\"}],\"extraParameters\":{},\"messages\":[{\"severity\":\"informational\",\"message\":\"879 daily observations were found in the dataset before 2015-06-01T23:59:59.9999999.\"}],\"dataSourceName\":\"Location-A\",\"dataSetName\":\"Location-A\",\"targetColumn\":\"sales\",\"isEstimate\":false,\"links\":[{\"rel\":\"self\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015fda10-f5be-4fdd-958f-4ad2f8ca05d1/results?predictionInterval=0.5\"},{\"rel\":\"prediction-interval:0.5\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015fda10-f5be-4fdd-958f-4ad2f8ca05d1?predictionInterval=0.5\"}]}"
+    }
+}

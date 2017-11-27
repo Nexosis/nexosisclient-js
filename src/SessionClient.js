@@ -168,6 +168,15 @@ export default class SessionClient extends ApiClientBase {
     }
 
     /**
+     * 
+     * @param {string} id - completed classification model building id
+     * @return {Promise<object,any} The results with 'confusionMatrix' and 'classes' properties 
+     */    
+    confusionMatrixResults(id, transformFunc){
+        return this._apiConnection.get(`sessions/${id}/results/confusionmatrix`, transformFunc);
+    }
+
+    /**
      * List all sessions, optionally limited by search params. Will return all sessions otherwise.
      * 
      * @param {string} dataSetName - return only sessions run on this dataset
