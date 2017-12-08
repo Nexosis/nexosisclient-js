@@ -4,3 +4,5 @@ doc/
 **/*.log
 /dist
 /test-dist
+.nyc_output/
+coverage/
