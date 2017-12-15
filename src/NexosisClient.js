@@ -11,11 +11,6 @@ Promise.polyfill();
  * Main class used to access features of the Nexosis API.
  */
 export default class NexosisClient extends ApiClientBase {
-    getAccountBalance(transformFunc) {
-        return this._apiConnection.getHeaders('data?page=0&pageSize=1', transformFunc, {})
-            .then(headers => headers.get('nexosis-account-balance'));
-    }
-
     get DataSets() {
         return new DataSetClient(this._apiConnection);
     }

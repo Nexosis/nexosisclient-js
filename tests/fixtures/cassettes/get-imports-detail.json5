@@ -1,12 +1,12 @@
 {
     meta: {
-        createdAt: "2017-12-08T19:47:37.496Z",
-        host: "https://api.uat.nexosisdev.com/v1",
+        createdAt: "2017-12-15T20:37:13.278Z",
+        host: "https://ml.nexosis.com/v1",
         reqHumanReadable: true,
         resHumanReadable: true
     },
     req: {
-        url: "/imports/016037ab-359b-4a77-9ca5-fa9e132066d8",
+        url: "/imports/01605be5-2505-4e8e-81ca-3802ac92ba4d",
         method: "GET",
         headers: {
             "content-type": "application/json",
@@ -31,22 +31,22 @@
                 "Started"
             ],
             "nexosis-account-datasetcount-allotted": [
-                "200"
+                "20"
             ],
             "nexosis-account-datasetcount-current": [
-                "4"
+                "14"
             ],
             "nexosis-account-predictioncount-allotted": [
-                "250000"
+                "1000"
             ],
             "nexosis-account-predictioncount-current": [
-                "0"
+                "90"
             ],
             "nexosis-account-sessioncount-allotted": [
-                "3500"
+                "35"
             ],
             "nexosis-account-sessioncount-current": [
-                "0"
+                "21"
             ],
             "nexosis-account-balance": [
                 "0.00 USD"
@@ -55,12 +55,12 @@
                 "0.00 USD"
             ],
             date: [
-                "Fri, 08 Dec 2017 19:47:35 GMT"
+                "Fri, 15 Dec 2017 20:37:12 GMT"
             ],
             connection: [
                 "close"
             ]
         },
-        body: "{\"importId\":\"016037ab-359b-4a77-9ca5-fa9e132066d8\",\"type\":\"s3\",\"status\":\"started\",\"dataSetName\":\"s3-import-locationa\",\"parameters\":{\"bucket\":\"nexosis-sample-data\",\"path\":\"LocationA.csv\",\"region\":\"us-east-1\"},\"requestedDate\":\"2017-12-08T19:47:35.451439+00:00\",\"statusHistory\":[{\"date\":\"2017-12-08T19:47:35.451439+00:00\",\"status\":\"requested\"},{\"date\":\"2017-12-08T19:47:35.5641155+00:00\",\"status\":\"started\"}],\"messages\":[],\"columns\":{},\"links\":[{\"rel\":\"self\",\"href\":\"https://api.uat.nexosisdev.com/v1/imports/016037ab-359b-4a77-9ca5-fa9e132066d8\"},{\"rel\":\"data\",\"href\":\"https://api.uat.nexosisdev.com/v1/data/s3-import-locationa\"}]}"
+        body: "{\"importId\":\"01605be5-2505-4e8e-81ca-3802ac92ba4d\",\"type\":\"s3\",\"status\":\"started\",\"dataSetName\":\"s3-import-locationa\",\"parameters\":{\"bucket\":\"nexosis-sample-data\",\"path\":\"LocationA.csv\",\"region\":\"us-east-1\"},\"requestedDate\":\"2017-12-15T20:37:12.069411+00:00\",\"statusHistory\":[{\"date\":\"2017-12-15T20:37:12.069411+00:00\",\"status\":\"requested\"},{\"date\":\"2017-12-15T20:37:16.1593983+00:00\",\"status\":\"started\"}],\"messages\":[],\"columns\":{},\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/imports/01605be5-2505-4e8e-81ca-3802ac92ba4d\"},{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/s3-import-locationa\"}]}"
     }
 }

@@ -1,7 +1,7 @@
 {
     meta: {
-        createdAt: "2017-10-02T14:16:24.852Z",
-        host: "https://ml.nexosis.com/v1/",
+        createdAt: "2017-12-15T20:28:52.423Z",
+        host: "https://ml.nexosis.com/v1",
         reqHumanReadable: true,
         resHumanReadable: true
     },
@@ -31,19 +31,37 @@
             location: [
                 "http://gateway.prod.nexosisdev.com/views/testJavascriptViewJoins"
             ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "15"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "90"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "20"
+            ],
             "nexosis-account-balance": [
-                "49.75 USD"
+                "0.00 USD"
             ],
             "nexosis-request-cost": [
                 "0.00 USD"
             ],
             date: [
-                "Mon, 02 Oct 2017 14:16:25 GMT"
+                "Fri, 15 Dec 2017 20:28:51 GMT"
             ],
             connection: [
                 "close"
             ]
         },
-        body: "{\"viewName\":\"testJavascriptViewJoins\",\"dataSetName\":\"testJavascriptViewDataset\",\"columns\":{\"time\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"es6-client\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"joins\":[{\"dataSet\":{\"name\":\"testJavascriptViewDataset2\"},\"columnOptions\":{}}]}"
+        body: "{\"viewName\":\"testJavascriptViewJoins\",\"isTimeSeries\":true,\"links\":[],\"dataSetName\":\"testJavascriptViewDataset\",\"columns\":{\"time\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"es6-client\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"joins\":[{\"dataSet\":{\"name\":\"testJavascriptViewDataset2\"},\"columnOptions\":{}}]}"
     }
 }

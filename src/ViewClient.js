@@ -20,14 +20,14 @@ export default class ViewClient {
      * @param {Date} startDate - optional starting date to begin retrieving data. inclusive. 
      * @param {Date} endDate - optional ending date to begin retrieving data. inclusive.
      * @param {integer} page - page of results to retrieve, defaults to first page = 0
-     * @param {integer} pageSize - how many results per page, defaults to 30
+     * @param {integer} pageSize - how many results per page, defaults to 50
      * @param {Array} include - optional string array of column names to include in result. Leave empty to return all columns.
      * @param {function} transformFunc - function to transform results data from the request
      * @return {Promise<object,any>} The view data
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59a096c3e0ef6e0dec8a4f10
      * @see http://docs.nexosis.com/guides/views
      */
-    get(viewName, startDate = null, endDate = null, page = 0, pageSize = 30, include = [], transformFunc = undefined) {
+    get(viewName, startDate = null, endDate = null, page = 0, pageSize = 50, include = [], transformFunc = undefined) {
         var parameters = {
             page: page,
             pageSize: pageSize,
@@ -73,11 +73,11 @@ export default class ViewClient {
      * @param {string} viewPartialName - optional search parameter on partial view name
      * @param {string} dataSetName - optional search parameter on the name of a dataSet that the view uses
      * @param {integer} page - page of results to retrieve, defaults to first page = 0
-     * @param {integer} pageSize - how many results per page, defaults to 30
+     * @param {integer} pageSize - how many results per page, defaults to 50
      * @param {function} transformFunc - function to transform results data from the request
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59a096c2e0ef6e0dec8a4f0f
      */
-    list(viewPartialName = '', dataSetName = '', page = 0, pageSize = 30, transformFunc = undefined) {
+    list(viewPartialName = '', dataSetName = '', page = 0, pageSize = 50, transformFunc = undefined) {
         var parameters = {
             page: page,
             pageSize: pageSize
@@ -107,7 +107,7 @@ export default class ViewClient {
      */
     remove(viewName, options) {
         var parameters = {
-            viewName : viewName
+            viewName: viewName
         };
         if (options) {
             Object.defineProperty(parameters, 'options', {

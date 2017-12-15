@@ -20,13 +20,13 @@ export default class DataSetClient {
      * @param {Date} startDate - optional starting date to begin retrieving data. inclusive. Can be 
      * @param {Date} endDate - optional ending date to begin retrieving data. inclusive.
      * @param {integer} page - page of results to retrieve, defaults to first page = 0
-     * @param {integer} pageSize - how many results per page, defaults to 30
+     * @param {integer} pageSize - how many results per page, defaults to 50
      * @param {Array} include - optional string array of column names to include in result. Leave empty to return all columns.
      * @param {function} transformFunc - function to transform results data from the request
      * @return {Promise<object,any>} The dataset data results
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f232
      */
-    get(dataSetName, startDate = null, endDate = null, page = 0, pageSize = 30, include = [], transformFunc = undefined) {
+    get(dataSetName, startDate = null, endDate = null, page = 0, pageSize = 50, include = [], transformFunc = undefined) {
         var parameters = {
             page: page,
             pageSize: pageSize,
@@ -70,11 +70,11 @@ export default class DataSetClient {
      * 
      * @param {string} dataSetPartialName - optional search parameter 
      * @param {integer} page - page of results to retrieve, defaults to first page = 0
-     * @param {integer} pageSize - how many results per page, defaults to 30
+     * @param {integer} pageSize - how many results per page, defaults to 50
      * @param {function} transformFunc - function to transform results data from the request
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f231
      */
-    list(dataSetPartialName = '', page = 0, pageSize = 30, transformFunc = undefined) {
+    list(dataSetPartialName = '', page = 0, pageSize = 50, transformFunc = undefined) {
         var parameters = {
             page: page,
             pageSize: pageSize

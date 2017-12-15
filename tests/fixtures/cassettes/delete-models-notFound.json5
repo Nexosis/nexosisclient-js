@@ -1,7 +1,7 @@
 {
     meta: {
-        createdAt: "2017-10-03T15:35:26.298Z",
-        host: "https://ml.nexosis.com/v1/",
+        createdAt: "2017-12-15T20:40:45.030Z",
+        host: "https://ml.nexosis.com/v1",
         reqHumanReadable: true,
         resHumanReadable: true
     },
@@ -37,19 +37,37 @@
             expires: [
                 "-1"
             ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "13"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "91"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
             "nexosis-account-balance": [
-                "141.34 USD"
+                "0.00 USD"
             ],
             "nexosis-request-cost": [
                 "0.00 USD"
             ],
             date: [
-                "Tue, 03 Oct 2017 15:35:27 GMT"
+                "Fri, 15 Dec 2017 20:40:44 GMT"
             ],
             connection: [
                 "close"
             ]
         },
-        body: "{\"statusCode\":404,\"message\":\"Item of type model with identifier 015ee297-af57-47b1-a33c-1d489cba24dd was not found\",\"errorType\":\"NotFound\",\"errorDetails\":{\"itemType\":\"model\",\"itemId\":\"015ee297-af57-47b1-a33c-1d489cba24dd\",\"companyId\":\"49f3528d-f98a-4a43-b92e-de85195256a6\"}}"
+        body: "{\"statusCode\":404,\"message\":\"Item of type model with identifier 015ee297-af57-47b1-a33c-1d489cba24dd was not found\",\"errorType\":\"NotFound\",\"errorDetails\":{\"itemType\":\"model\",\"itemId\":\"015ee297-af57-47b1-a33c-1d489cba24dd\"}}"
     }
 }

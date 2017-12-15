@@ -21,7 +21,7 @@ describe('Import tests', () => {
         expect(result.importId).not.to.be.undefined;
     }));
 
-    it('can get import by Id', mochaAsync(async() => {
+    it('can get import by Id', mochaAsync(async () => {
         const result = await client.get(importId);
 
         expect(result.dataSetName).to.equal('s3-import-locationa');

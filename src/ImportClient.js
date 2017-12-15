@@ -47,7 +47,7 @@ export default class ImportClient extends ApiClientBase {
      * @param {function} transformFunc - function to transform results data from the request
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/595ce629e0ef6e0c98d37f31
      */
-    list(dataSetName = '', requestedAfterDate = '', requestedBeforeDate = '', transformFunc = undefined, page = 0, pageSize = 30) {
+    list(dataSetName = '', requestedAfterDate = '', requestedBeforeDate = '', transformFunc = undefined, page = 0, pageSize = 50) {
         var parameters = {
             page: page,
             pageSize: pageSize

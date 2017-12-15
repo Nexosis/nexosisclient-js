@@ -22,10 +22,10 @@ export default class ModelClient extends ApiClientBase {
      * @param {pageSize} pageSize - Count of models to retrieve in each page (max 1000).
      * @param {function} transformFunc - Function to transform results data from the request.
      */
-    list(dataSourceName, createdAfterDate, createdBeforeDate, page = 0, pageSize = 30, transformFunc = undefined) {
+    list(dataSourceName, createdAfterDate, createdBeforeDate, page = 0, pageSize = 50, transformFunc = undefined) {
         var parameters = {
-            page: 0,
-            pageSize: 10
+            page: page,
+            pageSize: pageSize
         };
 
         if (dataSourceName) {

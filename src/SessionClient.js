@@ -20,7 +20,7 @@ export default class SessionClient extends ApiClientBase {
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41aa
      */
     analyzeImpact(dataSetName, startDate, endDate, eventName, targetColumn = null, resultInterval = 'day', transformFunc = undefined, statusCallbackUrl = '', columnMetadata = {}) {
-        var parameters = prepareParameters.call(this, startDate, endDate, dataSetName, targetColumn, eventName, resultInterval, false, statusCallbackUrl);
+        var parameters = prepareParameters.call(this, startDate, endDate, dataSetName, targetColumn, eventName, resultInterval, statusCallbackUrl);
         return this._apiConnection.post('sessions/impact', columnMetadata, transformFunc, parameters);
     }
 
@@ -39,7 +39,7 @@ export default class SessionClient extends ApiClientBase {
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41ab
      */
     createForecast(dataSetName, startDate, endDate, targetColumn, resultInterval, statusCallbackUrl, transformFunc, columnMetadata = {}) {
-        var parameters = prepareParameters.call(this, startDate, endDate, dataSetName, targetColumn, '', resultInterval, false, statusCallbackUrl);
+        var parameters = prepareParameters.call(this, startDate, endDate, dataSetName, targetColumn, '', resultInterval, statusCallbackUrl);
         return this._apiConnection.post('sessions/forecast', columnMetadata, transformFunc, parameters);
     }
 
@@ -54,57 +54,7 @@ export default class SessionClient extends ApiClientBase {
      * @param {object} columnMetadata - A json object consistent with metadata schema  ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
      */
     trainModel(dataSourceName, targetColumn, predictionDomain, statusCallbackUrl, transformFunc, columnMetadata = {}) {
-        var body = prepareModelBody(dataSourceName, targetColumn, predictionDomain, false, statusCallbackUrl, columnMetadata)
-        return this._apiConnection.post('sessions/model', body, transformFunc);
-    }
-
-    /**
-     * Estimate the cost of a forecast session on a named dataset with the given parameters
-     * 
-     * @param {object} dataSetName - Name of existing dataset to use for this session
-     * @param {Date} startDate - The start of the event time frame to analyze.
-     * @param {Date} endDate - The end of the event frame to analyze.
-     * @param {string} targetColumn - The name of the column on which to analyze impact. Can be null if defined in columnMetadata.
-     * @param {string} resultInterval - A constant value indicating periodicity of results: hour, day (default), week, month, year.
-     * @param {function} transformFunc - function to transform results data from the request
-     * @return {Promise<object,any>} The session result object with details on what was submitted
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41ab
-     */
-    estimateForecast(dataSetName, startDate, endDate, targetColumn, resultInterval, transformFunc) {
-        var parameters = prepareParameters.call(this, startDate, endDate, dataSetName, targetColumn, '', resultInterval, true, null);
-        return this._apiConnection.post('sessions/forecast', {}, transformFunc, parameters);
-    }
-
-    /**
-     * Estimate the cost of an impact session on a named dataset with the given parameters
-     * 
-     * @param {string} dataSetName - Name of existing dataset to use for this session
-     * @param {Date} startDate - The start of the event time frame to analyze.
-     * @param {Date} endDate - The end of the event frame to analyze.
-     * @param {string} eventName - The name of the event.
-     * @param {string} targetColumn - The name of the column on which to analyze impact. Can be null if defined in columnMetadata.
-     * @param {string} resultInterval - A constant value indicating periodicity of results: hour, day (default), week, month, year.
-     * @param {function} transformFunc - function to transform results data from the request
-     * @return {Promise<object,any>} The session result object with details on what was submitted
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41aa
-     */
-    estimateImpact(dataSetName, eventName, startDate, endDate, targetColumn, resultInterval, transformFunc) {
-        var parameters = prepareParameters.call(this, startDate, endDate, dataSetName, targetColumn, eventName, resultInterval, true, null);
-        return this._apiConnection.post('sessions/impact', {}, transformFunc, parameters);
-    }
-
-    /**
-     * Start a new model model-building session.
-     * 
-     * @param {string} dataSourceName - Name of existing datasource to use for this session.
-     * @param {string} targetColumn  - Column in the specified data source to predict with the generated model
-     * @param {string} predictionDomain - Type of prediction the built model is intended to make.
-     * @param {string} statusCallbackUrl - A url which will be requested when status changes.
-     * @param {function} transformFunc - Function to transform results data from the request.
-     * @param {object} columnMetadata - A json object consistent with metadata schema  ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
-     */
-    estimateModel(dataSourceName, targetColumn, predictionDomain, statusCallbackUrl, transformFunc, columnMetadata = {}) {
-        var parameters = prepareModelParameters(dataSourceName, targetColumn, predictionDomain, true, statusCallbackUrl, columnMetadata)
+        var body = prepareModelBody(dataSourceName, targetColumn, predictionDomain, statusCallbackUrl, columnMetadata)
         return this._apiConnection.post('sessions/model', body, transformFunc);
     }
 
@@ -171,8 +121,8 @@ export default class SessionClient extends ApiClientBase {
      * 
      * @param {string} id - completed classification model building id
      * @return {Promise<object,any} The results with 'confusionMatrix' and 'classes' properties 
-     */    
-    confusionMatrixResults(id, transformFunc){
+     */
+    confusionMatrixResults(id, transformFunc) {
         return this._apiConnection.get(`sessions/${id}/results/confusionmatrix`, transformFunc);
     }
 
@@ -187,7 +137,7 @@ export default class SessionClient extends ApiClientBase {
      * @return {Promise<object,any>} The session result object with details on what was submitted
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a6
      */
-    list(dataSetName, eventName, requestedAfterDate, requestedBeforeDate, page = 0, pageSize = 30, transformFunc = undefined) {
+    list(dataSetName, eventName, requestedAfterDate, requestedBeforeDate, page = 0, pageSize = 50, transformFunc = undefined) {
         var parameters = {
             page: page,
             pageSize: pageSize
@@ -224,11 +174,10 @@ export default class SessionClient extends ApiClientBase {
     }
 }
 
-const prepareParameters = function (startDate, endDate, datasetName = '', targetColumn = '', eventName = '', resultInterval = 'day', isEstimate = false, statusCallbackUrl = '') {
+const prepareParameters = function (startDate, endDate, datasetName = '', targetColumn = '', eventName = '', resultInterval = 'day', statusCallbackUrl = '') {
     var parameters = {
         startDate: startDate,
         endDate: endDate,
-        isEstimate: isEstimate,
         resultInterval: resultInterval
     };
 
@@ -262,10 +211,9 @@ const prepareParameters = function (startDate, endDate, datasetName = '', target
     return parameters;
 };
 
-const prepareModelBody = function (dataSetName, targetColumn, predictionDomain, isEstimate = false, statusCallbackUrl = '', columnMetadata = undefined) {
+const prepareModelBody = function (dataSourceName, targetColumn, predictionDomain, statusCallbackUrl = '', columnMetadata = undefined) {
     var body = {
-        isEstimate: isEstimate,
-        datasetName: dataSetName,
+        dataSourceName: dataSourceName,
         targetColumn: targetColumn,
         predictionDomain: predictionDomain
     };

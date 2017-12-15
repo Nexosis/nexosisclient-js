@@ -30,7 +30,7 @@ describe('DataSet tests', () => {
     });
 
     it('should find dataset with transform', (done) => {
-        client.get('testJavascript', null, null, 0, 30, [], (data) => { return data.dataSetName; }).then((str) => {
+        client.get('testJavascript', null, null, 0, 50, [], (data) => { return data.dataSetName; }).then((str) => {
             expect(str).to.equal('testJavascript');
         }).then(done)
             .catch((err) => done(err));
