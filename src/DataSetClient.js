@@ -97,7 +97,7 @@ export default class DataSetClient {
      * @param {string} cascade - Options for cascading the delete. Options are 'forecast', 'sessions', 'cascade'
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f235
      */
-    remove(dataSetName, startDate, endDate, cascade) {
+    remove(dataSetName, startDate, endDate, cascade, transformFunc = undefined) {
         var parameters = {};
 
         if (startDate) {
@@ -118,7 +118,7 @@ export default class DataSetClient {
                 enumerable: true
             });
         }
-        return this._apiConnection.delete(`data/${dataSetName}`, undefined, parameters);
+        return this._apiConnection.delete(`data/${dataSetName}`, transformFunc, parameters);
     }
 
 }

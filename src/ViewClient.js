@@ -103,19 +103,19 @@ export default class ViewClient {
      * 
      * @param {string} viewName - Name of the dataset from which to remove data
      * @param {string} options - Delete options. If provided, should be object literal conforming to following schema: {"cascade" : "session"}
+     * @param {function} transformFunc - function to transform results data from the request
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59a096c3e0ef6e0dec8a4f12
      */
-    remove(viewName, options) {
-        var parameters = {
-            viewName: viewName
-        };
+    remove(viewName, options, transformFunc) {
+        var parameters = {};
+
         if (options) {
             Object.defineProperty(parameters, 'options', {
                 value: options,
                 enumerable: true
             });
         }
-        return this._apiConnection.delete(`views/${viewName}`, undefined, parameters);
+        return this._apiConnection.delete(`views/${viewName}`, transformFunc, parameters);
     }
 
 }

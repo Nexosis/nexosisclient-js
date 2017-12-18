@@ -79,17 +79,20 @@ export default class SessionClient extends ApiClientBase {
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a9
      */
     status(id, transformFunc = undefined) {
-        return this._apiConnection.head(`sessions/${id}`, transformFunc);
+        return this._apiConnection.head(`sessions/${id}`, transformFunc).then(headers => {
+            return headers.get('nexosis-session-status', transformFunc);
+        });
     }
 
     /**
      * Remove a session and its results from your account
      * 
      * @param {string} id - a session id returned from a previous request to start a session. 
+     * @param {function} transformFunc - function to transform results data from the request
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/593949c4e0ef6e0cb481aa31
      */
-    remove(id) {
-        return this._apiConnection.delete(`sessions/${id}`, undefined);
+    remove(id, transformFunc) {
+        return this._apiConnection.delete(`sessions/${id}`, transformFunc);
     }
 
     /**

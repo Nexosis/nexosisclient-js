@@ -37,7 +37,8 @@ describe('Model Client', () => {
             sessionClient.trainModel('js-housing-data', 'SalePrice', 'regression').then(session => {
                 const checkStatus = () => {
                     sessionClient.status(session.sessionId).then(status => {
-                        if (status._headers['nexosis-session-status'][0] === 'Completed') {
+                        console.log(status);
+                        if (status === 'Completed') {
                             clearInterval(interval);
                             sessionClient.get(session.sessionId).then(sessionDetails => {
                                 expect(sessionDetails.modelId).not.to.be.empty;

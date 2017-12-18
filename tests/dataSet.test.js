@@ -29,13 +29,6 @@ describe('DataSet tests', () => {
             .catch((err) => done(err));
     });
 
-    it('should find dataset with transform', (done) => {
-        client.get('testJavascript', null, null, 0, 50, [], (data) => { return data.dataSetName; }).then((str) => {
-            expect(str).to.equal('testJavascript');
-        }).then(done)
-            .catch((err) => done(err));
-    });
-
     it('should list datasets', (done) => {
         client.list('test').then((data) => {
             expect(data.items).to.not.equal(0);

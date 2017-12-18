@@ -39,7 +39,9 @@ export default class ApiConnection {
 
     getHeaders(path, transformFunction, parameters = {}) {
         let req = this.buildRequest('GET', path, parameters);
+        req = this.modifyRequest(req, transformFunction);
         return fetch(req).then((httpResp) => {
+            this.modifyResponse(req, httpResp, transformFunction);
             return httpResp.headers;
         });
     }
@@ -47,14 +49,14 @@ export default class ApiConnection {
     get(path, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('GET', path, parameters);
+            req = this.modifyRequest(req, transformFunction);
             let returnFunc = resolve;
-            fetch(req).then((httpResp) => {
+            fetch(req).then(httpResp => {
+                this.modifyResponse(req, httpResp, transformFunction);
                 returnFunc = ApiConnection.handleErrors(httpResp, resolve, reject);
                 return httpResp.json();
             }).then((data) => {
-                if (undefined === transformFunction)
-                    return returnFunc(data);
-                return returnFunc(transformFunction(data));
+                return returnFunc(data);
             }).catch((err) => reject(err));
         });
     }
@@ -62,12 +64,12 @@ export default class ApiConnection {
     head(path, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('HEAD', path, parameters);
+            req = this.modifyRequest(req, transformFunction);
             let returnFunc = resolve;
-            fetch(req).then((httpResp) => {
+            fetch(req).then(httpResp => {
+                this.modifyResponse(req, httpResp, transformFunction);
                 returnFunc = ApiConnection.handleErrors(httpResp, resolve, reject);
-                if (undefined === transformFunction)
-                    return returnFunc(httpResp.headers);
-                return returnFunc(transformFunction(httpResp.headers));
+                return returnFunc(httpResp.headers)
             }).catch((err) => reject(err));
         });
     }
@@ -75,14 +77,14 @@ export default class ApiConnection {
     post(path, payload, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('POST', path, parameters, payload);
+            this.modifyRequest(req, transformFunction);
             let returnFunc = resolve;
-            fetch(req).then((httpResp) => {
+            fetch(req).then(httpResp => {
+                this.modifyResponse(req, httpResp, transformFunction);
                 returnFunc = ApiConnection.handleErrors(httpResp, resolve, reject);
                 return httpResp.json();
             }).then((data) => {
-                if (undefined === transformFunction)
-                    return returnFunc(data);
-                return returnFunc(transformFunction(data));
+                return returnFunc(data);
             }).catch((err) => reject(err));
         });
     }
@@ -90,29 +92,42 @@ export default class ApiConnection {
     put(path, payload, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
             let req = this.buildRequest('PUT', path, parameters, payload);
+            req = this.modifyRequest(req, transformFunction);
             let returnFunc = resolve;
-            fetch(req).then((httpResp) => {
+            fetch(req).then(httpResp => {
+                this.modifyResponse(req, httpResp, transformFunction);
                 returnFunc = ApiConnection.handleErrors(httpResp, resolve, reject);
                 return httpResp.json();
             }).then((data) => {
-                if (undefined === transformFunction)
-                    return returnFunc(data);
-                return returnFunc(transformFunction(data));
+                return returnFunc(data);
             }).catch((err) => reject(err));
         });
     }
 
     delete(path, transformFunction, parameters = {}) {
         return new Promise((resolve, reject) => {
-            let req = this.buildRequest('DELETE', path);
+            let req = this.buildRequest('DELETE', path, parameters);
+            req = this.modifyRequest(req, transformFunction);
             let returnFunc = resolve;
-            fetch(req).then((httpResp) => {
+            fetch(req).then(httpResp => {
+                this.modifyResponse(req, httpResp, transformFunction);
                 returnFunc = ApiConnection.handleErrors(httpResp, resolve, reject);
-                if (transformFunction === null || undefined === transformFunction)
-                    return returnFunc(httpResp);
-                return returnFunc(transformFunction(httpResp));
+                return returnFunc(httpResp)
             }).catch((err) => reject(err));
         });
+    }
+
+    modifyRequest(request, transformFunction) {
+        if (transformFunction) {
+            return transformFunction(request.clone());
+        }
+        return request;
+    }
+
+    modifyResponse(request, response, transformFunction) {
+        if (transformFunction) {
+            transformFunction(request.clone(), response.clone());
+        }
     }
 
     static handleErrors(response, resolve, reject) {

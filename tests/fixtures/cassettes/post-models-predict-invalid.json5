@@ -1,0 +1,73 @@
+{
+    meta: {
+        createdAt: "2017-12-18T18:11:40.911Z",
+        host: "https://ml.nexosis.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/models/id/predict",
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*",
+            "content-length": "11"
+        },
+        body: "{\"data\":[]}"
+    },
+    res: {
+        status: 400,
+        headers: {
+            "cache-control": [
+                "no-cache"
+            ],
+            pragma: [
+                "no-cache"
+            ],
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json"
+            ],
+            expires: [
+                "-1"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "13"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "91"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 18 Dec 2017 18:11:39 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"statusCode\":400,\"message\":\"Request is invalid\",\"errorType\":\"RequestValidation\",\"errorDetails\":{\"modelId\":[\"The value 'id' is not valid for Guid.\"]}}"
+    }
+}
