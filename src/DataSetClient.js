@@ -95,6 +95,7 @@ export default class DataSetClient {
      * @param {Date} startDate -(as date-time in ISO8601). Limits data removed to those on or after the specified date
      * @param {Date} endDate - (as date-time in ISO8601). Limits data removed to those on or before the specified date
      * @param {string} cascade - Options for cascading the delete. Options are 'forecast', 'sessions', 'cascade'
+     * @param {function} transformFunc - function to transform results data from the request
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f235
      */
     remove(dataSetName, startDate, endDate, cascade, transformFunc = undefined) {
