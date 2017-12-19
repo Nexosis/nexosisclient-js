@@ -214,7 +214,7 @@ const prepareParameters = function (startDate, endDate, datasetName = '', target
     return parameters;
 };
 
-const prepareModelBody = function (dataSourceName, targetColumn, predictionDomain, statusCallbackUrl = '', columnMetadata = undefined) {
+const prepareModelBody = function (dataSourceName, targetColumn, predictionDomain, statusCallbackUrl = '', columnMetadata = {}) {
     var body = {
         dataSourceName: dataSourceName,
         targetColumn: targetColumn,

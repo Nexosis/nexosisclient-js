@@ -1,16 +1,14 @@
 import ApiConnection from './ApiConnection';
 
-const DATASET_MAX_PAGE_SIZE = 10;
-
 export default class DataSetClient {
-    constructor(apiConnection, pageSize = DATASET_MAX_PAGE_SIZE) {
+    private _apiConnection: ApiConnection;
+
+    constructor(apiConnection) {
         if (apiConnection instanceof ApiConnection) {
             this._apiConnection = apiConnection;
         } else {
             this._apiConnection = new ApiConnection(apiConnection);
         }
-
-        this._maxPageSize = pageSize;
     }
 
     /**

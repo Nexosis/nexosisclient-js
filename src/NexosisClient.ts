@@ -4,10 +4,10 @@ import SessionClient from './SessionClient';
 import ImportClient from './ImportClient';
 import ModelClient from './ModelClient';
 import ContestClient from './ContestClient';
-import Promise from "es6-promise";
-import "isomorphic-fetch";
+import * as es6 from 'es6-promise';
+(es6 as any).polyfill();
 
-Promise.polyfill();
+
 /**
  * Main class used to access features of the Nexosis API.
  */

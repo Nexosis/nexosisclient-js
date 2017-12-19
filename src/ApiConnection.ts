@@ -2,6 +2,9 @@ import ApiConnectionOptions from './ApiConnectionOptions';
 import URLSearchParams from "url-search-params";
 
 export default class ApiConnection {
+    private _endpoint;
+    private _key;
+
     constructor({ endpoint, key }) {
         this._endpoint = endpoint || ApiConnectionOptions.BASE_URL;
         this._key = key;
@@ -21,10 +24,12 @@ export default class ApiConnection {
             queryString = `?${urlParams.toString()}`;
         }
 
+        const mode: RequestMode = 'cors';
+
         var options = {
             method: httpMethod,
             headers: reqHeaders,
-            mode: 'cors'
+            mode: mode
         };
 
         if (Object.keys(payload).length > 0) {
