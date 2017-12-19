@@ -3,6 +3,7 @@ import DataSetClient from './DataSetClient';
 import SessionClient from './SessionClient';
 import ImportClient from './ImportClient';
 import ModelClient from './ModelClient';
+import ContestClient from './ContestClient';
 import Promise from "es6-promise";
 import "isomorphic-fetch";
 
@@ -46,5 +47,9 @@ export default class NexosisClient extends ApiClientBase {
 
     get Models() {
         return new ModelClient(this._apiConnection);
+    }
+
+    get Contests() {
+        return new ContestClient(this._apiConnection);
     }
 }

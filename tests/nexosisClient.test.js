@@ -16,6 +16,7 @@ describe('Nexosis main client tests', () => {
         expect(nexosisClient.Imports).not.to.be.undefined;
         expect(nexosisClient.Models).not.to.be.undefined;
         expect(nexosisClient.Sessions).not.to.be.undefined;
+        expect(nexosisClient.Contests).not.to.be.undefined;
     });
 
     it('getAccountBalance', mochaAsync(async () => {

@@ -66,15 +66,11 @@ describe('Session tests', () => {
 
     it('can get confusion matrix', mochaAsync(async () => {
         const value = await client.list();
-        var existing = null;
+        var existing =
+            value.items
+                .filter(session => session.status === 'completed' && session.type === 'model' && session.predictionDomain.toLowerCase() === 'classification')
+                .reverse()[0];
 
-        for (var index = 0; index < value.items.length; index++) {
-            var session = value.items[index];
-            if (session.status === "completed" && session.type === "model" && session.predictionDomain.toLowerCase() === "classification") {
-                existing = session;
-                break;
-            }
-        }
         const matrixResult = await client.confusionMatrixResults(existing.sessionId);
         expect(matrixResult.confusionMatrix).not.to.be.null;
     }));
