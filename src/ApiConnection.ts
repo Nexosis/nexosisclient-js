@@ -1,5 +1,5 @@
 import ApiConnectionOptions from './ApiConnectionOptions';
-import * as URLSearchParams from 'url-search-params';
+import 'url-search-params-polyfill';
 import 'isomorphic-fetch';
 
 export default class ApiConnection {
