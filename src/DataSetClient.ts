@@ -1,4 +1,5 @@
 import ApiConnection from './ApiConnection';
+import { DataSetDataQuery, DataSetData, DataSetRemoveCriteria } from './Types';
 
 export default class DataSetClient {
     private _apiConnection: ApiConnection;
@@ -11,44 +12,46 @@ export default class DataSetClient {
         }
     }
 
+    /** Function to modify the request and response objects for the fetch call. */
+    FetchTransformFunction;
+
     /**
      * Get the data in a previously saved dataset
      * 
      * @param {string} dataSetName - the name of the dataset for which to retrieve data
-     * @param {Date} startDate - optional starting date to begin retrieving data. inclusive. Can be 
-     * @param {Date} endDate - optional ending date to begin retrieving data. inclusive.
+     * @param {DataSetDataQuery} query - optional object with the filter criteria for the DataSets to retrieve.
      * @param {integer} page - page of results to retrieve, defaults to first page = 0
      * @param {integer} pageSize - how many results per page, defaults to 50
-     * @param {Array} include - optional string array of column names to include in result. Leave empty to return all columns.
-     * @param {function} transformFunc - function to transform results data from the request
      * @return {Promise<object,any>} The dataset data results
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f232
      */
-    get(dataSetName, startDate = null, endDate = null, page = 0, pageSize = 50, include = [], transformFunc = undefined) {
+    get(dataSetName, query: DataSetDataQuery = {}, page = 0, pageSize = 50) {
         var parameters = {
             page: page,
             pageSize: pageSize,
         };
-        if (startDate) {
-            Object.defineProperty(parameters, 'startDate', {
-                value: startDate,
-                enumerable: true
-            });
-        }
-        if (endDate) {
-            Object.defineProperty(parameters, 'endDate', {
-                value: endDate,
-                enumerable: true
-            });
-        }
-        if (include.length > 0) {
-            Object.defineProperty(parameters, 'include', {
-                value: include.join(','),
-                enumerable: true
-            });
-        }
 
-        return this._apiConnection.get(`data/${dataSetName}`, transformFunc, parameters);
+        if (query) {
+            if (query.startDate) {
+                Object.defineProperty(parameters, 'startDate', {
+                    value: query.startDate,
+                    enumerable: true
+                });
+            }
+            if (query.endDate) {
+                Object.defineProperty(parameters, 'endDate', {
+                    value: query.endDate,
+                    enumerable: true
+                });
+            }
+            if (query.include && query.include.length > 0) {
+                Object.defineProperty(parameters, 'include', {
+                    value: query.include.join(','),
+                    enumerable: true
+                });
+            }
+        }
+        return this._apiConnection.get(`data/${dataSetName}`, this.FetchTransformFunction, parameters);
     }
 
     /**
@@ -56,11 +59,10 @@ export default class DataSetClient {
      * 
      * @param {string} dataSetName - Name of existing dataset to use for this session
      * @param {object} dataSetDetail - A json object containing the dataset. Conforms to dataset schema. {"data": [{"colum1name" : "value1", "column2name" : "value1"},{"colum1name" : "value2", "column2name" : "value2"}]}
-     * @param {function} transformFunc - function to transform results data from the request
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f233
      */
-    create(dataSetName, dataSetDetail, transformFunc) {
-        return this._apiConnection.put(`data/${dataSetName}`, dataSetDetail, transformFunc);
+    create(dataSetName, dataSetDetail: DataSetData) {
+        return this._apiConnection.put(`data/${dataSetName}`, dataSetDetail, this.FetchTransformFunction);
     }
 
     /**
@@ -69,10 +71,9 @@ export default class DataSetClient {
      * @param {string} dataSetPartialName - optional search parameter 
      * @param {integer} page - page of results to retrieve, defaults to first page = 0
      * @param {integer} pageSize - how many results per page, defaults to 50
-     * @param {function} transformFunc - function to transform results data from the request
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f231
      */
-    list(dataSetPartialName = '', page = 0, pageSize = 50, transformFunc = undefined) {
+    list(dataSetPartialName = '', page = 0, pageSize = 50) {
         var parameters = {
             page: page,
             pageSize: pageSize
@@ -83,41 +84,38 @@ export default class DataSetClient {
                 enumerable: true
             });
         }
-        return this._apiConnection.get('data', transformFunc, parameters);
+        return this._apiConnection.get('data', this.FetchTransformFunction, parameters);
     }
 
     /**
      * Removes data from a particular dataset
      * 
      * @param {string} dataSetName - Name of the dataset from which to remove data
-     * @param {Date} startDate -(as date-time in ISO8601). Limits data removed to those on or after the specified date
-     * @param {Date} endDate - (as date-time in ISO8601). Limits data removed to those on or before the specified date
-     * @param {string} cascade - Options for cascading the delete. Options are 'forecast', 'sessions', 'cascade'
-     * @param {function} transformFunc - function to transform results data from the request
+     * @param {DataSetRemoveCriteria} - Optional removal criteria for the given dataset.
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f235
      */
-    remove(dataSetName, startDate, endDate, cascade, transformFunc = undefined) {
+    remove(dataSetName: string, criteria?: DataSetRemoveCriteria) {
         var parameters = {};
-
-        if (startDate) {
-            Object.defineProperty(parameters, 'startDate', {
-                value: startDate,
-                enumerable: true
-            });
+        if (criteria) {
+            if (criteria.startDate) {
+                Object.defineProperty(parameters, 'startDate', {
+                    value: criteria.startDate,
+                    enumerable: true
+                });
+            }
+            if (criteria.endDate) {
+                Object.defineProperty(parameters, 'endDate', {
+                    value: criteria.endDate,
+                    enumerable: true
+                });
+            }
+            if (criteria.cascade) {
+                Object.defineProperty(parameters, 'cascade', {
+                    value: criteria.cascade,
+                    enumerable: true
+                });
+            }
         }
-        if (endDate) {
-            Object.defineProperty(parameters, 'endDate', {
-                value: endDate,
-                enumerable: true
-            });
-        }
-        if (cascade) {
-            Object.defineProperty(parameters, 'cascade', {
-                value: cascade,
-                enumerable: true
-            });
-        }
-        return this._apiConnection.delete(`data/${dataSetName}`, transformFunc, parameters);
+        return this._apiConnection.delete(`data/${dataSetName}`, this.FetchTransformFunction, parameters);
     }
-
 }

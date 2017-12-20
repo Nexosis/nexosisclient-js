@@ -32,23 +32,44 @@ export default class NexosisClient extends ApiClientBase {
             });
     }
 
-    get DataSets() {
-        return new DataSetClient(this._apiConnection);
+    private _dataSetClient;
+    private _contests;
+    private _sessions;
+    private _imports;
+    private _models;
+
+    get DataSets(): DataSetClient {
+        if (!this._dataSetClient) {
+            return this._dataSetClient = new DataSetClient(this._apiConnection);
+        }
+        return this._dataSetClient;
     }
 
-    get Sessions() {
-        return new SessionClient(this._apiConnection);
+    get Sessions(): SessionClient {
+        if (!this._sessions) {
+            return this._sessions = new SessionClient(this._apiConnection);
+        }
+        return this._sessions;
     }
 
-    get Imports() {
-        return new ImportClient(this._apiConnection);
+    get Imports(): ImportClient {
+        if (!this._imports) {
+            return this._imports = new ImportClient(this._apiConnection);
+        }
+        return this._imports;
     }
 
-    get Models() {
-        return new ModelClient(this._apiConnection);
+    get Models(): ModelClient {
+        if (!this._models) {
+            return this._models = new ModelClient(this._apiConnection);
+        }
+        return this._models;
     }
 
-    get Contests() {
-        return new ContestClient(this._apiConnection);
+    get Contests(): ContestClient {
+        if (!this._contests) {
+            return this._contests = new ContestClient(this._apiConnection);
+        }
+        return this._contests;
     }
 }

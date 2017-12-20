@@ -22,7 +22,7 @@ describe('Session tests', () => {
     });
 
     it('can create an impact session', mochaAsync(async () => {
-        var result = await client.analyzeImpact("TestNode", '06-01-2017', '06-05-2017', 'myevent', 'es6-client');
+        var result = await client.analyzeImpact('TestNode', '06-01-2017', '06-05-2017', 'myevent', 'es6-client');
         expect(result.dataSetName).to.equal('TestNode');
     }));
 
@@ -72,7 +72,7 @@ describe('Session tests', () => {
     }));
 
     it('can list sessions using parameters', mochaAsync(async () => {
-        const result = await client.list('TestNode', 'myevent', '01-01-2017', '01-01-2100');
+        const result = await client.list({ dataSetName: 'TestNode', eventName: 'myevent', requestedAfterDate: '01-01-2017', requestedBeforeDate: '01-01-2100' });
 
         expect(result.items).not.to.be.empty;
     }));

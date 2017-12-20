@@ -1,4 +1,5 @@
 import ApiClientBase from './ApiClientBase';
+import { ModelSummaryQuery } from './Types';
 
 export default class ModelClient extends ApiClientBase {
 
@@ -6,36 +7,47 @@ export default class ModelClient extends ApiClientBase {
      * Get details of a model by modelId
      *
      * @param {string} id - A model id returned from a model session.
-     * @param {function} transformFunc - Function to transform results data from the request.
      */
-    get(id, transformFunc) {
-        return this._apiConnection.get(`models/${id}`, transformFunc);
+    get(id: string) {
+        return this._apiConnection.get(`models/${id}`, this.FetchTransformFunction);
     }
 
     /**
      * List all models, optionally limited by search params.  Will return all models otherwise.
      * 
-     * @param {string} dataSourceName - Return only models trained for this datasource.
-     * @param {Date} createdAfterDate - Limits models to those created on or after the specified date.
-     * @param {Date} createdBeforeDate - Limits models to those created on or before the specified date.
+     * @param {object} query - Optional query object, limiting the results to the matching models.
      * @param {page} page - Zero-based page number of models to retrieve.
      * @param {pageSize} pageSize - Count of models to retrieve in each page (max 1000).
-     * @param {function} transformFunc - Function to transform results data from the request.
      */
-    list(dataSourceName, createdAfterDate, createdBeforeDate, page = 0, pageSize = 50, transformFunc = undefined) {
+    list(query?: ModelSummaryQuery, page: number = 0, pageSize: number = 50) {
         var parameters = {
             page: page,
             pageSize: pageSize
         };
 
-        if (dataSourceName) {
-            Object.defineProperty(parameters, 'dataSourceName', {
-                value: dataSourceName,
-                enumerable: true
-            });
-        }
+        if (query) {
+            if (query.dataSourceName) {
+                Object.defineProperty(parameters, 'dataSourceName', {
+                    value: query.dataSourceName,
+                    enumerable: true
+                });
+            }
 
-        return this._apiConnection.get('models', transformFunc, parameters);
+            if (query.createdAfterDate) {
+                Object.defineProperty(parameters, 'createdAfterDate', {
+                    value: query.createdAfterDate,
+                    enumerable: true
+                });
+            }
+
+            if (query.createdBeforeDate) {
+                Object.defineProperty(parameters, 'createdBeforeDate', {
+                    value: query.createdBeforeDate,
+                    enumerable: true
+                });
+            }
+        }
+        return this._apiConnection.get('models', this.FetchTransformFunction, parameters);
     }
 
 
@@ -44,13 +56,12 @@ export default class ModelClient extends ApiClientBase {
      * 
      * @param {string} id - Model identifier to use for this prediction.
      * @param {array} data - Array of objects to predict values for.
-     * @param {function} transformFunc - Function to transform results data from the request.
      */
-    predict(id, data, transformFunc) {
+    predict(id: string, data: Array<object>) {
         var body = {
             data: data
         };
-        return this._apiConnection.post(`models/${id}/predict`, body, transformFunc);
+        return this._apiConnection.post(`models/${id}/predict`, body, this.FetchTransformFunction);
     }
 
 
@@ -58,9 +69,8 @@ export default class ModelClient extends ApiClientBase {
      * Remove a model from your account
      * 
      * @param {string} id - Identifier of the model to remove
-     * @param {function} transformFunc - Function to transform results data from the request.
      */
-    remove(id, transformFunc) {
-        return this._apiConnection.delete(`models/${id}`, transformFunc);
+    remove(id: string) {
+        return this._apiConnection.delete(`models/${id}`, this.FetchTransformFunction);
     }
 }

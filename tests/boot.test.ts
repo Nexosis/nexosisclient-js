@@ -16,7 +16,6 @@ if (process.env.NODE_ENV === 'integration') {
             record: true,
         };
 
-
         server = talkback(opts);
         server.start(() => {
             console.log("Talkback Started");

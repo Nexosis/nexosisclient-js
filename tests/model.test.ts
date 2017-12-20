@@ -8,9 +8,9 @@ import 'mocha';
 const housingData = require('./fixtures/housing-data.json');
 
 describe('Model Client', () => {
-    let client;
-    let dataClient;
-    let sessionClient;
+    let client: ModelClient;
+    let dataClient: DataSetClient;
+    let sessionClient: SessionClient;
 
     before(mochaAsync(async () => {
         client = new ModelClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
@@ -49,7 +49,7 @@ describe('Model Client', () => {
         }).timeout(900000); //15 minute timeout.
 
         it('can list the model that was created', mochaAsync(async () => {
-            const result = await client.list('js-housing-data');
+            const result = await client.list({ dataSourceName: 'js-housing-data' });
 
             expect(result.items).to.have.lengthOf(1);
         }));

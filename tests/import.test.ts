@@ -27,19 +27,19 @@ describe('Import tests', () => {
     }));
 
     it('can list imports by name', mochaAsync(async () => {
-        const result = await client.list('s3-import-locationa');
+        const result = await client.list({ dataSetName: 's3-import-locationa' });
 
         expect(result.items).not.to.be.empty;
     }));
 
     it('can list imports by requestedAfterDate', mochaAsync(async () => {
-        const result = await client.list('', '1-01-2017');
+        const result = await client.list({ requestedAfterDate: '1-01-2017' });
 
         expect(result.items).not.to.be.empty;
     }));
 
     it('can list imports by requestedBeforeDate', mochaAsync(async () => {
-        const result = await client.list('', '', '1-01-2100');
+        const result = await client.list({ requestedBeforeDate: '1-01-2100' });
 
         expect(result.items).not.to.be.empty;
     }));

@@ -45,7 +45,8 @@ describe('transform function tests', () => {
             }
         };
 
-        await nexosisClient.DataSets.get('testJavascript', null, null, 0, 50, [], getNameTransform);
+        nexosisClient.DataSets.FetchTransformFunction = getNameTransform;
+        await nexosisClient.DataSets.get('testJavascript');
         expect(dataSetName).to.equal('testJavascript');
         expect(request.url).to.include(global.endpointUrl + '/data/testJavascript');
     }));
@@ -70,27 +71,31 @@ describe('transform function tests', () => {
             }
         };
 
-        await nexosisClient.DataSets.create('testJavascript', testDataSetDetail, changeMethod);
+        nexosisClient.DataSets.FetchTransformFunction = changeMethod;
+        await nexosisClient.DataSets.create('testJavascript', testDataSetDetail);
         expect(response.url).to.include(global.endpointUrl + '/data/differentDataset');
         await nexosisClient.DataSets.remove('differentDataset');
     }));
 
     it('should transform on a put', mochaAsync(async () => {
-        await nexosisClient.DataSets.create('testJavascript', testDataSetDetail, transform);
+        nexosisClient.DataSets.FetchTransformFunction = transform;
+        await nexosisClient.DataSets.create('testJavascript', testDataSetDetail);
         expect(request.url).to.include(global.endpointUrl + '/data/testJavascript');
         expect(request.method).to.equal('PUT');
         expect(response.status).to.equal(201);
     }));
 
     it('should run transform on a delete', mochaAsync(async () => {
-        await nexosisClient.DataSets.remove('testJavascript', '2000-01-01', undefined, undefined, transform);
+        nexosisClient.DataSets.FetchTransformFunction = transform;
+        await nexosisClient.DataSets.remove('testJavascript', { startDate: '2000-01-01' });
         expect(request.url).to.include(global.endpointUrl + '/data/testJavascript')
         expect(request.method).to.equal('DELETE');
         expect(response.status).to.equal(204);
     }));
 
     it('should run transform on post', done => {
-        nexosisClient.Models.predict('id', [], transform)
+        nexosisClient.Models.FetchTransformFunction = transform;
+        nexosisClient.Models.predict('id', [])
             .then(() => { done('should not succeed'); })
             .catch(() => {
                 expect(request.url).to.include(global.endpointUrl + '/models/id');
@@ -100,7 +105,8 @@ describe('transform function tests', () => {
     });
 
     it('should run transform on head', done => {
-        nexosisClient.Sessions.status('id', transform)
+        nexosisClient.Sessions.FetchTransformFunction = transform;
+        nexosisClient.Sessions.status('id')
             .then(() => { done('should not succeed'); })
             .catch(() => {
                 expect(request.url).to.include(global.endpointUrl + '/sessions/id');

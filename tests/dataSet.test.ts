@@ -12,22 +12,22 @@ describe('DataSet tests', () => {
         client.remove("testJavascript");
     });
 
-    it('can create dataset', (done) => {
+    it('can create dataset', done => {
         client.create('testJavascript', testDataSetDetail).then((data) => {
             expect(data.dataSetName).to.equal('testJavascript');
         }).then(done)
             .catch((err) => { done(err); });
     });
 
-    it('should find dataset', (done) => {
-        client.get('testJavascript').then((ds) => {
+    it('should find dataset', done => {
+        client.get('testJavascript').then(ds => {
             expect(ds.dataSetName).to.equal('testJavascript');
         }).then(done)
             .catch((err) => done(err));
     });
 
-    it('should list datasets', (done) => {
-        client.list('test').then((data) => {
+    it('should list datasets', done => {
+        client.list('test').then(data => {
             expect(data.items).to.not.equal(0);
         }).then(done)
             .catch((err) => done(err));
