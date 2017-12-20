@@ -15,7 +15,6 @@ export default class NexosisClient extends ApiClientBase {
     getAccountBalance(transformFunc) {
         return this._apiConnection.getHeaders('data?page=0&pageSize=1', transformFunc)
             .then(headers => {
-                console.log(headers);
                 return {
                     dataSetCount: {
                         current: parseInt(headers.get('nexosis-account-datasetcount-current'), 10),

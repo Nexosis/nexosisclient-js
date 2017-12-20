@@ -1,14 +1,7 @@
-
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
-require('url-search-params-polyfill');
-require('babel-regenerator-runtime');
-
-import chai from 'chai';
 import ImportClient from '../src/ImportClient';
-import mochaAsync from './mochaAsync';
-
-const expect = chai.expect;
+import { mochaAsync } from './mochaAsync';
+import { expect } from 'chai';
+import 'mocha';
 
 describe('Import tests', () => {
     let client = new ImportClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });

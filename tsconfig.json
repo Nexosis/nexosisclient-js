@@ -10,7 +10,7 @@
             "dom"
         ],
         "strict": true,
-        "sourceMap": true,
+        "inlineSourceMap": true,
         "declaration": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,

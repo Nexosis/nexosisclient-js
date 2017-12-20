@@ -1,16 +1,11 @@
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
-require('url-search-params-polyfill');
-require('babel-regenerator-runtime');
-
-const mochaAsync = require('./mochaAsync');
-const chai = require('chai');
-const expect = chai.expect;
-const housingData = require('./fixtures/housing-data.json');
-
 import ModelClient from '../src/ModelClient';
 import SessionClient from '../src/SessionClient';
 import DataSetClient from '../src/DataSetClient';
+import { mochaAsync } from './mochaAsync';
+import { expect } from 'chai';
+import 'mocha';
+
+const housingData = require('./fixtures/housing-data.json');
 
 describe('Model Client', () => {
     let client;
@@ -37,7 +32,6 @@ describe('Model Client', () => {
             sessionClient.trainModel('js-housing-data', 'SalePrice', 'regression').then(session => {
                 const checkStatus = () => {
                     sessionClient.status(session.sessionId).then(status => {
-                        console.log(status);
                         if (status === 'Completed') {
                             clearInterval(interval);
                             sessionClient.get(session.sessionId).then(sessionDetails => {

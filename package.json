@@ -20,23 +20,22 @@
     "api client"
   ],
   "scripts": {
-    "build:source": "babel src/ --out-dir dist/",
-    "build:tests": "babel tests/ --out-dir test-dist/",
-    "test": "mocha --compilers js:babel-core/register tests",
+    "prebuild": "rimraf dist",
+    "test": "set TS_NODE_COMPILER_OPTIONS={\"module\":\"commonjs\"}&&mocha --opts ./tests/mocha.opts",
     "test:integration": "set NODE_ENV=integration&& npm run test",
-    "test:coverage": "set NODE_ENV=test&& nyc mocha --compilers js:babel-core/register tests",
-    "build": "npm run build:source && npm run build:tests",
-    "build:ts": "tsc"
+    "test:coverage": "nyc npm run test",
+    "build": "tsc && tsc --module commonjs --outDir dist/lib"
   },
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
-    "url-search-params": "^0.9.0"
+    "isomorphic-fetch": "^2.2.1"
   },
   "files": [
     "dist",
     "test-dist"
   ],
   "devDependencies": {
+    "@types/chai": "^4.0.10",
+    "@types/mocha": "^2.2.44",
     "@types/node": "^8.5.1",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
@@ -54,8 +53,12 @@
     "mocha-loader": "^1.1.1",
     "nodemon": "^1.11.0",
     "nyc": "^11.3.0",
+    "rimraf": "^2.6.2",
+    "source-map-support": "^0.5.0",
     "talkback": "^1.1.3",
+    "ts-node": "^4.0.2",
     "typescript": "^2.6.2",
+    "url-search-params": "^0.10.0",
     "url-search-params-polyfill": "^2.0.0",
     "webpack": "^3.4.1",
     "xmlhttprequest": "^1.8.0"

@@ -1,14 +1,8 @@
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
-require('url-search-params-polyfill');
-require('babel-regenerator-runtime');
-
-const mochaAsync = require('./mochaAsync');
-const chai = require('chai');
-const expect = chai.expect;
-
 import SessionClient from '../src/SessionClient';
 import ContestClient from '../src/ContestClient';
+import { mochaAsync } from './mochaAsync';
+import { expect } from 'chai';
+import 'mocha';
 
 describe('Session tests', () => {
     var client = new ContestClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });

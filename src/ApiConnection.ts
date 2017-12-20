@@ -1,5 +1,6 @@
 import ApiConnectionOptions from './ApiConnectionOptions';
-import URLSearchParams from "url-search-params";
+import * as URLSearchParams from 'url-search-params';
+import 'isomorphic-fetch';
 
 export default class ApiConnection {
     private _endpoint;

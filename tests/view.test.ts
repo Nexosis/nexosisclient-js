@@ -1,13 +1,10 @@
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
-require('url-search-params-polyfill');
-
-const chai = require('chai');
-const expect = chai.expect;
-const testDataSetDetail = require('./fixtures/time-series.json');
-
 import DataSetClient from '../src/DataSetClient';
 import ViewClient from '../src/ViewClient'
+import { mochaAsync } from './mochaAsync';
+import { expect } from 'chai';
+import 'mocha';
+
+const testDataSetDetail = require('./fixtures/time-series.json');
 
 describe('View tests', function () {
     let client = new ViewClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
