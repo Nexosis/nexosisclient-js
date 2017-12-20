@@ -3,7 +3,9 @@
   "description": "client for interacting with the Nexosis API",
   "author": "Nexosis Inc.",
   "version": "1.2.1",
-  "main": "dist/NexosisClient.js",
+  "main": "dist/lib/NexosisClient.js",
+  "module": "dist/es/NexosisClient.js",
+  "typings": "dist/types/NexosisClient.d.ts",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",

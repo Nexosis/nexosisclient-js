@@ -70,8 +70,8 @@ export default class ViewClient {
      * List all views, with optional filters
      * 
      * @param {object} query - Optional query object, limiting the results to the matching views.
-     * @param {integer} page - page of results to retrieve, defaults to first page = 0
-     * @param {integer} pageSize - how many results per page, defaults to 50
+     * @param {number} page - page of results to retrieve, defaults to first page = 0
+     * @param {number} pageSize - how many results per page, defaults to 50
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59a096c2e0ef6e0dec8a4f0f
      */
     list(query?: ViewDetailQuery, page = 0, pageSize = 50) {

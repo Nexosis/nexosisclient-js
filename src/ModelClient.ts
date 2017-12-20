@@ -16,10 +16,10 @@ export default class ModelClient extends ApiClientBase {
      * List all models, optionally limited by search params.  Will return all models otherwise.
      * 
      * @param {object} query - Optional query object, limiting the results to the matching models.
-     * @param {page} page - Zero-based page number of models to retrieve.
-     * @param {pageSize} pageSize - Count of models to retrieve in each page (max 1000).
+     * @param {number} page - Zero-based page number of models to retrieve.
+     * @param {number} pageSize - Count of models to retrieve in each page (max 1000).
      */
-    list(query?: ModelSummaryQuery, page: number = 0, pageSize: number = 50) {
+    list(query?: ModelSummaryQuery, page = 0, pageSize = 50) {
         var parameters = {
             page: page,
             pageSize: pageSize
