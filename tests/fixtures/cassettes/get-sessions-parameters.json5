@@ -1,0 +1,63 @@
+{
+    meta: {
+        createdAt: "2017-12-08T21:45:51.429Z",
+        host: "https://api.uat.nexosisdev.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/sessions?page=0&pageSize=30&dataSetName=Location-A&eventName=event&requestedAfterDate=01-01-2017&requestedBeforeDate=01-01-2100",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "5"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "0"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "0"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Fri, 08 Dec 2017 21:45:49 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"items\":[{\"columns\":{\"sales\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"},\"timestamp\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"transactions\":{\"dataType\":\"numeric\",\"role\":\"none\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"sessionId\":\"015ef2e9-e8eb-4223-a53c-60e44dd91935\",\"type\":\"forecast\",\"status\":\"completed\",\"predictionDomain\":\"forecast\",\"availablePredictionIntervals\":[\"0.5\",\"0.8\",\"0.95\",\"0.99\"],\"startDate\":\"2015-01-01T00:00:00+00:00\",\"endDate\":\"2015-01-05T00:00:00+00:00\",\"resultInterval\":\"day\",\"requestedDate\":\"2017-10-06T18:19:29.387758+00:00\",\"statusHistory\":[{\"date\":\"2017-10-06T18:19:29.387758+00:00\",\"status\":\"requested\"},{\"date\":\"2017-10-06T18:19:30.3966123+00:00\",\"status\":\"started\"},{\"date\":\"2017-10-06T19:02:39.6360148+00:00\",\"status\":\"completed\"}],\"extraParameters\":{},\"messages\":[],\"dataSourceName\":\"Location-A\",\"dataSetName\":\"Location-A\",\"targetColumn\":\"sales\",\"isEstimate\":false,\"links\":[{\"rel\":\"results\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions/015ef2e9-e8eb-4223-a53c-60e44dd91935/results\"},{\"rel\":\"data\",\"href\":\"https://api.uat.nexosisdev.com/v1/data/Location-A\"}]}],\"pageNumber\":0,\"totalPages\":1,\"pageSize\":30,\"totalCount\":1,\"links\":[{\"rel\":\"self\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=30&dataSetName=Location-A&requestedAfterDate=01-01-2017&requestedBeforeDate=01-01-2100\"},{\"rel\":\"first\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=30&dataSetName=Location-A&requestedAfterDate=01-01-2017&requestedBeforeDate=01-01-2100&page=0\"},{\"rel\":\"last\",\"href\":\"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=30&dataSetName=Location-A&requestedAfterDate=01-01-2017&requestedBeforeDate=01-01-2100&page=0\"}]}"
+    }
+}

@@ -15,22 +15,22 @@ export default class ModelClient extends ApiClientBase {
     /**
      * List all models, optionally limited by search params.  Will return all models otherwise.
      * 
-     * @param {string} dataSouceName - Return only models trained for this datasource.
+     * @param {string} dataSourceName - Return only models trained for this datasource.
      * @param {Date} createdAfterDate - Limits models to those created on or after the specified date.
      * @param {Date} createdBeforeDate - Limits models to those created on or before the specified date.
      * @param {page} page - Zero-based page number of models to retrieve.
      * @param {pageSize} pageSize - Count of models to retrieve in each page (max 1000).
      * @param {function} transformFunc - Function to transform results data from the request.
      */
-    list(dataSouceName, createdAfterDate, createdBeforeDate, page = 0, pageSize = 30, transformFunc = undefined) {
+    list(dataSourceName, createdAfterDate, createdBeforeDate, page = 0, pageSize = 30, transformFunc = undefined) {
         var parameters = {
             page: 0,
             pageSize: 10
         };
 
-        if (dataSouceName) {
+        if (dataSourceName) {
             Object.defineProperty(parameters, 'dataSourceName', {
-                value: dataSouceName,
+                value: dataSourceName,
                 enumerable: true
             });
         }
