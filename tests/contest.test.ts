@@ -4,7 +4,7 @@ import { mochaAsync } from './mochaAsync';
 import { expect } from 'chai';
 import 'mocha';
 
-describe('Session tests', () => {
+describe('Contest tests', () => {
     var client = new ContestClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
     var sessionClient = new SessionClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
     let sessionId;
