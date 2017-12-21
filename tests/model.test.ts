@@ -48,6 +48,16 @@ describe('Model Client', () => {
 
         }).timeout(900000); //15 minute timeout.
 
+        it('can build a model with options', mochaAsync(async () => {
+            const result = await sessionClient.trainModel({
+                dataSourceName: 'js-housing-data',
+                predictionDomain: 'regression',
+                targetColumn: 'SalePrice'
+            });
+
+            expect(result.dataSourceName).to.equal('js-housing-data');
+        }));
+
         it('can list the model that was created', mochaAsync(async () => {
             const result = await client.list({ dataSourceName: 'js-housing-data' });
 

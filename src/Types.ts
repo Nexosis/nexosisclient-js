@@ -54,3 +54,27 @@ export type ResultInterval = 'hour' | 'day' | 'week' | 'month' | 'year';
 export type DataSetDeleteCascadeOptions = 'session' | 'view' | 'model';
 
 export type PredictionDomain = 'regression' | 'classification' | 'forecast' | 'impact';
+
+export interface AnalyzeImpactOptions extends TimeSeriesSessionOptions {
+    eventName: string,
+}
+
+export interface ForecastOptions extends TimeSeriesSessionOptions {
+}
+
+export interface TimeSeriesSessionOptions extends SessionOptions {
+    startDate: Date | string,
+    endDate: Date | string,
+    resultInterval?: ResultInterval,
+}
+
+export interface ModelSessionOptions extends SessionOptions {
+    predictionDomain: PredictionDomain
+}
+
+export interface SessionOptions {
+    dataSourceName: string,
+    targetColumn?: string,
+    columnMetadata?: object,
+    statusCallbackUrl?: string
+}

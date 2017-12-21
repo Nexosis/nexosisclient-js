@@ -26,11 +26,34 @@ describe('Session tests', () => {
         expect(result.dataSetName).to.equal('TestNode');
     }));
 
-    it('can create an forecast session', mochaAsync(async () => {
+    it('can create an impact session with options object', mochaAsync(async () => {
+        var result = await client.analyzeImpact({
+            dataSourceName: 'TestNode',
+            startDate: '06-01-2017',
+            endDate: '06-05-2017',
+            eventName: 'myevent',
+            targetColumn: 'es6-client'
+        });
+
+        expect(result.dataSetName).to.equal('TestNode');
+    }));
+
+    it('can create a forecast session', mochaAsync(async () => {
         var result = await client.createForecast("TestNode", '06-29-2017', '07-15-2017', 'es6-client');
         forecastSessionId = result.sessionId;
 
         expect(result.dataSetName).to.equal('TestNode');
+    }));
+
+    it('can create a forecast session with options object', mochaAsync(async () => {
+        var result = await client.createForecast({
+            dataSourceName: 'TestNode',
+            startDate: '06-29-2017',
+            endDate: '07-15-2017',
+            targetColumn: 'es6-client'
+        });
+
+        expect(result.dataSourceName).to.equal('TestNode');
     }));
 
     it('can delete sessions', mochaAsync(async () => {
