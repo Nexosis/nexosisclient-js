@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'integration') {
             path: "./tests/fixtures/cassettes",
             ignoreHeaders: ['api-key'],
             summary: true,
-            record: true,
+            record: false,
         };
 
         server = talkback(opts);

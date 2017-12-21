@@ -46,8 +46,8 @@ describe('Import tests', () => {
 
     it('can filter import lists using dates', mochaAsync(async () => {
         const result = await client.list({
-            requestedAfterDate: new Date(2017, 1, 1),
-            requestedBeforeDate: new Date(2100, 1, 1)
+            requestedAfterDate: new Date('01-01-2017 UTC'),
+            requestedBeforeDate: new Date('01-01-2100 UTC')
         });
 
         expect(result.items).not.to.be.empty;
