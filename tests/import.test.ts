@@ -43,4 +43,13 @@ describe('Import tests', () => {
 
         expect(result.items).not.to.be.empty;
     }));
+
+    it('can filter import lists using dates', mochaAsync(async () => {
+        const result = await client.list({
+            requestedAfterDate: new Date(2017, 1, 1),
+            requestedBeforeDate: new Date(2100, 1, 1)
+        });
+
+        expect(result.items).not.to.be.empty;
+    }));
 });

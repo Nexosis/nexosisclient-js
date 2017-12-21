@@ -1,5 +1,6 @@
 import ApiClientBase from './ApiClientBase';
 import { SessionListQuery } from './Types';
+import { formatDate } from './Util';
 
 /**
  * Class for interacting with Session specific features of the Nexosis API.
@@ -129,8 +130,8 @@ export default class SessionClient extends ApiClientBase {
      * List all sessions, optionally limited by search params. Will return all sessions otherwise.
      * 
      * @param {object} query - Optional query object, limiting the results to the matching sessions.
-     * @param {page} page - Zero-based page number of models to retrieve.
-     * @param {pageSize} pageSize - Count of models to retrieve in each page (max 1000).
+     * @param {number} page - Zero-based page number of models to retrieve.
+     * @param {number} pageSize - Count of models to retrieve in each page (max 1000).
      * @return {Promise<object,any>} The session result object with details on what was submitted
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a6
      */
@@ -156,14 +157,14 @@ export default class SessionClient extends ApiClientBase {
 
             if (query.requestedAfterDate) {
                 Object.defineProperty(parameters, 'requestedAfterDate', {
-                    value: query.requestedAfterDate,
+                    value: formatDate(query.requestedAfterDate),
                     enumerable: true
                 });
             }
 
             if (query.requestedBeforeDate) {
                 Object.defineProperty(parameters, 'requestedBeforeDate', {
-                    value: query.requestedBeforeDate,
+                    value: formatDate(query.requestedBeforeDate),
                     enumerable: true
                 });
             }
@@ -173,10 +174,11 @@ export default class SessionClient extends ApiClientBase {
     }
 }
 
-const prepareParameters = function (startDate, endDate, datasetName = '', targetColumn = '', eventName = '', resultInterval = 'day', statusCallbackUrl = '') {
+
+const prepareParameters = function (startDate: string | Date, endDate: string | Date, datasetName, targetColumn = '', eventName = '', resultInterval = 'day', statusCallbackUrl = '') {
     var parameters = {
-        startDate: startDate,
-        endDate: endDate,
+        startDate: formatDate(startDate),
+        endDate: formatDate(endDate),
         resultInterval: resultInterval
     };
 

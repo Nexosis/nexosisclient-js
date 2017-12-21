@@ -1,5 +1,6 @@
 import ApiClientBase from './ApiClientBase';
 import { ModelSummaryQuery } from './Types';
+import { formatDate } from './Util';
 
 export default class ModelClient extends ApiClientBase {
 
@@ -35,14 +36,14 @@ export default class ModelClient extends ApiClientBase {
 
             if (query.createdAfterDate) {
                 Object.defineProperty(parameters, 'createdAfterDate', {
-                    value: query.createdAfterDate,
+                    value: formatDate(query.createdAfterDate),
                     enumerable: true
                 });
             }
 
             if (query.createdBeforeDate) {
                 Object.defineProperty(parameters, 'createdBeforeDate', {
-                    value: query.createdBeforeDate,
+                    value: formatDate(query.createdBeforeDate),
                     enumerable: true
                 });
             }

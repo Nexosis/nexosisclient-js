@@ -1,5 +1,6 @@
 import ApiConnection from './ApiConnection';
 import { DataSetDataQuery, DataSetData, DataSetRemoveCriteria } from './Types';
+import { formatDate } from './Util';
 
 export default class DataSetClient {
     private _apiConnection: ApiConnection;
@@ -34,13 +35,13 @@ export default class DataSetClient {
         if (query) {
             if (query.startDate) {
                 Object.defineProperty(parameters, 'startDate', {
-                    value: query.startDate,
+                    value: formatDate(query.startDate),
                     enumerable: true
                 });
             }
             if (query.endDate) {
                 Object.defineProperty(parameters, 'endDate', {
-                    value: query.endDate,
+                    value: formatDate(query.endDate),
                     enumerable: true
                 });
             }

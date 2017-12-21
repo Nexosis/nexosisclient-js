@@ -1,5 +1,6 @@
 import ApiConnection from './ApiConnection';
 import { DataSetDataQuery, ViewDetailQuery } from './Types';
+import { formatDate } from './Util';
 
 export default class ViewClient {
     private _apiConnection: ApiConnection;
@@ -19,8 +20,8 @@ export default class ViewClient {
      * Get the data for a view
      * 
      * @param {string} viewName - the name of the view to retrieve
-     * @param {integer} page - page of results to retrieve, defaults to first page = 0
-     * @param {integer} pageSize - how many results per page, defaults to 50
+     * @param {number} page - page of results to retrieve, defaults to first page = 0
+     * @param {number} pageSize - how many results per page, defaults to 50
      * @return {Promise<object,any>} The view data
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59a096c3e0ef6e0dec8a4f10
      * @see http://docs.nexosis.com/guides/views
@@ -33,13 +34,13 @@ export default class ViewClient {
         if (query) {
             if (query.startDate) {
                 Object.defineProperty(parameters, 'startDate', {
-                    value: query.startDate,
+                    value: formatDate(query.startDate),
                     enumerable: true
                 });
             }
             if (query.endDate) {
                 Object.defineProperty(parameters, 'endDate', {
-                    value: query.endDate,
+                    value: formatDate(query.endDate),
                     enumerable: true
                 });
             }

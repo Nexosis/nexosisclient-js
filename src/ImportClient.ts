@@ -1,5 +1,6 @@
 import ApiClientBase from './ApiClientBase';
 import { ImportDetailQuery } from './Types';
+import { formatDate } from './Util';
 
 export default class ImportClient extends ApiClientBase {
 
@@ -61,14 +62,14 @@ export default class ImportClient extends ApiClientBase {
 
             if (query.requestedAfterDate) {
                 Object.defineProperty(parameters, 'requestedAfterDate', {
-                    value: query.requestedAfterDate,
+                    value: formatDate(query.requestedAfterDate),
                     enumerable: true
                 });
             }
 
             if (query.requestedBeforeDate) {
                 Object.defineProperty(parameters, 'requestedBeforeDate', {
-                    value: query.requestedBeforeDate,
+                    value: formatDate(query.requestedBeforeDate),
                     enumerable: true
                 });
             }
