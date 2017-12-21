@@ -5,7 +5,7 @@ import { formatDate } from './Util';
 export default class ImportClient extends ApiClientBase {
 
     /**
-     * Retrieve information about request to import data into Axon
+     * Retrieve information about an import request
      * 
      * @param {string} id - The id of the Import
      * @return {Promise<object,any>} - information about the import and status
@@ -16,7 +16,7 @@ export default class ImportClient extends ApiClientBase {
     }
 
     /**
-     * Import data into Axon from a file on Amazon S3
+     * Import a file from Amazon S3 into a dataset.
      * 
      * @param {string} dataSetName - the name to give to the dataset created by this import
      * @param {string} bucket - the S3 bucket name
@@ -40,6 +40,7 @@ export default class ImportClient extends ApiClientBase {
     }
 
     /**
+     * Import a file from a url into a dataset.
      * 
      * @param {string} dataSetName - The name to give to the dataset created by this import
      * @param {string} url - The url to import a file from 
@@ -62,6 +63,7 @@ export default class ImportClient extends ApiClientBase {
     }
 
     /**
+     * Import a file from Azure into a dataset.
      * 
      * @param {string} dataSetName - The name to give to the dataset created by this import
      * @param {string} url - The url to import a file from 
