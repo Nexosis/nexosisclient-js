@@ -1,5 +1,5 @@
 import ApiClientBase from './ApiClientBase';
-import { SessionListQuery } from './Types';
+import { SessionListQuery, ResultInterval, PredictionDomain } from './Types';
 import { formatDate } from './Util';
 
 /**
@@ -21,7 +21,7 @@ export default class SessionClient extends ApiClientBase {
      * @return {Promise<object,any>} The session result object with details on what was submitted
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41aa
      */
-    analyzeImpact(dataSourceName: string, startDate: Date | string, endDate: Date | string, eventName: string, targetColumn?: string, resultInterval?: string, columnMetadata = {}, statusCallbackUrl?: string) {
+    analyzeImpact(dataSourceName: string, startDate: Date | string, endDate: Date | string, eventName: string, targetColumn?: string, resultInterval?: ResultInterval, columnMetadata = {}, statusCallbackUrl?: string) {
         var parameters = prepareParameters.call(this, startDate, endDate, dataSourceName, targetColumn, eventName, resultInterval, statusCallbackUrl);
         const requestBody = Object.assign({}, parameters, columnMetadata);
         return this._apiConnection.post('sessions/impact', requestBody, this.FetchTransformFunction);
@@ -40,7 +40,7 @@ export default class SessionClient extends ApiClientBase {
      * @return {Promise<object,any>} The session result object with details on what was submitted
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41ab
      */
-    createForecast(dataSourceName: string, startDate: Date | string, endDate: Date | string, targetColumn?: string, resultInterval?: string, columnMetadata = {}, statusCallbackUrl?: string) {
+    createForecast(dataSourceName: string, startDate: Date | string, endDate: Date | string, targetColumn?: string, resultInterval?: ResultInterval, columnMetadata = {}, statusCallbackUrl?: string) {
         var parameters = prepareParameters.call(this, startDate, endDate, dataSourceName, targetColumn, '', resultInterval, statusCallbackUrl);
         const requestBody = Object.assign({}, parameters, columnMetadata);
         return this._apiConnection.post('sessions/forecast', requestBody, this.FetchTransformFunction);
@@ -55,7 +55,7 @@ export default class SessionClient extends ApiClientBase {
      * @param {object} columnMetadata - A json object consistent with metadata schema  ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
      * @param {string} statusCallbackUrl - A url which will be requested when status changes.
      */
-    trainModel(dataSourceName: string, predictionDomain: string, targetColumn?: string, columnMetadata = {}, statusCallbackUrl?: string) {
+    trainModel(dataSourceName: string, predictionDomain: PredictionDomain, targetColumn?: string, columnMetadata = {}, statusCallbackUrl?: string) {
         var body = prepareModelBody(dataSourceName, targetColumn, predictionDomain, statusCallbackUrl, columnMetadata)
         return this._apiConnection.post('sessions/model', body, this.FetchTransformFunction);
     }
@@ -175,7 +175,7 @@ export default class SessionClient extends ApiClientBase {
 }
 
 
-const prepareParameters = function (startDate: string | Date, endDate: string | Date, dataSourceName: string, targetColumn = '', eventName = '', resultInterval = 'day', statusCallbackUrl = '') {
+const prepareParameters = function (startDate: string | Date, endDate: string | Date, dataSourceName: string, targetColumn = '', eventName = '', resultInterval: ResultInterval = 'day', statusCallbackUrl = '') {
     var parameters = {
         startDate: formatDate(startDate),
         endDate: formatDate(endDate),

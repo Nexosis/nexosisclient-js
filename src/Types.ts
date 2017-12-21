@@ -13,7 +13,7 @@ export interface DataSetData {
 export interface DataSetRemoveCriteria {
     startDate?: Date | string,
     endDate?: Date | string,
-    cascade?: string,
+    cascade?: Array<DataSetDeleteCascadeOptions>,
 }
 
 export interface ImportDetailQuery {
@@ -47,4 +47,10 @@ export interface BasicAuthentication {
 export interface S3AccessKeys {
     accessKeyId: string
     secretAccessKey: string
-} 
+}
+
+export type ResultInterval = 'hour' | 'day' | 'week' | 'month' | 'year';
+
+export type DataSetDeleteCascadeOptions = 'session' | 'view' | 'model';
+
+export type PredictionDomain = 'regression' | 'classification' | 'forecast' | 'impact';
