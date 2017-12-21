@@ -43,3 +43,8 @@ export interface BasicAuthentication {
     userId: string,
     password: string
 }
+
+export interface S3AccessKeys {
+    accessKeyId: string
+    secretAccessKey: string
+} 
