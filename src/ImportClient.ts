@@ -1,5 +1,5 @@
 import ApiClientBase from './ApiClientBase';
-import { ImportDetailQuery } from './Types';
+import { ImportDetailQuery, Authentication } from './Types';
 import { formatDate } from './Util';
 
 export default class ImportClient extends ApiClientBase {
@@ -37,6 +37,48 @@ export default class ImportClient extends ApiClientBase {
         };
 
         return this._apiConnection.post('imports/s3', payload, this.FetchTransformFunction);
+    }
+
+    /**
+     * 
+     * @param {string} dataSetName - The name to give to the dataset created by this import
+     * @param {string} url - The url to import a file from 
+     * @param {string} authentication - Optional authentication credentials to use when importing the file 
+     * @param {object} columns - metadata definition for columns found in this dataset. optional. Follows schema for columns ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5a2af0a8adf47c0d20245a68
+     */
+    importFromUrl(dataSetName: string, url: string, authentication?: Authentication, columns?: object) {
+        let payload = {
+            DataSetName: dataSetName,
+            Url: url,
+            Columns: columns
+        };
+
+        if (authentication) {
+            Object.assign(payload, { Auth: { Basic: authentication } });
+        }
+
+        return this._apiConnection.post('imports/url', payload, this.FetchTransformFunction);
+    }
+
+    /**
+     * 
+     * @param {string} dataSetName - The name to give to the dataset created by this import
+     * @param {string} url - The url to import a file from 
+     * @param {string} authentication - Optional authentication credentials to use when importing the file 
+     * @param {object} columns - metadata definition for columns found in this dataset. optional. Follows schema for columns ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5a2af0a8adf47c0d20245a67
+     */
+    importFromAzure(dataSetName: string, connectionString: string, container: string, blob: string, columns?: object) {
+        let payload = {
+            DataSetName: dataSetName,
+            ConnectionString: connectionString,
+            Container: container,
+            Blob: blob,
+            Columns: columns
+        };
+
+        return this._apiConnection.post('imports/azure', payload, this.FetchTransformFunction);
     }
 
     /**

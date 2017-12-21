@@ -14,6 +14,21 @@ describe('Import tests', () => {
         expect(result.importId).not.to.be.undefined;
     }));
 
+    it('can submit imports from url', mochaAsync(async () => {
+        const result = await client.importFromUrl('url-import',
+            'https://raw.githubusercontent.com/Nexosis/sampledata/master/LocationA.csv',
+            { userId: 'user', password: 'pass' });
+
+        expect(result.importId).not.to.be.undefined;
+    }));
+
+    it('can submit imports from azure', mochaAsync(async () => {
+        const result = await client.importFromAzure('azure-import',
+            'BlobEndpoint=https://myblobendpoint.blob.core.windows.net/', 'mycontainer', 'mydatafile.json');
+
+        expect(result.importId).not.to.be.undefined;
+    }));
+
     it('can get import by Id', mochaAsync(async () => {
         const result = await client.get(importId);
 

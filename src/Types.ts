@@ -36,3 +36,10 @@ export interface ViewDetailQuery {
     viewPartialName?: string,
     dataSetName?: string
 }
+
+export type Authentication = BasicAuthentication
+
+export interface BasicAuthentication {
+    userId: string,
+    password: string
+}
