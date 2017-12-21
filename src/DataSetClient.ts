@@ -21,8 +21,8 @@ export default class DataSetClient {
      * 
      * @param {string} dataSetName - the name of the dataset for which to retrieve data
      * @param {DataSetDataQuery} query - optional object with the filter criteria for the DataSets to retrieve.
-     * @param {integer} page - page of results to retrieve, defaults to first page = 0
-     * @param {integer} pageSize - how many results per page, defaults to 50
+     * @param {number} page - page of results to retrieve, defaults to first page = 0
+     * @param {number} pageSize - how many results per page, defaults to 50
      * @return {Promise<object,any>} The dataset data results
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f232
      */
@@ -70,8 +70,8 @@ export default class DataSetClient {
      * List all datasets, optionally filtering by partial name
      * 
      * @param {string} dataSetPartialName - optional search parameter 
-     * @param {integer} page - page of results to retrieve, defaults to first page = 0
-     * @param {integer} pageSize - how many results per page, defaults to 50
+     * @param {number} page - page of results to retrieve, defaults to first page = 0
+     * @param {number} pageSize - how many results per page, defaults to 50
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f231
      */
     list(dataSetPartialName = '', page = 0, pageSize = 50) {

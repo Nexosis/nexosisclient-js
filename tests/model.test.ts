@@ -29,7 +29,7 @@ describe('Model Client', () => {
 
         it('can build a model', done => {
             let interval;
-            sessionClient.trainModel('js-housing-data', 'SalePrice', 'regression').then(session => {
+            sessionClient.trainModel('js-housing-data', 'regression', 'SalePrice').then(session => {
                 const checkStatus = () => {
                     sessionClient.status(session.sessionId).then(status => {
                         if (status === 'Completed') {

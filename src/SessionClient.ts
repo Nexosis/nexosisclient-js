@@ -9,20 +9,20 @@ export default class SessionClient extends ApiClientBase {
     /**
      * Start a new impact session on a named dataset with the given parameters
      * 
-     * @param {string} dataSetName - Name of existing dataset to use for this session
+     * @param {string} dataSourceName - Name of existing dataSource to use for this session
      * @param {Date} startDate - The start of the event time frame to analyze.
      * @param {Date} endDate - The end of the event frame to analyze.
      * @param {string} eventName - The name of the event.
      * @param {string} targetColumn - The name of the column on which to analyze impact. Can be null if defined in columnMetadata.
      * @param {string} resultInterval - A constant value indicating periodicity of results: hour, day (default), week, month, year.
      * @param {function} transformFunc - function to transform results data from the request
-     * @param {string} statusCallbackUrl - a url which will be requested when status changes
      * @param {object} columnMetadata - a json object consistent with metadata schema ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
+     * @param {string} statusCallbackUrl - a url which will be requested when status changes
      * @return {Promise<object,any>} The session result object with details on what was submitted
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41aa
      */
-    analyzeImpact(dataSetName: string, startDate: Date | string, endDate: Date | string, eventName: string, targetColumn?: string, resultInterval?: string, statusCallbackUrl?: string, columnMetadata = {}) {
-        var parameters = prepareParameters.call(this, startDate, endDate, dataSetName, targetColumn, eventName, resultInterval, statusCallbackUrl);
+    analyzeImpact(dataSourceName: string, startDate: Date | string, endDate: Date | string, eventName: string, targetColumn?: string, resultInterval?: string, columnMetadata = {}, statusCallbackUrl?: string) {
+        var parameters = prepareParameters.call(this, startDate, endDate, dataSourceName, targetColumn, eventName, resultInterval, statusCallbackUrl);
         const requestBody = Object.assign({}, parameters, columnMetadata);
         return this._apiConnection.post('sessions/impact', requestBody, this.FetchTransformFunction);
     }
@@ -30,18 +30,18 @@ export default class SessionClient extends ApiClientBase {
     /**
      * Start a new forecast session on a named dataset with the given parameters
      * 
-     * @param {object} dataSetName - Name of existing dataset to use for this session
+     * @param {object} dataSourceName - Name of existing dataSource to use for this session
      * @param {Date} startDate - The start of the event time frame to analyze.
      * @param {Date} endDate - The end of the event frame to analyze.
      * @param {string} targetColumn - The name of the column on which to forecast. Can be null if defined in columnMetadata.
      * @param {string} resultInterval - A constant value indicating periodicity of results: hour, day (default), week, month, year.
-     * @param {string} statusCallbackUrl - a url which will be requested when status changes
      * @param {object} columnMetadata - a json object consistent with metadata schema ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
+     * @param {string} statusCallbackUrl - a url which will be requested when status changes
      * @return {Promise<object,any>} The session result object with details on what was submitted
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41ab
      */
-    createForecast(dataSetName: string, startDate: Date | string, endDate: Date | string, targetColumn?: string, resultInterval?: string, statusCallbackUrl?: string, columnMetadata = {}) {
-        var parameters = prepareParameters.call(this, startDate, endDate, dataSetName, targetColumn, '', resultInterval, statusCallbackUrl);
+    createForecast(dataSourceName: string, startDate: Date | string, endDate: Date | string, targetColumn?: string, resultInterval?: string, columnMetadata = {}, statusCallbackUrl?: string) {
+        var parameters = prepareParameters.call(this, startDate, endDate, dataSourceName, targetColumn, '', resultInterval, statusCallbackUrl);
         const requestBody = Object.assign({}, parameters, columnMetadata);
         return this._apiConnection.post('sessions/forecast', requestBody, this.FetchTransformFunction);
     }
@@ -49,13 +49,13 @@ export default class SessionClient extends ApiClientBase {
     /**
      * Start a new model model-building session.
      * 
-     * @param {string} dataSourceName - Name of existing datasource to use for this session.
-     * @param {string} targetColumn  - Column in the specified data source to predict with the generated model
+     * @param {string} dataSourceName - Name of existing dataSource to use for this session.
      * @param {string} predictionDomain - Type of prediction the built model is intended to make.
-     * @param {string} statusCallbackUrl - A url which will be requested when status changes.
+     * @param {string} targetColumn  - Column in the specified data source to predict with the generated model
      * @param {object} columnMetadata - A json object consistent with metadata schema  ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
+     * @param {string} statusCallbackUrl - A url which will be requested when status changes.
      */
-    trainModel(dataSourceName: string, targetColumn?: string, predictionDomain?: string, statusCallbackUrl?: string, columnMetadata = {}) {
+    trainModel(dataSourceName: string, predictionDomain: string, targetColumn?: string, columnMetadata = {}, statusCallbackUrl?: string) {
         var body = prepareModelBody(dataSourceName, targetColumn, predictionDomain, statusCallbackUrl, columnMetadata)
         return this._apiConnection.post('sessions/model', body, this.FetchTransformFunction);
     }
@@ -175,19 +175,13 @@ export default class SessionClient extends ApiClientBase {
 }
 
 
-const prepareParameters = function (startDate: string | Date, endDate: string | Date, datasetName, targetColumn = '', eventName = '', resultInterval = 'day', statusCallbackUrl = '') {
+const prepareParameters = function (startDate: string | Date, endDate: string | Date, dataSourceName: string, targetColumn = '', eventName = '', resultInterval = 'day', statusCallbackUrl = '') {
     var parameters = {
         startDate: formatDate(startDate),
         endDate: formatDate(endDate),
-        resultInterval: resultInterval
+        resultInterval: resultInterval,
+        dataSourceName: dataSourceName,
     };
-
-    if (datasetName.length > 0) {
-        Object.defineProperty(parameters, 'dataSourceName', {
-            value: datasetName,
-            enumerable: true
-        });
-    }
 
     if (targetColumn.length > 0) {
         Object.defineProperty(parameters, 'targetColumn', {
