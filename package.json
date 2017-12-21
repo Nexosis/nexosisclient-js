@@ -23,8 +23,8 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist",
-    "test": "set TS_NODE_COMPILER_OPTIONS={\"module\":\"commonjs\"}&&mocha --opts ./tests/mocha.opts",
-    "test:integration": "set NODE_ENV=integration&& npm run test",
+    "test": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha --opts ./tests/mocha.opts",
+    "test:integration": "cross-env NODE_ENV=integration&& npm run test",
     "test:coverage": "nyc npm run test",
     "build": "tsc && tsc --module commonjs --outDir dist/lib"
   },
@@ -39,6 +39,7 @@
     "@types/mocha": "^2.2.44",
     "@types/node": "^8.5.1",
     "chai": "^4.0.2",
+    "cross-env": "^5.1.1",
     "eslint": "^4.0.0",
     "eslint-loader": "^1.8.0",
     "mocha": "^3.4.2",
