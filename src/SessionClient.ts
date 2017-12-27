@@ -156,6 +156,42 @@ export default class SessionClient extends ApiClientBase {
     }
 
     /**
+     * 
+     * Gets the class scores for each result of a particular completed classification model session
+     * 
+     * @param {string} id - completed classification model building id
+     * @param {number} page - Zero-based page number of models to retrieve.
+     * @param {number} pageSize - Count of models to retrieve in each page (max 1000).
+     * @return {Promise<object,any>} The session result object with details on what was submitted
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5a424a854b389e11709f48da
+     */
+    anomalyScoreResults(id: string, page = 0, pageSize = 50) {
+        var parameters = {
+            page: page,
+            pageSize: pageSize
+        };
+        return this._apiConnection.get(`sessions/${id}/results/anomalyScores`, this.FetchTransformFunction, parameters);
+    }
+
+    /**
+     * 
+     * Gets the class scores for each result of a particular completed classification model session
+     * 
+     * @param {string} id - completed classification model building id
+     * @param {number} page - Zero-based page number of models to retrieve.
+     * @param {number} pageSize - Count of models to retrieve in each page (max 1000).
+     * @return {Promise<object,any>} The session result object with details on what was submitted
+     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5a424a854b389e11709f48da
+     */
+    classScoreResults(id: string, page = 0, pageSize = 50) {
+        var parameters = {
+            page: page,
+            pageSize: pageSize
+        };
+        return this._apiConnection.get(`sessions/${id}/results/classScores`, this.FetchTransformFunction, parameters);
+    }
+
+    /**
      * List all sessions, optionally limited by search params. Will return all sessions otherwise.
      * 
      * @param {object} query - Optional query object, limiting the results to the matching sessions.
