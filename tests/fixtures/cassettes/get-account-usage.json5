@@ -1,0 +1,63 @@
+{
+    meta: {
+        createdAt: "2017-12-18T20:51:27.239Z",
+        host: "https://ml.nexosis.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/data?page=0&pageSize=1",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "13"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "91"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 18 Dec 2017 20:51:26 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"items\":[{\"dataSetName\":\"bigfootsightings\",\"dataSetSize\":10580,\"isTimeSeries\":true,\"columns\":{\"date\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"quantity\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"links\":[{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/bigfootsightings\"}]}],\"pageNumber\":0,\"totalPages\":13,\"pageSize\":1,\"totalCount\":13,\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/data?page=0&pageSize=1\"},{\"rel\":\"first\",\"href\":\"https://ml.nexosis.com/v1/data?page=0&pageSize=1&page=0\"},{\"rel\":\"next\",\"href\":\"https://ml.nexosis.com/v1/data?page=0&pageSize=1&page=1\"},{\"rel\":\"last\",\"href\":\"https://ml.nexosis.com/v1/data?page=0&pageSize=1&page=12\"}]}"
+    }
+}

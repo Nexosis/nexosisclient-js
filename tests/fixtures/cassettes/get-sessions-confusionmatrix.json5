@@ -1,0 +1,66 @@
+{
+    meta: {
+        createdAt: "2017-12-19T17:23:58.596Z",
+        host: "https://ml.nexosis.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/sessions/01605bc4-6560-4d07-9394-ec0041f909c4/results/confusionmatrix",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-session-status": [
+                "Completed"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "13"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "91"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Tue, 19 Dec 2017 17:23:57 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"classes\":[\"3\",\"4\",\"5\",\"7\",\"8\"],\"confusionMatrix\":[[3,0,0,0,0],[0,7,0,0,0],[0,0,5,0,0],[0,0,0,5,0],[0,0,0,0,3]],\"pageNumber\":0,\"totalPages\":0,\"pageSize\":0,\"totalCount\":0,\"sessionId\":\"01605bc4-6560-4d07-9394-ec0041f909c4\",\"type\":\"model\",\"status\":\"completed\",\"predictionDomain\":\"classification\",\"availablePredictionIntervals\":[],\"modelId\":\"af7a61e8-ac54-4e7d-ae13-c2e94a0372e8\",\"requestedDate\":\"2017-12-15T20:01:25.853499+00:00\",\"statusHistory\":[{\"date\":\"2017-12-15T20:01:25.853499+00:00\",\"status\":\"requested\"},{\"date\":\"2017-12-15T20:01:28.8386311+00:00\",\"status\":\"started\"},{\"date\":\"2017-12-15T20:06:45.6446649+00:00\",\"status\":\"completed\"}],\"extraParameters\":{\"balance\":true},\"messages\":[{\"severity\":\"warning\",\"message\":\"Target class '6' is only specified on 2 record(s) in the dataset. Nexosis requires a minimum of 5 records per class for the class to be included in a model. Therefore, the model we generate will not consider this class.\"},{\"severity\":\"warning\",\"message\":\"Target class '10' is only specified on 1 record(s) in the dataset. Nexosis requires a minimum of 5 records per class for the class to be included in a model. Therefore, the model we generate will not consider this class.\"},{\"severity\":\"warning\",\"message\":\"Target class '9' is only specified on 4 record(s) in the dataset. Nexosis requires a minimum of 5 records per class for the class to be included in a model. Therefore, the model we generate will not consider this class.\"},{\"severity\":\"informational\",\"message\":\"118 observations were found in the dataset.\"}],\"dataSourceName\":\"js-housing-data\",\"dataSetName\":\"js-housing-data\",\"targetColumn\":\"OverallQual\",\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/sessions/01605bc4-6560-4d07-9394-ec0041f909c4/results/confusionmatrix?api-version=99.9\"},{\"rel\":\"model\",\"href\":\"https://ml.nexosis.com/v1/models/af7a61e8-ac54-4e7d-ae13-c2e94a0372e8\"},{\"rel\":\"confusionMatrix\",\"href\":\"https://ml.nexosis.com/v1/sessions/01605bc4-6560-4d07-9394-ec0041f909c4/results/confusionmatrix\"},{\"rel\":\"contest\",\"href\":\"https://ml.nexosis.com/v1/sessions/01605bc4-6560-4d07-9394-ec0041f909c4/contest\"}]}"
+    }
+}

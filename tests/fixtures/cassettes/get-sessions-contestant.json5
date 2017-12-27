@@ -1,0 +1,63 @@
+{
+    meta: {
+        createdAt: "2017-12-19T17:07:11.759Z",
+        host: "https://ml.nexosis.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/sessions/01603745-c923-440d-9833-5674e55aa8f9/contest/contestants/01603745-f128-44e0-ba2f-831a6e4d30b5",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "13"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "91"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Tue, 19 Dec 2017 17:07:11 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"data\":[{\"date\":\"2013-12-01T00:00:00.0000000Z\",\"quantity\":\"3\",\"quantity:actual\":\"7\"},{\"date\":\"2014-01-01T00:00:00.0000000Z\",\"quantity\":\"3.390625\",\"quantity:actual\":\"5\"},{\"date\":\"2014-02-01T00:00:00.0000000Z\",\"quantity\":\"2.375\",\"quantity:actual\":\"4\"},{\"date\":\"2014-03-01T00:00:00.0000000Z\",\"quantity\":\"2.46875\",\"quantity:actual\":\"9\"},{\"date\":\"2014-04-01T00:00:00.0000000Z\",\"quantity\":\"3.15625\",\"quantity:actual\":\"4\"},{\"date\":\"2014-05-01T00:00:00.0000000Z\",\"quantity\":\"3.703125\",\"quantity:actual\":\"11\"},{\"date\":\"2014-06-01T00:00:00.0000000Z\",\"quantity\":\"5.171875\",\"quantity:actual\":\"7\"},{\"date\":\"2014-07-01T00:00:00.0000000Z\",\"quantity\":\"7.265625\",\"quantity:actual\":\"9\"},{\"date\":\"2014-08-01T00:00:00.0000000Z\",\"quantity\":\"6.890625\",\"quantity:actual\":\"4\"},{\"date\":\"2014-09-01T00:00:00.0000000Z\",\"quantity\":\"5.921875\",\"quantity:actual\":\"11\"},{\"date\":\"2014-10-01T00:00:00.0000000Z\",\"quantity\":\"7.421875\",\"quantity:actual\":\"9\"},{\"date\":\"2014-11-01T00:00:00.0000000Z\",\"quantity\":\"5.484375\",\"quantity:actual\":\"7\"},{\"date\":\"2014-12-01T00:00:00.0000000Z\",\"quantity\":\"3\",\"quantity:actual\":\"7\"},{\"date\":\"2015-01-01T00:00:00.0000000Z\",\"quantity\":\"3.390625\",\"quantity:actual\":\"8\"},{\"date\":\"2015-02-01T00:00:00.0000000Z\",\"quantity\":\"2.375\",\"quantity:actual\":\"2\"},{\"date\":\"2015-03-01T00:00:00.0000000Z\",\"quantity\":\"2.46875\",\"quantity:actual\":\"0\"},{\"date\":\"2015-04-01T00:00:00.0000000Z\",\"quantity\":\"3.15625\",\"quantity:actual\":\"4\"},{\"date\":\"2015-05-01T00:00:00.0000000Z\",\"quantity\":\"3.703125\",\"quantity:actual\":\"6\"},{\"date\":\"2015-06-01T00:00:00.0000000Z\",\"quantity\":\"5.171875\",\"quantity:actual\":\"4\"},{\"date\":\"2015-07-01T00:00:00.0000000Z\",\"quantity\":\"7.265625\",\"quantity:actual\":\"2\"},{\"date\":\"2015-08-01T00:00:00.0000000Z\",\"quantity\":\"6.890625\",\"quantity:actual\":\"6\"},{\"date\":\"2015-09-01T00:00:00.0000000Z\",\"quantity\":\"5.921875\",\"quantity:actual\":\"8\"},{\"date\":\"2015-10-01T00:00:00.0000000Z\",\"quantity\":\"7.421875\",\"quantity:actual\":\"8\"},{\"date\":\"2015-11-01T00:00:00.0000000Z\",\"quantity\":\"5.484375\",\"quantity:actual\":\"7\"},{\"date\":\"2015-12-01T00:00:00.0000000Z\",\"quantity\":\"3\",\"quantity:actual\":\"4\"},{\"date\":\"2016-01-01T00:00:00.0000000Z\",\"quantity\":\"3.390625\",\"quantity:actual\":\"7\"},{\"date\":\"2016-02-01T00:00:00.0000000Z\",\"quantity\":\"2.375\",\"quantity:actual\":\"1\"},{\"date\":\"2016-03-01T00:00:00.0000000Z\",\"quantity\":\"2.46875\",\"quantity:actual\":\"4\"},{\"date\":\"2016-04-01T00:00:00.0000000Z\",\"quantity\":\"3.15625\",\"quantity:actual\":\"3\"},{\"date\":\"2016-05-01T00:00:00.0000000Z\",\"quantity\":\"3.703125\",\"quantity:actual\":\"3\"},{\"date\":\"2016-06-01T00:00:00.0000000Z\",\"quantity\":\"5.171875\",\"quantity:actual\":\"0\"},{\"date\":\"2016-07-01T00:00:00.0000000Z\",\"quantity\":\"7.265625\",\"quantity:actual\":\"3\"},{\"date\":\"2016-08-01T00:00:00.0000000Z\",\"quantity\":\"6.890625\",\"quantity:actual\":\"4\"},{\"date\":\"2016-09-01T00:00:00.0000000Z\",\"quantity\":\"5.921875\",\"quantity:actual\":\"2\"},{\"date\":\"2016-10-01T00:00:00.0000000Z\",\"quantity\":\"7.421875\",\"quantity:actual\":\"3\"},{\"date\":\"2016-11-01T00:00:00.0000000Z\",\"quantity\":\"5.484375\",\"quantity:actual\":\"1\"},{\"date\":\"2016-12-01T00:00:00.0000000Z\",\"quantity\":\"3\",\"quantity:actual\":\"3\"}],\"pageNumber\":0,\"totalPages\":1,\"pageSize\":50,\"totalCount\":37,\"id\":\"01603745-f128-44e0-ba2f-831a6e4d30b5\",\"algorithm\":{\"name\":\"Seasonal Mean, Annual\",\"description\":\"Computes the mean of all observations in the annual seasonal period\",\"key\":\"seasonal_mean+MA\"},\"dataSourceProperties\":[\"Aggregated\",\"Imputed\"],\"metrics\":{\"meanAbsoluteError\":2.5988175675675675,\"meanAbsolutePercentError\":0.83771667873230382,\"meanAbsoluteScaledError\":1.0848470064069524,\"rootMeanSquareError\":3.1901982485207507,\"rSquared\":0.024632099988219674},\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/sessions/01603745-c923-440d-9833-5674e55aa8f9/contest/contestants/01603745-f128-44e0-ba2f-831a6e4d30b5?api-version=99.9\"},{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/sessions/01603745-c923-440d-9833-5674e55aa8f9/contest/contestants/01603745-f128-44e0-ba2f-831a6e4d30b5?api-version=99.9\"},{\"rel\":\"first\",\"href\":\"https://ml.nexosis.com/v1/sessions/01603745-c923-440d-9833-5674e55aa8f9/contest/contestants/01603745-f128-44e0-ba2f-831a6e4d30b5?page=0\"},{\"rel\":\"last\",\"href\":\"https://ml.nexosis.com/v1/sessions/01603745-c923-440d-9833-5674e55aa8f9/contest/contestants/01603745-f128-44e0-ba2f-831a6e4d30b5?page=0\"}]}"
+    }
+}

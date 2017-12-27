@@ -1,0 +1,68 @@
+{
+    meta: {
+        createdAt: "2017-12-18T19:54:15.381Z",
+        host: "https://ml.nexosis.com/v1",
+        reqHumanReadable: true
+    },
+    req: {
+        url: "/sessions/id",
+        method: "HEAD",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 400,
+        headers: {
+            "cache-control": [
+                "no-cache"
+            ],
+            pragma: [
+                "no-cache"
+            ],
+            "content-length": [
+                "0"
+            ],
+            expires: [
+                "-1"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "13"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "91"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 18 Dec 2017 19:54:14 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: ""
+    }
+}

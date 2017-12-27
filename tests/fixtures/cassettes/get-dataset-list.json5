@@ -1,12 +1,12 @@
 {
     meta: {
-        createdAt: "2017-10-02T13:52:40.627Z",
-        host: "https://ml.nexosis.com/v1/",
+        createdAt: "2017-12-15T20:35:47.329Z",
+        host: "https://ml.nexosis.com/v1",
         reqHumanReadable: true,
         resHumanReadable: true
     },
     req: {
-        url: "/data?page=0&pageSize=30&partialName=test",
+        url: "/data?page=0&pageSize=50&partialName=test",
         method: "GET",
         headers: {
             "content-type": "application/json",
@@ -27,19 +27,37 @@
             "content-type": [
                 "application/json; charset=utf-8"
             ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "14"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "90"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
             "nexosis-account-balance": [
-                "49.79 USD"
+                "0.00 USD"
             ],
             "nexosis-request-cost": [
                 "0.00 USD"
             ],
             date: [
-                "Mon, 02 Oct 2017 13:52:39 GMT"
+                "Fri, 15 Dec 2017 20:35:46 GMT"
             ],
             connection: [
                 "close"
             ]
         },
-        body: "{\"items\":[{\"dataSetName\":\"testJavascript\",\"columns\":{\"time\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"es6-client\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}}}]}"
+        body: "{\"items\":[{\"dataSetName\":\"testJavascript\",\"dataSetSize\":4133,\"isTimeSeries\":true,\"columns\":{\"time\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"es6-client\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"links\":[{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/testJavascript\"}]}],\"pageNumber\":0,\"totalPages\":1,\"pageSize\":50,\"totalCount\":1,\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/data?page=0&pageSize=50&partialName=test\"},{\"rel\":\"first\",\"href\":\"https://ml.nexosis.com/v1/data?page=0&pageSize=50&partialName=test&page=0\"},{\"rel\":\"last\",\"href\":\"https://ml.nexosis.com/v1/data?page=0&pageSize=50&partialName=test&page=0\"}]}"
     }
 }

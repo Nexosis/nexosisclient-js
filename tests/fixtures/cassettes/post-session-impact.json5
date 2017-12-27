@@ -1,12 +1,12 @@
 {
     meta: {
-        createdAt: "2017-10-02T13:52:41.018Z",
-        host: "https://ml.nexosis.com/v1/",
+        createdAt: "2017-12-20T20:56:34.278Z",
+        host: "https://ml.nexosis.com/v1",
         reqHumanReadable: true,
         resHumanReadable: true
     },
     req: {
-        url: "/sessions/impact?startDate=1-03-2017&endDate=1-05-2017&isEstimate=false&resultInterval=day&dataSourceName=TestNode&targetColumn=sales&eventName=myevent",
+        url: "/sessions/impact",
         method: "POST",
         headers: {
             "content-type": "application/json",
@@ -15,9 +15,9 @@
             "accept-encoding": "gzip,deflate",
             connection: "close",
             accept: "*/*",
-            "content-length": "0"
+            "content-length": "150"
         },
-        body: ""
+        body: "{\"startDate\":\"06-01-2017\",\"endDate\":\"06-05-2017\",\"resultInterval\":\"day\",\"dataSourceName\":\"TestNode\",\"targetColumn\":\"es6-client\",\"eventName\":\"myevent\"}"
     },
     res: {
         status: 200,
@@ -28,19 +28,37 @@
             "content-type": [
                 "application/json; charset=utf-8"
             ],
-            "nexosis-request-cost": [
-                "0.01 USD"
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "14"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "119"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "26"
             ],
             "nexosis-account-balance": [
-                "49.77 USD"
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
             ],
             date: [
-                "Mon, 02 Oct 2017 13:52:40 GMT"
+                "Wed, 20 Dec 2017 20:56:33 GMT"
             ],
             connection: [
                 "close"
             ]
         },
-        body: "{\"sessionId\":\"015edd5c-3557-4c9a-8d44-0abe09f89a25\",\"type\":\"impact\",\"status\":\"requested\",\"eventName\":\"myevent\",\"startDate\":\"2017-01-03T00:00:00+00:00\",\"endDate\":\"2017-01-05T00:00:00+00:00\",\"resultInterval\":\"day\",\"requestedDate\":\"2017-10-02T13:52:41.303815+00:00\",\"statusHistory\":[{\"date\":\"2017-10-02T13:52:41.303815+00:00\",\"status\":\"requested\"}],\"extraParameters\":{\"event\":\"myevent\"},\"messages\":[],\"columns\":{\"sales\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"},\"timestamp\":{\"dataType\":\"date\",\"role\":\"timestamp\"}},\"dataSourceName\":\"TestNode\",\"dataSetName\":\"TestNode\",\"targetColumn\":\"sales\",\"isEstimate\":false,\"links\":[{\"rel\":\"results\",\"href\":\"https://ml.nexosis.com/v1/sessions/015edd5c-3557-4c9a-8d44-0abe09f89a25/results\"},{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/TestNode\"}]}"
+        body: "{\"columns\":{\"time\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"es6-client\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"sessionId\":\"016075b6-a81b-43d3-9708-60cd23dae959\",\"type\":\"impact\",\"status\":\"requested\",\"eventName\":\"myevent\",\"predictionDomain\":\"impact\",\"availablePredictionIntervals\":[\"0.5\"],\"startDate\":\"2017-06-01T00:00:00+00:00\",\"endDate\":\"2017-06-05T00:00:00+00:00\",\"resultInterval\":\"day\",\"requestedDate\":\"2017-12-20T20:56:33.049523+00:00\",\"statusHistory\":[{\"date\":\"2017-12-20T20:56:33.049523+00:00\",\"status\":\"requested\"}],\"extraParameters\":{\"event\":\"myevent\"},\"messages\":[],\"dataSourceName\":\"TestNode\",\"dataSetName\":\"TestNode\",\"targetColumn\":\"es6-client\",\"links\":[{\"rel\":\"results\",\"href\":\"https://ml.nexosis.com/v1/sessions/016075b6-a81b-43d3-9708-60cd23dae959/results\"},{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/TestNode\"}]}"
     }
 }

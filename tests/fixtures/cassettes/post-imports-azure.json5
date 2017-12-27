@@ -1,0 +1,67 @@
+{
+    meta: {
+        createdAt: "2017-12-21T03:32:13.684Z",
+        host: "https://ml.nexosis.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/imports/azure",
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*",
+            "content-length": "161"
+        },
+        body: "{\"DataSetName\":\"azure-import\",\"ConnectionString\":\"BlobEndpoint=https://myblobendpoint.blob.core.windows.net/\",\"Container\":\"mycontainer\",\"Blob\":\"mydatafile.json\"}"
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-import-status": [
+                "Requested"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "14"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "275"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "29"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Thu, 21 Dec 2017 03:32:12 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"importId\":\"01607720-e380-4a9a-b463-d4cb09c824c1\",\"type\":\"azure\",\"status\":\"requested\",\"dataSetName\":\"azure-import\",\"parameters\":{\"connectionString\":\"redacted\",\"container\":\"mycontainer\",\"blob\":\"mydatafile.json\"},\"requestedDate\":\"2017-12-21T03:32:12.288388+00:00\",\"statusHistory\":[{\"date\":\"2017-12-21T03:32:12.288388+00:00\",\"status\":\"requested\"}],\"messages\":[],\"columns\":{},\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/imports/azure\"},{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/azure-import\"}]}"
+    }
+}

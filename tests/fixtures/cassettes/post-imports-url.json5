@@ -1,0 +1,67 @@
+{
+    meta: {
+        createdAt: "2017-12-21T03:32:12.719Z",
+        host: "https://ml.nexosis.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/imports/url",
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*",
+            "content-length": "163"
+        },
+        body: "{\"DataSetName\":\"url-import\",\"Url\":\"https://raw.githubusercontent.com/Nexosis/sampledata/master/LocationA.csv\",\"Auth\":{\"Basic\":{\"userId\":\"user\",\"password\":\"pass\"}}}"
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-import-status": [
+                "Requested"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "14"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "275"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "29"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Thu, 21 Dec 2017 03:32:12 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"importId\":\"01607720-e0af-4b85-a2ce-1816d53def9e\",\"type\":\"url\",\"status\":\"requested\",\"dataSetName\":\"url-import\",\"parameters\":{\"url\":\"https://raw.githubusercontent.com/Nexosis/sampledata/master/LocationA.csv\"},\"requestedDate\":\"2017-12-21T03:32:11.567451+00:00\",\"statusHistory\":[{\"date\":\"2017-12-21T03:32:11.567451+00:00\",\"status\":\"requested\"}],\"messages\":[],\"columns\":{},\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/imports/url\"},{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/url-import\"}]}"
+    }
+}

@@ -1,0 +1,63 @@
+{
+    meta: {
+        createdAt: "2017-12-21T01:55:32.102Z",
+        host: "https://ml.nexosis.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/imports?page=0&pageSize=50&requestedAfterDate=2017-01-01T00%3A00%3A00.000Z&requestedBeforeDate=2100-01-01T00%3A00%3A00.000Z",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "14"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "275"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "29"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Thu, 21 Dec 2017 01:55:30 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"items\":[{\"importId\":\"01605b89-fa98-4789-a5eb-81c66de61774\",\"type\":\"s3\",\"status\":\"completed\",\"dataSetName\":\"s3-import-locationa\",\"parameters\":{\"bucket\":\"nexosis-sample-data\",\"path\":\"LocationA.csv\",\"region\":\"us-east-1\"},\"requestedDate\":\"2017-12-15T18:57:37.432905+00:00\",\"statusHistory\":[{\"date\":\"2017-12-15T18:57:37.432905+00:00\",\"status\":\"requested\"},{\"date\":\"2017-12-15T18:57:34.8512129+00:00\",\"status\":\"started\"},{\"date\":\"2017-12-15T18:57:36.4857866+00:00\",\"status\":\"completed\"}],\"messages\":[],\"columns\":{},\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/imports?page=0&pageSize=50&requestedAfterDate=2017-02-01T05%3A00%3A00.000Z&requestedBeforeDate=2100-02-01T05%3A00%3A00.000Z\"},{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/s3-import-locationa\"}]},{\"importId\":\"01605be5-2505-4e8e-81ca-3802ac92ba4d\",\"type\":\"s3\",\"status\":\"completed\",\"dataSetName\":\"s3-import-locationa\",\"parameters\":{\"bucket\":\"nexosis-sample-data\",\"path\":\"LocationA.csv\",\"region\":\"us-east-1\"},\"requestedDate\":\"2017-12-15T20:37:12.069411+00:00\",\"statusHistory\":[{\"date\":\"2017-12-15T20:37:12.069411+00:00\",\"status\":\"requested\"},{\"date\":\"2017-12-15T20:37:16.1593983+00:00\",\"status\":\"started\"},{\"date\":\"2017-12-15T20:37:10.7067518+00:00\",\"status\":\"completed\"}],\"messages\":[],\"columns\":{},\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/imports?page=0&pageSize=50&requestedAfterDate=2017-02-01T05%3A00%3A00.000Z&requestedBeforeDate=2100-02-01T05%3A00%3A00.000Z\"},{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/s3-import-locationa\"}]},{\"importId\":\"016074f6-7b0a-4f41-baa1-c38a9831f53a\",\"type\":\"s3\",\"status\":\"completed\",\"dataSetName\":\"s3-import-locationa\",\"parameters\":{\"bucket\":\"nexosis-sample-data\",\"path\":\"LocationA.csv\",\"region\":\"us-east-1\"},\"requestedDate\":\"2017-12-20T17:26:38.602228+00:00\",\"statusHistory\":[{\"date\":\"2017-12-20T17:26:38.602228+00:00\",\"status\":\"requested\"},{\"date\":\"2017-12-20T17:26:36.5431162+00:00\",\"status\":\"started\"},{\"date\":\"2017-12-20T17:26:41.9012536+00:00\",\"status\":\"completed\"}],\"messages\":[],\"columns\":{},\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/imports?page=0&pageSize=50&requestedAfterDate=2017-02-01T05%3A00%3A00.000Z&requestedBeforeDate=2100-02-01T05%3A00%3A00.000Z\"},{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/s3-import-locationa\"}]}],\"pageNumber\":0,\"totalPages\":1,\"pageSize\":50,\"totalCount\":3,\"links\":[{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/imports?page=0&pageSize=50&requestedAfterDate=2017-02-01T05%3A00%3A00.000Z&requestedBeforeDate=2100-02-01T05%3A00%3A00.000Z\"},{\"rel\":\"first\",\"href\":\"https://ml.nexosis.com/v1/imports?page=0&pageSize=50&requestedAfterDate=2017-02-01T05%3A00%3A00.000Z&requestedBeforeDate=2100-02-01T05%3A00%3A00.000Z&page=0\"},{\"rel\":\"last\",\"href\":\"https://ml.nexosis.com/v1/imports?page=0&pageSize=50&requestedAfterDate=2017-02-01T05%3A00%3A00.000Z&requestedBeforeDate=2100-02-01T05%3A00%3A00.000Z&page=0\"}]}"
+    }
+}

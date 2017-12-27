@@ -1,12 +1,12 @@
 {
     meta: {
-        createdAt: "2017-10-03T14:40:16.700Z",
-        host: "https://ml.nexosis.com/v1/",
+        createdAt: "2017-12-15T20:54:16.479Z",
+        host: "https://ml.nexosis.com/v1",
         reqHumanReadable: true,
         resHumanReadable: true
     },
     req: {
-        url: "/models?page=0&pageSize=10&dataSourceName=js-housing-data",
+        url: "/models?page=0&pageSize=50&dataSourceName=js-housing-data",
         method: "GET",
         headers: {
             "content-type": "application/json",
@@ -27,14 +27,32 @@
             "content-type": [
                 "application/json; charset=utf-8"
             ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "12"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "1000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "91"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "35"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "21"
+            ],
             "nexosis-account-balance": [
-                "141.34 USD"
+                "0.00 USD"
             ],
             "nexosis-request-cost": [
                 "0.00 USD"
             ],
             date: [
-                "Tue, 03 Oct 2017 14:40:16 GMT"
+                "Fri, 15 Dec 2017 20:54:16 GMT"
             ],
             connection: [
                 "close"
