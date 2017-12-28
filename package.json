@@ -2,7 +2,7 @@
   "name": "nexosis-api-client",
   "description": "client for interacting with the Nexosis API",
   "author": "Nexosis Inc.",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "main": "dist/lib/NexosisClient.js",
   "module": "dist/es/NexosisClient.js",
   "types": "dist/types/NexosisClient.d.ts",
