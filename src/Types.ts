@@ -69,7 +69,8 @@ export interface TimeSeriesSessionOptions extends SessionOptions {
 }
 
 export interface ModelSessionOptions extends SessionOptions {
-    predictionDomain: PredictionDomain
+    predictionDomain: PredictionDomain,
+    extraParameters?: SessionExtraParameters
 }
 
 export interface SessionOptions {
@@ -77,4 +78,21 @@ export interface SessionOptions {
     targetColumn?: string,
     columnMetadata?: object,
     statusCallbackUrl?: string
+}
+
+export type SessionExtraParameters = AnomaliesExtraParameters | ClassificationExtraParameters
+
+export interface AnomaliesExtraParameters {
+    containsAnomalies: boolean,
+    [propName: string]: any
+}
+
+export interface ClassificationExtraParameters {
+    balance: boolean,
+    [propName: string]: any
+}
+
+export interface PredictionExtraParameters {
+    includeClassScores: boolean,
+    [propName: string]: any
 }
