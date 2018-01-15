@@ -24,8 +24,14 @@ describe('Session tests', () => {
     });
 
     after(function (done) {
-        dataClient.remove("TestNode").then(() => done()).catch(err => done(err));
-        dataClient.remove('SessionHousingData').then(() => done()).catch(err => done(err));
+        let removePromises = [
+            () => { return dataClient.remove('TestNode') },
+            () => { return dataClient.remove('SessionHousingData') }
+        ];
+
+        removePromises.reduce((prev, cur) => { return prev.then(cur) }, Promise.resolve())
+            .then(() => done())
+            .catch(err => done(err));
     });
 
     it('can create an impact session', mochaAsync(async () => {
