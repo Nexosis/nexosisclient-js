@@ -1,10 +1,11 @@
 import SessionClient from '../src/SessionClient';
 import DataSetClient from '../src/DataSetClient';
-import { mochaAsync } from './mochaAsync';
+import { mochaAsync, sleep, isComplete } from './mochaAsync';
 import { expect } from 'chai';
 import 'mocha';
 
 const testDataSetDetail = require('./fixtures/time-series.json');
+const housingData = require('./fixtures/housing-data.json');
 
 describe('Session tests', () => {
     var client = new SessionClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
@@ -12,13 +13,25 @@ describe('Session tests', () => {
     let forecastSessionId;
 
     before(function (done) {
-        dataClient.create("TestNode", testDataSetDetail)
-            .then(response => { })
-            .then(done, done);
+        var dataSets = [
+            () => { return dataClient.create('TestNode', testDataSetDetail) },
+            () => { return dataClient.create('SessionHousingData', housingData) },
+        ];
+
+        dataSets.reduce((prev, cur) => { return prev.then(cur) }, Promise.resolve())
+            .then(() => done())
+            .catch(err => done(err));
     });
 
     after(function (done) {
-        dataClient.remove("TestNode").then(() => done()).catch(err => done(err));
+        let removePromises = [
+            () => { return dataClient.remove('TestNode') },
+            () => { return dataClient.remove('SessionHousingData') }
+        ];
+
+        removePromises.reduce((prev, cur) => { return prev.then(cur) }, Promise.resolve())
+            .then(() => done())
+            .catch(err => done(err));
     });
 
     it('can create an impact session', mochaAsync(async () => {
@@ -99,4 +112,38 @@ describe('Session tests', () => {
 
         expect(result.items).not.to.be.empty;
     }));
+
+    it('can start an anomaly model session', mochaAsync(async () => {
+        const result = await client.trainModel({ dataSourceName: 'TestNode', predictionDomain: 'anomalies', extraParameters: { containsAnomalies: true } });
+
+        expect(result.dataSetName).to.equal('TestNode');
+    }));
+
+
+    it('can start a classification model session', mochaAsync(async () => {
+        const result = await client.trainModel(
+            {
+                dataSourceName: 'SessionHousingData',
+                predictionDomain: 'classification',
+                extraParameters: { balance: true },
+                columnMetadata: {
+                    'OverallQual': {
+                        role: 'target'
+                    }
+                }
+            });
+        expect(result.dataSetName).to.equal('SessionHousingData');
+
+        let status = await client.status(result.sessionId);
+
+        while (!isComplete(status)) {
+            status = await client.status(result.sessionId);
+            await sleep(30000);
+        }
+
+        const scoreResults = await client.classScoreResults(result.sessionId);
+
+        expect(scoreResults.metrics).to.have.property('macroAverageF1Score').that.is.a('number');
+
+    })).timeout(900000);
 });

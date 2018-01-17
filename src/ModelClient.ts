@@ -1,5 +1,5 @@
 import ApiClientBase from './ApiClientBase';
-import { ModelSummaryQuery } from './Types';
+import { ModelSummaryQuery, PredictionExtraParameters } from './Types';
 import { formatDate } from './Util';
 
 export default class ModelClient extends ApiClientBase {
@@ -57,10 +57,12 @@ export default class ModelClient extends ApiClientBase {
      * 
      * @param {string} id - Model identifier to use for this prediction.
      * @param {array} data - Array of objects to predict values for.
+     * @param {object} extraParameters - Object of extra parameters to alter the results from predicting.
      */
-    predict(id: string, data: Array<object>) {
+    predict(id: string, data: Array<object>, extraParameters?: PredictionExtraParameters) {
         var body = {
-            data: data
+            data: data,
+            extraParameters: extraParameters
         };
         return this._apiConnection.post(`models/${id}/predict`, body, this.FetchTransformFunction);
     }

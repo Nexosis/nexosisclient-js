@@ -1,0 +1,64 @@
+{
+    meta: {
+        createdAt: "2018-01-15T20:14:41.445Z",
+        host: "https://ml.nexosis.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/sessions/model",
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*",
+            "content-length": "118"
+        },
+        body: "{\"dataSourceName\":\"TestNode\",\"predictionDomain\":\"anomalies\",\"columns\":{},\"extraParameters\":{\"containsAnomalies\":true}}"
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "14"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "10000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "1"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "60"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "2"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 15 Jan 2018 20:14:40 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"columns\":{\"time\":{\"dataType\":\"date\",\"role\":\"timestamp\"},\"es6-client\":{\"dataType\":\"numeric\",\"role\":\"target\",\"imputation\":\"zeroes\",\"aggregation\":\"sum\"}},\"sessionId\":\"0160fb75-ae4e-4d77-a66e-ba505a9bd2e2\",\"type\":\"model\",\"status\":\"requested\",\"predictionDomain\":\"anomalies\",\"availablePredictionIntervals\":[],\"requestedDate\":\"2018-01-15T20:14:41.739906+00:00\",\"statusHistory\":[{\"date\":\"2018-01-15T20:14:41.739906+00:00\",\"status\":\"requested\"}],\"extraParameters\":{\"containsAnomalies\":true},\"messages\":[{\"severity\":\"warning\",\"message\":\"Target column 'es6-client' exists in data source 'TestNode'. Anomaly detection sessions let you find outliers in a data source, and they populate the session's target column with a negative or positive value indicating whether each row is an anomaly or not. The target column values in the data source won't influence the results of the session, like they would for other session types. If you want to use these target values for labeled anomaly detection, create a classification session instead of an anomalies session.\"}],\"dataSourceName\":\"TestNode\",\"dataSetName\":\"TestNode\",\"targetColumn\":\"es6-client\",\"isEstimate\":false,\"links\":[{\"rel\":\"results\",\"href\":\"https://ml.nexosis.com/v1/sessions/0160fb75-ae4e-4d77-a66e-ba505a9bd2e2/results\"},{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/TestNode\"}]}"
+    }
+}

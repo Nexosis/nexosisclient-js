@@ -1,7 +1,7 @@
 import ModelClient from '../src/ModelClient';
 import SessionClient from '../src/SessionClient';
 import DataSetClient from '../src/DataSetClient';
-import { mochaAsync } from './mochaAsync';
+import { mochaAsync, sleep, isComplete } from './mochaAsync';
 import { expect } from 'chai';
 import 'mocha';
 
@@ -27,26 +27,20 @@ describe('Model Client', () => {
     describe('basic usage', () => {
         let modelId;
 
-        it('can build a model', done => {
-            let interval;
-            sessionClient.trainModel('js-housing-data', 'regression', 'SalePrice').then(session => {
-                const checkStatus = () => {
-                    sessionClient.status(session.sessionId).then(status => {
-                        if (status === 'Completed') {
-                            clearInterval(interval);
-                            sessionClient.get(session.sessionId).then(sessionDetails => {
-                                expect(sessionDetails.modelId).not.to.be.empty;
-                                modelId = sessionDetails.modelId;
-                                done();
-                            }).catch(err => done(err));
-                        }
-                    })
-                }
+        it('can build a model', mochaAsync(async () => {
+            const session = await sessionClient.trainModel('js-housing-data', 'regression', 'SalePrice');
 
-                interval = setInterval(checkStatus, 30000); // check every 30 seconds.
-            }).catch(err => done(err));
+            let status = await sessionClient.status(session.sessionId);
 
-        }).timeout(900000); //15 minute timeout.
+            while (!isComplete(status)) {
+                status = await sessionClient.status(session.sessionId);
+                await sleep(30000);
+            }
+
+            const sessionDetails = await sessionClient.get(session.sessionId);
+            expect(sessionDetails.modelId).not.to.be.empty;
+            modelId = sessionDetails.modelId;
+        })).timeout(900000); //15 minute timeout.
 
         it('can build a model with options', mochaAsync(async () => {
             const result = await sessionClient.trainModel({

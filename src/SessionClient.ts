@@ -1,5 +1,5 @@
 import ApiClientBase from './ApiClientBase';
-import { SessionListQuery, ResultInterval, PredictionDomain, AnalyzeImpactOptions, ForecastOptions, ModelSessionOptions } from './Types';
+import { SessionListQuery, ResultInterval, PredictionDomain, AnalyzeImpactOptions, ForecastOptions, ModelSessionOptions, SessionExtraParameters } from './Types';
 import { formatDate } from './Util';
 
 /**
@@ -79,13 +79,13 @@ export default class SessionClient extends ApiClientBase {
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59d79fa1adf47c0d60484fe9
      */
     trainModel(options: ModelSessionOptions);
-    trainModel(dataSourceName: string, predictionDomain: PredictionDomain, targetColumn?: string, columnMetadata?: object, statusCallbackUrl?: string);
-    trainModel(nameOrOptions: string | ModelSessionOptions, predictionDomain?: PredictionDomain, targetColumn?: string, columnMetadata = {}, statusCallbackUrl?: string) {
+    trainModel(dataSourceName: string, predictionDomain: PredictionDomain, targetColumn?: string, columnMetadata?: object, statusCallbackUrl?: string, extraParameters?: SessionExtraParameters);
+    trainModel(nameOrOptions: string | ModelSessionOptions, predictionDomain?: PredictionDomain, targetColumn?: string, columnMetadata = {}, statusCallbackUrl?: string, extraParameters?: SessionExtraParameters) {
         let body;
         if (typeof nameOrOptions === 'object') {
-            body = prepareModelBody(nameOrOptions.dataSourceName, nameOrOptions.targetColumn, nameOrOptions.predictionDomain, nameOrOptions.statusCallbackUrl, nameOrOptions.columnMetadata);
+            body = prepareModelBody(nameOrOptions.dataSourceName, nameOrOptions.targetColumn, nameOrOptions.predictionDomain, nameOrOptions.statusCallbackUrl, nameOrOptions.columnMetadata, nameOrOptions.extraParameters);
         } else {
-            body = prepareModelBody(nameOrOptions, targetColumn, predictionDomain, statusCallbackUrl, columnMetadata)
+            body = prepareModelBody(nameOrOptions, targetColumn, predictionDomain, statusCallbackUrl, columnMetadata, extraParameters)
         }
 
         return this._apiConnection.post('sessions/model', body, this.FetchTransformFunction);
@@ -273,7 +273,7 @@ const prepareParameters = function (startDate: string | Date, endDate: string | 
     return parameters;
 };
 
-const prepareModelBody = function (dataSourceName, targetColumn, predictionDomain, statusCallbackUrl = '', columnMetadata = {}) {
+const prepareModelBody = function (dataSourceName, targetColumn, predictionDomain, statusCallbackUrl = '', columnMetadata = {}, extraParameters?: SessionExtraParameters) {
     var body = {
         dataSourceName: dataSourceName,
         targetColumn: targetColumn,
@@ -290,6 +290,13 @@ const prepareModelBody = function (dataSourceName, targetColumn, predictionDomai
     if (columnMetadata !== undefined) {
         Object.defineProperty(body, 'columns', {
             value: columnMetadata,
+            enumerable: true
+        });
+    }
+
+    if (extraParameters !== undefined) {
+        Object.defineProperty(body, 'extraParameters', {
+            value: extraParameters,
             enumerable: true
         });
     }

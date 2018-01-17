@@ -1,0 +1,60 @@
+{
+    meta: {
+        createdAt: "2018-01-15T21:40:13.975Z",
+        host: "https://ml.nexosis.com/v1",
+        reqHumanReadable: true
+    },
+    req: {
+        url: "/data/SessionHousingData",
+        method: "DELETE",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*",
+            "content-length": "0"
+        },
+        body: ""
+    },
+    res: {
+        status: 204,
+        headers: {
+            "content-length": [
+                "0"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "14"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "10000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "1"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "60"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "3"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 15 Jan 2018 21:40:13 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: ""
+    }
+}
