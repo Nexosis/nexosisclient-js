@@ -36,18 +36,17 @@ describe('View tests', function () {
             .catch(err => done(err));
     });
 
-    it('can create view', () => {
+    it('can create view', mochaAsync(async () => {
 
         var view = {
             dataSetName: "testJavascriptViewDataset"
         };
 
-        return client.create('testJavascriptView', view).then((data) => {
-            expect(data.viewName).to.equal('testJavascriptView');
-        });
-    });
+        const data = await client.create('testJavascriptView', view);
+        expect(data.viewName).to.equal('testJavascriptView')
+    }));
 
-    it('can create view with joins', () => {
+    it('can create view with joins', mochaAsync(async () => {
 
         var view = {
             dataSetName: "testJavascriptViewDataset",
@@ -60,33 +59,27 @@ describe('View tests', function () {
             ]
         };
 
-        return client.create('testJavascriptViewJoins', view).then((data) => {
-            expect(data.viewName).to.equal('testJavascriptViewJoins');
-            expect(data.joins[0].dataSet.name).to.equal("testJavascriptViewDataset2");
-        }).catch(err => {
-            console.log(err);
-        });
-    });
+        const data = await client.create('testJavascriptViewJoins', view);
+        expect(data.viewName).to.equal('testJavascriptViewJoins');
+        expect(data.joins[0].dataSet.name).to.equal("testJavascriptViewDataset2");
+    }));
 
 
-    it('can get view data', () => {
+    it('can get view data', mochaAsync(async () => {
 
         var view = {
             dataSetName: "testJavascriptViewDataset"
         };
 
-        return client.create('testJavascriptView', view).then(returnedView => {
-            return client.get('testJavascriptView');
-        }).then(results => {
-            expect(results.viewName).to.equal('testJavascriptView');
-            expect(results.data.length).to.be.greaterThan(0)
-        });
-    });
+        await client.create('testJavascriptView', view);
+        const results = await client.get('testJavascriptView');
+        expect(results.viewName).to.equal('testJavascriptView');
+        expect(results.data.length).to.be.greaterThan(0);
+        
+    }));
 
-    it('should list views', (done) => {
-        client.list().then((data) => {
-            expect(data.items).to.not.equal(0);
-        }).then(done)
-            .catch((err) => done(err));
-    });
+    it('should list views', mochaAsync(async () => {
+        const data = await client.list();
+        expect(data.items).to.not.equal(0);
+    }));
 });
