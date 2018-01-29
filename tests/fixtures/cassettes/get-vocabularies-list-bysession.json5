@@ -1,0 +1,63 @@
+{
+    meta: {
+        createdAt: "2018-01-29T20:03:33.077Z",
+        host: "https://api.uat.nexosisdev.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/vocabulary?page=0&pageSize=50&createdFromSession=0160fb8f-de87-418c-8ef3-f1a479767437",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "34"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "18259"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "305"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 29 Jan 2018 20:03:33 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"items\":[{\"id\":\"a0cb0f67-6f93-4218-a93d-d79cf168fe75\",\"dataSourceName\":\"Axon.Api.Verification.Regression_Airline\",\"columnName\":\"FMR_OPEN_TXT\",\"dataSourceType\":\"dataSet\",\"createdOnDate\":\"2018-01-15T20:43:38.2536579+00:00\",\"createdBySessionId\":\"0160fb8f-de87-418c-8ef3-f1a479767437\",\"links\":[{\"rel\":\"words\",\"href\":\"https://api.uat.nexosisdev.com/v1/vocabulary/a0cb0f67-6f93-4218-a93d-d79cf168fe75\"}]},{\"id\":\"e95d338e-004e-4c6b-9ab1-d2e964957e33\",\"dataSourceName\":\"Axon.Api.Verification.Regression_Airline\",\"columnName\":\"FMR_CLOSE_TXT\",\"dataSourceType\":\"dataSet\",\"createdOnDate\":\"2018-01-15T20:44:25.2203375+00:00\",\"createdBySessionId\":\"0160fb8f-de87-418c-8ef3-f1a479767437\",\"links\":[{\"rel\":\"words\",\"href\":\"https://api.uat.nexosisdev.com/v1/vocabulary/e95d338e-004e-4c6b-9ab1-d2e964957e33\"}]}],\"pageNumber\":0,\"totalPages\":1,\"pageSize\":50,\"totalCount\":2,\"links\":[]}"
+    }
+}

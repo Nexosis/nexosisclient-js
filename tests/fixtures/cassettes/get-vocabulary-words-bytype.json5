@@ -1,0 +1,63 @@
+{
+    meta: {
+        createdAt: "2018-01-29T20:03:34.044Z",
+        host: "https://api.uat.nexosisdev.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/vocabulary/9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39?page=0&pageSize=50&type=word",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "34"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "18259"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "305"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 29 Jan 2018 20:03:34 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"id\":\"9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39\",\"items\":[{\"text\":\"check\",\"type\":\"word\",\"rank\":0},{\"text\":\"inop\",\"type\":\"word\",\"rank\":1},{\"text\":\"seat\",\"type\":\"word\",\"rank\":2},{\"text\":\"ife\",\"type\":\"word\",\"rank\":3},{\"text\":\"mel\",\"type\":\"word\",\"rank\":4},{\"text\":\"requires\",\"type\":\"word\",\"rank\":5},{\"text\":\"01\",\"type\":\"word\",\"rank\":6},{\"text\":\"12\",\"type\":\"word\",\"rank\":7},{\"text\":\"service\",\"type\":\"word\",\"rank\":8},{\"text\":\"light\",\"type\":\"word\",\"rank\":9},{\"text\":\"79\",\"type\":\"word\",\"rank\":10},{\"text\":\"required\",\"type\":\"word\",\"rank\":11},{\"text\":\"79 01\",\"type\":\"word\",\"rank\":12},{\"text\":\"12 79\",\"type\":\"word\",\"rank\":13},{\"text\":\"ref\",\"type\":\"word\",\"rank\":14},{\"text\":\"etops\",\"type\":\"word\",\"rank\":15},{\"text\":\"oil\",\"type\":\"word\",\"rank\":16},{\"text\":\"card\",\"type\":\"word\",\"rank\":17},{\"text\":\"aft\",\"type\":\"word\",\"rank\":18},{\"text\":\"aircraft\",\"type\":\"word\",\"rank\":19},{\"text\":\"mel authorized\",\"type\":\"word\",\"rank\":20},{\"text\":\"authorized\",\"type\":\"word\",\"rank\":21},{\"text\":\"fault\",\"type\":\"word\",\"rank\":22},{\"text\":\"worn\",\"type\":\"word\",\"rank\":23},{\"text\":\"level\",\"type\":\"word\",\"rank\":24},{\"text\":\"tire\",\"type\":\"word\",\"rank\":25},{\"text\":\"card 12\",\"type\":\"word\",\"rank\":26},{\"text\":\"aircraft requires\",\"type\":\"word\",\"rank\":27},{\"text\":\"galley\",\"type\":\"word\",\"rank\":28},{\"text\":\"door\",\"type\":\"word\",\"rank\":29},{\"text\":\"08\",\"type\":\"word\",\"rank\":30},{\"text\":\"eng\",\"type\":\"word\",\"rank\":31},{\"text\":\"missing\",\"type\":\"word\",\"rank\":32},{\"text\":\"requires etops\",\"type\":\"word\",\"rank\":33},{\"text\":\"broken\",\"type\":\"word\",\"rank\":34},{\"text\":\"left\",\"type\":\"word\",\"rank\":35},{\"text\":\"mel 08\",\"type\":\"word\",\"rank\":36},{\"text\":\"fuel\",\"type\":\"word\",\"rank\":37},{\"text\":\"lav\",\"type\":\"word\",\"rank\":38},{\"text\":\"ife level\",\"type\":\"word\",\"rank\":39},{\"text\":\"engine\",\"type\":\"word\",\"rank\":40},{\"text\":\"tire worn\",\"type\":\"word\",\"rank\":41},{\"text\":\"needs\",\"type\":\"word\",\"rank\":42},{\"text\":\"pre\",\"type\":\"word\",\"rank\":43},{\"text\":\"oil service\",\"type\":\"word\",\"rank\":44},{\"text\":\"level check\",\"type\":\"word\",\"rank\":45},{\"text\":\"installed\",\"type\":\"word\",\"rank\":46},{\"text\":\"fwd\",\"type\":\"word\",\"rank\":47},{\"text\":\"departure\",\"type\":\"word\",\"rank\":48},{\"text\":\"gear\",\"type\":\"word\",\"rank\":49}],\"pageNumber\":0,\"totalPages\":301,\"pageSize\":50,\"totalCount\":15003,\"links\":[{\"rel\":\"self\",\"href\":\"https://api.uat.nexosisdev.com/v1/vocabulary/9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39?page=0&pageSize=50&type=word\"},{\"rel\":\"first\",\"href\":\"https://api.uat.nexosisdev.com/v1/vocabulary/9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39?page=0&pageSize=50&type=word&page=0\"},{\"rel\":\"next\",\"href\":\"https://api.uat.nexosisdev.com/v1/vocabulary/9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39?page=0&pageSize=50&type=word&page=1\"},{\"rel\":\"last\",\"href\":\"https://api.uat.nexosisdev.com/v1/vocabulary/9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39?page=0&pageSize=50&type=word&page=300\"}]}"
+    }
+}

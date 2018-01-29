@@ -5,6 +5,7 @@ import ImportClient from './ImportClient';
 import ModelClient from './ModelClient';
 import ContestClient from './ContestClient';
 import * as es6 from 'es6-promise';
+import VocabularyClient from './VocabularyClient';
 (es6 as any).polyfill();
 
 
@@ -37,6 +38,7 @@ export default class NexosisClient extends ApiClientBase {
     private _sessions;
     private _imports;
     private _models;
+    private _vocabularies;
 
     get DataSets(): DataSetClient {
         if (!this._dataSetClient) {
@@ -69,6 +71,13 @@ export default class NexosisClient extends ApiClientBase {
     get Contests(): ContestClient {
         if (!this._contests) {
             return this._contests = new ContestClient(this._apiConnection);
+        }
+        return this._contests;
+    }
+
+    get Vocabularies(): VocabularyClient {
+        if (!this._vocabularies) {
+            return this._vocabularies = new VocabularyClient(this._apiConnection);
         }
         return this._contests;
     }
