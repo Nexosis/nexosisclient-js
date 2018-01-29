@@ -7,10 +7,10 @@ describe('Vocabulary tests', function () {
     let client = new VocabularyClient({ endpoint: global.endpointUrl, key: process.env.NEXOSIS_API_TESTKEY });
     this.timeout(5000);
 
-    it('can list vocabularies', async () => {
+    it('can list vocabularies', mochaAsync(async () => {
         const data = await client.list();
         expect(data.items.length).to.be.greaterThan(0);
-    });
+    }));
 
     it('can query vocabularies by session id', mochaAsync(async () => {
         const data = await client.list({createdFromSession: "0160fb8f-de87-418c-8ef3-f1a479767437"});
