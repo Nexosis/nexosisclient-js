@@ -1,0 +1,63 @@
+{
+    meta: {
+        createdAt: "2018-01-29T20:03:33.743Z",
+        host: "https://api.uat.nexosisdev.com/v1",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/vocabulary/9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39?page=0&pageSize=50",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "34"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "18259"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "2147483647"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "305"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Mon, 29 Jan 2018 20:03:34 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"id\":\"9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39\",\"items\":[{\"text\":\"just minimum\",\"type\":\"stopWord\"},{\"text\":\"maint officers\",\"type\":\"stopWord\"},{\"text\":\"taxi taxi\",\"type\":\"stopWord\"},{\"text\":\"lagged\",\"type\":\"stopWord\"},{\"text\":\"262992\",\"type\":\"stopWord\"},{\"text\":\"8c 12a\",\"type\":\"stopWord\"},{\"text\":\"cat item\",\"type\":\"stopWord\"},{\"text\":\"rows 36\",\"type\":\"stopWord\"},{\"text\":\"failed soon\",\"type\":\"stopWord\"},{\"text\":\"seats 12f\",\"type\":\"stopWord\"},{\"text\":\"befor flight\",\"type\":\"stopWord\"},{\"text\":\"01 turn\",\"type\":\"stopWord\"},{\"text\":\"34154687 mel\",\"type\":\"stopWord\"},{\"text\":\"embraer aa\",\"type\":\"stopWord\"},{\"text\":\"23097\",\"type\":\"stopWord\"},{\"text\":\"hotplate\",\"type\":\"stopWord\"},{\"text\":\"check o2\",\"type\":\"stopWord\"},{\"text\":\"temp left\",\"type\":\"stopWord\"},{\"text\":\"vidio t6est\",\"type\":\"stopWord\"},{\"text\":\"monitored flight\",\"type\":\"stopWord\"},{\"text\":\"1828\",\"type\":\"stopWord\"},{\"text\":\"positions inop\",\"type\":\"stopWord\"},{\"text\":\"975 door\",\"type\":\"stopWord\"},{\"text\":\"sealant left\",\"type\":\"stopWord\"},{\"text\":\"runway inop\",\"type\":\"stopWord\"},{\"text\":\"arm mesage\",\"type\":\"stopWord\"},{\"text\":\"2c inop\",\"type\":\"stopWord\"},{\"text\":\"ref 2306c\",\"type\":\"stopWord\"},{\"text\":\"approx clock\",\"type\":\"stopWord\"},{\"text\":\"mid drain\",\"type\":\"stopWord\"},{\"text\":\"table keeps\",\"type\":\"stopWord\"},{\"text\":\"r4 flight\",\"type\":\"stopWord\"},{\"text\":\"27602\",\"type\":\"stopWord\"},{\"text\":\"584c\",\"type\":\"stopWord\"},{\"text\":\"cpn con1123\",\"type\":\"stopWord\"},{\"text\":\"area sink\",\"type\":\"stopWord\"},{\"text\":\"unit 200\",\"type\":\"stopWord\"},{\"text\":\"2803a main\",\"type\":\"stopWord\"},{\"text\":\"code 15004\",\"type\":\"stopWord\"},{\"text\":\"21833 17\",\"type\":\"stopWord\"},{\"text\":\"cargo time\",\"type\":\"stopWord\"},{\"text\":\"date mo\",\"type\":\"stopWord\"},{\"text\":\"stable time\",\"type\":\"stopWord\"},{\"text\":\"air trash\",\"type\":\"stopWord\"},{\"text\":\"gear iaw\",\"type\":\"stopWord\"},{\"text\":\"flap handle\",\"type\":\"stopWord\"},{\"text\":\"1058c\",\"type\":\"stopWord\"},{\"text\":\"resolved iaw\",\"type\":\"stopWord\"},{\"text\":\"8038750 dmu\",\"type\":\"stopWord\"},{\"text\":\"lists occin\",\"type\":\"stopWord\"}],\"pageNumber\":0,\"totalPages\":912,\"pageSize\":50,\"totalCount\":45554,\"links\":[{\"rel\":\"self\",\"href\":\"https://api.uat.nexosisdev.com/v1/vocabulary/9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39?page=0&pageSize=50\"},{\"rel\":\"first\",\"href\":\"https://api.uat.nexosisdev.com/v1/vocabulary/9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39?page=0&pageSize=50&page=0\"},{\"rel\":\"next\",\"href\":\"https://api.uat.nexosisdev.com/v1/vocabulary/9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39?page=0&pageSize=50&page=1\"},{\"rel\":\"last\",\"href\":\"https://api.uat.nexosisdev.com/v1/vocabulary/9a6a4bf0-e85c-41bc-b3b9-76f7bba81f39?page=0&pageSize=50&page=911\"}]}"
+    }
+}

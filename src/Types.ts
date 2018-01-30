@@ -37,6 +37,15 @@ export interface ViewDetailQuery {
     dataSetName?: string
 }
 
+export interface VocabulariesQuery {
+    createdFromSession? : string,
+    dataSource?: string,
+}
+
+export interface VocabularyWordsQuery {
+    type? : WordType
+}
+
 export type Authentication = BasicAuthentication
 
 export interface BasicAuthentication {
@@ -54,6 +63,8 @@ export type ResultInterval = 'hour' | 'day' | 'week' | 'month' | 'year';
 export type DataSetDeleteCascadeOptions = 'session' | 'view' | 'model';
 
 export type PredictionDomain = 'regression' | 'classification' | 'forecast' | 'impact' | 'anomalies';
+
+export type WordType = 'word' | 'stopWord';
 
 export interface AnalyzeImpactOptions extends TimeSeriesSessionOptions {
     eventName: string,
