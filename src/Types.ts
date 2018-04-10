@@ -1,3 +1,13 @@
+export interface ListQueryable {
+    sortBy?: string,
+    sortOrder?: SortOrder,
+    page?: number,
+    pageSize?: number
+}
+
+export interface DataSetListQuery extends ListQueryable {
+    partialName?: string
+}
 
 export interface DataSetDataQuery {
     startDate?: Date,
@@ -16,20 +26,24 @@ export interface DataSetRemoveCriteria {
     cascade?: Array<DataSetDeleteCascadeOptions>,
 }
 
-export interface ImportDetailQuery {
+export interface ImportDetailQuery extends ListQueryable {
     dataSetName?: string,
     requestedBeforeDate?: Date | string,
     requestedAfterDate?: Date | string
 }
 
-export interface ModelSummaryQuery {
+export interface ModelSummaryQuery extends ListQueryable {
     dataSourceName?: string,
     createdAfterDate?: Date | string,
     createdBeforeDate?: Date | string,
 }
 
-export interface SessionListQuery extends ImportDetailQuery {
-    eventName?: string
+export interface SessionListQuery extends ListQueryable {
+    dataSourceName?: string,
+    requestedBeforeDate?: Date | string,
+    requestedAfterDate?: Date | string
+    eventName?: string,
+    modelId?: string
 }
 
 export interface ViewDetailQuery {
@@ -65,6 +79,8 @@ export type DataSetDeleteCascadeOptions = 'session' | 'view' | 'model';
 export type PredictionDomain = 'regression' | 'classification' | 'forecast' | 'impact' | 'anomalies';
 
 export type WordType = 'word' | 'stopWord';
+
+export type SortOrder = 'asc' | 'desc';
 
 export interface AnalyzeImpactOptions extends TimeSeriesSessionOptions {
     eventName: string,

@@ -1,4 +1,5 @@
 import DataSetClient from '../src/DataSetClient';
+import DataSetListQuery from '../src/Types';
 import { mochaAsync } from './mochaAsync';
 import { expect } from 'chai';
 import 'mocha';
@@ -27,7 +28,7 @@ describe('DataSet tests', () => {
     });
 
     it('should list datasets', done => {
-        client.list('test').then(data => {
+        client.list({ partialName: 'test' }).then(data => {
             expect(data.items).to.not.equal(0);
         }).then(done)
             .catch((err) => done(err));

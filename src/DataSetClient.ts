@@ -1,6 +1,6 @@
 import ApiConnection from './ApiConnection';
-import { DataSetDataQuery, DataSetData, DataSetRemoveCriteria } from './Types';
-import { formatDate } from './Util';
+import { DataSetDataQuery, DataSetData, DataSetRemoveCriteria, DataSetListQuery } from './Types';
+import { formatDate, addListQueryParameters } from './Util';
 
 export default class DataSetClient {
     private _apiConnection: ApiConnection;
@@ -69,21 +69,20 @@ export default class DataSetClient {
     /**
      * List all datasets, optionally filtering by partial name
      * 
-     * @param {string} dataSetPartialName - optional search parameter 
-     * @param {number} page - page of results to retrieve, defaults to first page = 0
-     * @param {number} pageSize - how many results per page, defaults to 50
+     * @param {DataSetListQuery} query - optional query object
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f231
      */
-    list(dataSetPartialName = '', page = 0, pageSize = 50) {
-        var parameters = {
-            page: page,
-            pageSize: pageSize
-        };
-        if (dataSetPartialName.length > 0) {
-            Object.defineProperty(parameters, 'partialName', {
-                value: dataSetPartialName,
-                enumerable: true
-            });
+    list(query?: DataSetListQuery) {
+        var parameters = {};
+        if (query) {
+            if (query.partialName) {
+                Object.defineProperty(parameters, 'partialName', {
+                    value: query.partialName,
+                    enumerable: true
+                });
+            }
+
+            addListQueryParameters(query, parameters);
         }
         return this._apiConnection.get('data', this.FetchTransformFunction, parameters);
     }

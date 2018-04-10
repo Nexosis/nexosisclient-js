@@ -2,7 +2,7 @@
 if (process.env.NODE_ENV === 'integration') {
     global.endpointUrl = process.env.NEXOSIS_API_TESTURI;
 } else {
-    global.endpointUrl = 'http://localhost:8080';
+    global.endpointUrl = 'http://localhost:5000';
 
     let server;
     before(function (done) {

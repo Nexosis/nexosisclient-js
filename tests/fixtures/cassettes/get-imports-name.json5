@@ -6,7 +6,7 @@
         resHumanReadable: true
     },
     req: {
-        url: "/imports?page=0&pageSize=50&dataSetName=s3-import-locationa",
+        url: "/imports?dataSetName=s3-import-locationa",
         method: "GET",
         headers: {
             "content-type": "application/json",

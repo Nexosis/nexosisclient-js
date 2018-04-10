@@ -6,7 +6,7 @@
         resHumanReadable: true
     },
     req: {
-        url: "/sessions?page=0&pageSize=50&dataSetName=TestNode&eventName=myevent&requestedAfterDate=01-01-2017&requestedBeforeDate=01-01-2100",
+        url: "/sessions?dataSourceName=TestNode&eventName=myevent&requestedAfterDate=01-01-2017&requestedBeforeDate=01-01-2100",
         method: "GET",
         headers: {
             "content-type": "application/json",

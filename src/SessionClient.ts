@@ -1,6 +1,6 @@
 import ApiClientBase from './ApiClientBase';
 import { SessionListQuery, ResultInterval, PredictionDomain, AnalyzeImpactOptions, ForecastOptions, ModelSessionOptions, SessionExtraParameters } from './Types';
-import { formatDate } from './Util';
+import { formatDate, addListQueryParameters } from './Util';
 
 /**
  * Class for interacting with Session specific features of the Nexosis API.
@@ -197,20 +197,15 @@ export default class SessionClient extends ApiClientBase {
      * List all sessions, optionally limited by search params. Will return all sessions otherwise.
      * 
      * @param {object} query - Optional query object, limiting the results to the matching sessions.
-     * @param {number} page - Zero-based page number of models to retrieve.
-     * @param {number} pageSize - Count of models to retrieve in each page (max 1000).
      * @return {Promise<object,any>} The session result object with details on what was submitted
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a6
      */
-    list(query?: SessionListQuery, page = 0, pageSize = 50) {
-        var parameters = {
-            page: page,
-            pageSize: pageSize
-        };
+    list(query?: SessionListQuery) {
+        var parameters = { };
         if (query) {
-            if (query.dataSetName) {
-                Object.defineProperty(parameters, 'dataSetName', {
-                    value: query.dataSetName,
+            if (query.dataSourceName) {
+                Object.defineProperty(parameters, 'dataSourceName', {
+                    value: query.dataSourceName,
                     enumerable: true
                 });
             }
@@ -235,6 +230,16 @@ export default class SessionClient extends ApiClientBase {
                     enumerable: true
                 });
             }
+
+            if (query.modelId) {
+                Object.defineProperty(parameters, 'modelId', {
+                    value: query.modelId,
+                    enumerable: true
+                });
+            }
+
+            addListQueryParameters(query, parameters);
+
         }
 
         return this._apiConnection.get('sessions', this.FetchTransformFunction, parameters);

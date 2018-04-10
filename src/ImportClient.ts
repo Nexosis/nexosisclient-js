@@ -1,6 +1,6 @@
 import ApiClientBase from './ApiClientBase';
 import { ImportDetailQuery, Authentication, S3AccessKeys } from './Types';
-import { formatDate } from './Util';
+import { formatDate, addListQueryParameters } from './Util';
 
 export default class ImportClient extends ApiClientBase {
 
@@ -101,15 +101,10 @@ export default class ImportClient extends ApiClientBase {
      * Gets the list of imports that have been created for the company associated with your account
      * 
      * @param {object} query - optional query object used to filter the results
-     * @param {number} page - page of results to retrieve, defaults to first page = 0
-     * @param {number} pageSize - how many results per page, defaults to 50
      * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/595ce629e0ef6e0c98d37f31
      */
-    list(query?: ImportDetailQuery, page = 0, pageSize = 50) {
-        var parameters = {
-            page: page,
-            pageSize: pageSize
-        };
+    list(query?: ImportDetailQuery) {
+        var parameters = {};
         if (query) {
             if (query.dataSetName) {
                 Object.defineProperty(parameters, 'dataSetName', {
@@ -131,6 +126,8 @@ export default class ImportClient extends ApiClientBase {
                     enumerable: true
                 });
             }
+
+            addListQueryParameters(query, parameters);
         }
         return this._apiConnection.get('imports', this.FetchTransformFunction, parameters);
     }

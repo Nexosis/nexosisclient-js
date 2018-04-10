@@ -6,7 +6,7 @@
         resHumanReadable: true
     },
     req: {
-        url: "/imports?page=0&pageSize=50",
+        url: "/imports",
         method: "GET",
         headers: {
             "content-type": "application/json",

@@ -1,5 +1,6 @@
 import SessionClient from '../src/SessionClient';
 import DataSetClient from '../src/DataSetClient';
+import { SortOrder } from '../src/Types';
 import { mochaAsync, sleep, isComplete } from './mochaAsync';
 import { expect } from 'chai';
 import 'mocha';
@@ -108,7 +109,7 @@ describe('Session tests', () => {
     }));
 
     it('can list sessions using parameters', mochaAsync(async () => {
-        const result = await client.list({ dataSetName: 'TestNode', eventName: 'myevent', requestedAfterDate: '01-01-2017', requestedBeforeDate: '01-01-2100' });
+        const result = await client.list({ dataSourceName: 'TestNode', eventName: 'myevent', requestedAfterDate: '01-01-2017', requestedBeforeDate: '01-01-2100' });
 
         expect(result.items).not.to.be.empty;
     }));
@@ -119,6 +120,11 @@ describe('Session tests', () => {
         expect(result.dataSetName).to.equal('TestNode');
     }));
 
+    it('can sort session list by date', mochaAsync(async () => {
+        const result = await client.list({ dataSourceName: 'TestNode', eventName: 'myevent', sortBy: 'requestedDate', sortOrder: 'asc'});
+
+        expect(result.items).not.to.be.empty;
+    }));
 
     it('can start a classification model session', mochaAsync(async () => {
         const result = await client.trainModel(

@@ -6,7 +6,7 @@
         resHumanReadable: true
     },
     req: {
-        url: "/data?page=0&pageSize=50&partialName=test",
+        url: "/data?partialName=test",
         method: "GET",
         headers: {
             "content-type": "application/json",
