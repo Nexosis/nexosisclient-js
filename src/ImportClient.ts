@@ -9,7 +9,6 @@ export default class ImportClient extends ApiClientBase {
      * 
      * @param {string} id - The id of the Import
      * @return {Promise<object,any>} - information about the import and status
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/595ce629e0ef6e0c98d37f30
      */
     get(id: string) {
         return this._apiConnection.get(`imports/${id}`, this.FetchTransformFunction);
@@ -26,7 +25,6 @@ export default class ImportClient extends ApiClientBase {
      * @param {string} contentType - Optional value of 'json' or 'csv'. Nexosis will automatically attempt to figure out the type of content if not provided.
      * @param {object} columns - metadata definition for columns found in this dataset. optional. Follows schema for columns ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
      * @return {Promise<object,any>} - information about the import and status
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/595ce629e0ef6e0c98d37f2f
      * @see http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions
      * @see http://docs.nexosis.com/guides/importingdata
      * */
@@ -55,7 +53,6 @@ export default class ImportClient extends ApiClientBase {
      * @param {string} authentication - Optional authentication credentials to use when importing the file 
      * @param {string} contentType - Optional value of 'json' or 'csv'. Nexosis will automatically attempt to figure out the type of content if not provided.
      * @param {object} columns - metadata definition for columns found in this dataset. optional. Follows schema for columns ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5a2af0a8adf47c0d20245a68
      * @see http://docs.nexosis.com/guides/importingdata
      */
     importFromUrl(dataSetName: string, url: string, authentication?: Authentication, contentType?: string, columns?: object) {
@@ -81,7 +78,6 @@ export default class ImportClient extends ApiClientBase {
      * @param {string} authentication - Optional authentication credentials to use when importing the file 
      * @param {string} contentType - Optional value of 'json' or 'csv'. Nexosis will automatically attempt to figure out the type of content if not provided.
      * @param {object} columns - metadata definition for columns found in this dataset. optional. Follows schema for columns ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5a2af0a8adf47c0d20245a67
      * @see http://docs.nexosis.com/guides/importingdata
      */
     importFromAzure(dataSetName: string, connectionString: string, container: string, blob: string, contentType?: string, columns?: object) {
@@ -101,7 +97,6 @@ export default class ImportClient extends ApiClientBase {
      * Gets the list of imports that have been created for the company associated with your account
      * 
      * @param {object} query - optional query object used to filter the results
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/595ce629e0ef6e0c98d37f31
      */
     list(query?: ImportDetailQuery) {
         var parameters = {};
