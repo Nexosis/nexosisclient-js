@@ -1,0 +1,69 @@
+{
+    meta: {
+        createdAt: "2018-04-11T14:21:33.681Z",
+        host: "https://ml.nexosis.com/v1/",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/sessions/0162b4c5-ebc6-459c-93bf-a2354190499f/results/featureimportance?page=0&pageSize=50",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-session-status": [
+                "Completed"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "16"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "10000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "40"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "60"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "8"
+            ],
+            "nexosis-account-datasetsize-allotted": [
+                "10000000"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Wed, 11 Apr 2018 14:21:33 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"featureImportance\":{\"species_no\":\"NaN\",\"petal_width\":0.89260003796704768,\"sepal_width\":0.2589115582162736,\"petal_length\":0.89000714054796959,\"sepal_length\":0.46506933041387782},\"pageNumber\":0,\"totalPages\":1,\"pageSize\":50,\"totalCount\":5,\"sessionId\":\"0162b4c5-ebc6-459c-93bf-a2354190499f\",\"type\":\"model\",\"status\":\"completed\",\"predictionDomain\":\"classification\",\"supportsFeatureImportance\":true,\"availablePredictionIntervals\":[],\"modelId\":\"79c45576-aab5-4a55-be08-79d671457017\",\"requestedDate\":\"2018-04-11T12:54:52.581534+00:00\",\"statusHistory\":[{\"date\":\"2018-04-11T12:54:52.581534+00:00\",\"status\":\"requested\"},{\"date\":\"2018-04-11T12:54:52.5917532+00:00\",\"status\":\"started\"},{\"date\":\"2018-04-11T12:56:03.4804098+00:00\",\"status\":\"completed\"}],\"extraParameters\":{\"balance\":true},\"messages\":[{\"severity\":\"informational\",\"message\":\"150 observations were found in the dataset.\"}],\"name\":\"Classification on iris\",\"dataSourceName\":\"iris\",\"dataSetName\":\"iris\",\"targetColumn\":\"species\",\"algorithm\":{\"name\":\"K-Nearest Neighbors\",\"description\":\"K-Nearest Neighbors\",\"key\":\"\"},\"isEstimate\":false,\"links\":[{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/iris\"},{\"rel\":\"first\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b4c5-ebc6-459c-93bf-a2354190499f/results/featureimportance?page=0&pageSize=50&page=0\"},{\"rel\":\"last\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b4c5-ebc6-459c-93bf-a2354190499f/results/featureimportance?page=0&pageSize=50&page=0\"},{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b4c5-ebc6-459c-93bf-a2354190499f/results/featureimportance?page=0&pageSize=50\"},{\"rel\":\"model\",\"href\":\"https://ml.nexosis.com/v1/models/79c45576-aab5-4a55-be08-79d671457017\"},{\"rel\":\"contest\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b4c5-ebc6-459c-93bf-a2354190499f/contest\"},{\"rel\":\"confusionMatrix\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b4c5-ebc6-459c-93bf-a2354190499f/results/confusionmatrix\"},{\"rel\":\"featureImportance\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b4c5-ebc6-459c-93bf-a2354190499f/results/featureimportance\"},{\"rel\":\"classScores\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b4c5-ebc6-459c-93bf-a2354190499f/results/classscores\"},{\"rel\":\"vocabularies\",\"href\":\"https://ml.nexosis.com/v1/vocabulary?createdFromSession=0162b4c5-ebc6-459c-93bf-a2354190499f\"}]}"
+    }
+}
