@@ -1,0 +1,69 @@
+{
+    meta: {
+        createdAt: "2018-04-11T14:54:43.155Z",
+        host: "https://ml.nexosis.com/v1/",
+        reqHumanReadable: true,
+        resHumanReadable: true
+    },
+    req: {
+        url: "/sessions/0162b521-f347-4c82-8bda-f2425908af14/results/outliers?page=0&pageSize=50",
+        method: "GET",
+        headers: {
+            "content-type": "application/json",
+            "access-control-allow-origin": "*",
+            "user-agent": "Nexosis-JS-API-Client/1.0",
+            "accept-encoding": "gzip,deflate",
+            connection: "close",
+            accept: "*/*"
+        },
+        body: ""
+    },
+    res: {
+        status: 200,
+        headers: {
+            "transfer-encoding": [
+                "chunked"
+            ],
+            "content-type": [
+                "application/json; charset=utf-8"
+            ],
+            "nexosis-session-status": [
+                "Completed"
+            ],
+            "nexosis-account-datasetcount-allotted": [
+                "20"
+            ],
+            "nexosis-account-datasetcount-current": [
+                "16"
+            ],
+            "nexosis-account-predictioncount-allotted": [
+                "10000"
+            ],
+            "nexosis-account-predictioncount-current": [
+                "384"
+            ],
+            "nexosis-account-sessioncount-allotted": [
+                "60"
+            ],
+            "nexosis-account-sessioncount-current": [
+                "8"
+            ],
+            "nexosis-account-datasetsize-allotted": [
+                "10000000"
+            ],
+            "nexosis-account-balance": [
+                "0.00 USD"
+            ],
+            "nexosis-request-cost": [
+                "0.00 USD"
+            ],
+            date: [
+                "Wed, 11 Apr 2018 14:54:42 GMT"
+            ],
+            connection: [
+                "close"
+            ]
+        },
+        body: "{\"data\":[{\"timestamp\":\"7/4/2008 4:00:00 AM\",\"value:actual\":\"272\",\"value:smooth\":\"257.612021449259\"}],\"pageNumber\":0,\"totalPages\":1,\"pageSize\":50,\"totalCount\":1,\"sessionId\":\"0162b521-f347-4c82-8bda-f2425908af14\",\"type\":\"forecast\",\"status\":\"completed\",\"predictionDomain\":\"forecast\",\"supportsFeatureImportance\":false,\"availablePredictionIntervals\":[\"0.5\"],\"startDate\":\"2008-08-31T00:00:00+08:00\",\"endDate\":\"2008-09-15T00:00:00+08:00\",\"resultInterval\":\"hour\",\"requestedDate\":\"2018-04-11T14:35:23.812304+00:00\",\"statusHistory\":[{\"date\":\"2018-04-11T14:35:23.812304+00:00\",\"status\":\"requested\"},{\"date\":\"2018-04-11T14:35:23.5207094+00:00\",\"status\":\"started\"},{\"date\":\"2018-04-11T14:46:25.9298341+00:00\",\"status\":\"completed\"}],\"extraParameters\":{},\"messages\":[{\"severity\":\"informational\",\"message\":\"1476 observations were found in the dataset.\"},{\"severity\":\"informational\",\"message\":\"1476 hourly observations were found in the dataset before 2008-09-14T16:59:59.9999999Z.\"}],\"name\":\"Forecast on beijing-pm25-july-aug\",\"dataSourceName\":\"beijing-pm25-july-aug\",\"dataSetName\":\"beijing-pm25-july-aug\",\"targetColumn\":\"value\",\"algorithm\":{\"name\":\"Ensemble\",\"description\":\"An algorithm that ensembles output of other algorithms.\",\"key\":\"\"},\"isEstimate\":false,\"links\":[{\"rel\":\"data\",\"href\":\"https://ml.nexosis.com/v1/data/beijing-pm25-july-aug\"},{\"rel\":\"first\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b521-f347-4c82-8bda-f2425908af14/results/outliers?page=0&pageSize=50&page=0\"},{\"rel\":\"last\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b521-f347-4c82-8bda-f2425908af14/results/outliers?page=0&pageSize=50&page=0\"},{\"rel\":\"self\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b521-f347-4c82-8bda-f2425908af14/results/outliers?page=0&pageSize=50\"},{\"rel\":\"prediction-interval:0.5\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b521-f347-4c82-8bda-f2425908af14?predictionInterval=0.5\"},{\"rel\":\"contest\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b521-f347-4c82-8bda-f2425908af14/contest\"},{\"rel\":\"outliers\",\"href\":\"https://ml.nexosis.com/v1/sessions/0162b521-f347-4c82-8bda-f2425908af14/results/outliers\"},{\"rel\":\"vocabularies\",\"href\":\"https://ml.nexosis.com/v1/vocabulary?createdFromSession=0162b521-f347-4c82-8bda-f2425908af14\"}]}"
+    }
+}

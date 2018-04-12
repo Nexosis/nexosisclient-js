@@ -25,5 +25,6 @@ describe('Nexosis main client tests', () => {
         expect(quotaBalance.predictionCount).to.have.a.property('allotted').that.is.a('number');
         expect(quotaBalance.sessionCount).to.have.a.property('current').that.is.a('number');
         expect(quotaBalance.sessionCount).to.have.a.property('allotted').that.is.a('number');
+        expect(quotaBalance.dataSetSize).to.have.a.property('allotted').that.is.a('number');
     }));
 });

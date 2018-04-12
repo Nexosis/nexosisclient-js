@@ -6,7 +6,7 @@
         resHumanReadable: true
     },
     req: {
-        url: "/sessions?page=0&pageSize=50",
+        url: "/sessions",
         method: "GET",
         headers: {
             "content-type": "application/json",

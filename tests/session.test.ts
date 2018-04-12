@@ -1,5 +1,6 @@
 import SessionClient from '../src/SessionClient';
 import DataSetClient from '../src/DataSetClient';
+import { SortOrder } from '../src/Types';
 import { mochaAsync, sleep, isComplete } from './mochaAsync';
 import { expect } from 'chai';
 import 'mocha';
@@ -96,6 +97,13 @@ describe('Session tests', () => {
         expect(session_result.data).not.to.be.null;
     }));
 
+    it('can get forecast outliers', mochaAsync(async () => {
+        const result = await client.timeSeriesOutliers('0162b521-f347-4c82-8bda-f2425908af14');
+
+        expect(result.data).is.not.empty;
+        expect(result.data[0]).contains.keys(["value:actual", "value:smooth"])
+    }));
+
     it('can get confusion matrix', mochaAsync(async () => {
         const value = await client.list();
         var existing =
@@ -108,7 +116,7 @@ describe('Session tests', () => {
     }));
 
     it('can list sessions using parameters', mochaAsync(async () => {
-        const result = await client.list({ dataSetName: 'TestNode', eventName: 'myevent', requestedAfterDate: '01-01-2017', requestedBeforeDate: '01-01-2100' });
+        const result = await client.list({ dataSourceName: 'TestNode', eventName: 'myevent', requestedAfterDate: '01-01-2017', requestedBeforeDate: '01-01-2100' });
 
         expect(result.items).not.to.be.empty;
     }));
@@ -119,6 +127,25 @@ describe('Session tests', () => {
         expect(result.dataSetName).to.equal('TestNode');
     }));
 
+    it('can get mahalanobis distance on anomaly session', mochaAsync(async () => {
+        const result = await client.anomalyDistanceMetrics('0162b4c5-714f-40bd-947b-88eb8bcfd54b');
+
+        expect(result.data).not.to.be.empty;
+        expect(result.data[0].mahalanobis_distance).is.not.null;
+    }));
+
+    it('can get feature importance', mochaAsync(async () => {
+        const result = await client.featureImportanceResults('0162b4c5-ebc6-459c-93bf-a2354190499f');
+
+        expect(result.supportsFeatureImportance).is.true;
+        expect(result.featureImportance).is.not.null;
+    }));
+
+    it('can sort session list by date', mochaAsync(async () => {
+        const result = await client.list({ dataSourceName: 'TestNode', eventName: 'myevent', sortBy: 'requestedDate', sortOrder: 'asc'});
+
+        expect(result.items).not.to.be.empty;
+    }));
 
     it('can start a classification model session', mochaAsync(async () => {
         const result = await client.trainModel(

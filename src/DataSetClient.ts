@@ -1,6 +1,6 @@
 import ApiConnection from './ApiConnection';
-import { DataSetDataQuery, DataSetData, DataSetRemoveCriteria } from './Types';
-import { formatDate } from './Util';
+import { DataSetDataQuery, DataSetData, DataSetRemoveCriteria, DataSetListQuery } from './Types';
+import { formatDate, addListQueryParameters } from './Util';
 
 export default class DataSetClient {
     private _apiConnection: ApiConnection;
@@ -24,7 +24,6 @@ export default class DataSetClient {
      * @param {number} page - page of results to retrieve, defaults to first page = 0
      * @param {number} pageSize - how many results per page, defaults to 50
      * @return {Promise<object,any>} The dataset data results
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f232
      */
     get(dataSetName, query: DataSetDataQuery = {}, page = 0, pageSize = 50) {
         var parameters = {
@@ -60,7 +59,6 @@ export default class DataSetClient {
      * 
      * @param {string} dataSetName - Name of existing dataset to use for this session
      * @param {object} dataSetDetail - A json object containing the dataset. Conforms to dataset schema. {"data": [{"colum1name" : "value1", "column2name" : "value1"},{"colum1name" : "value2", "column2name" : "value2"}]}
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f233
      */
     create(dataSetName, dataSetDetail: DataSetData) {
         return this._apiConnection.put(`data/${dataSetName}`, dataSetDetail, this.FetchTransformFunction);
@@ -69,21 +67,19 @@ export default class DataSetClient {
     /**
      * List all datasets, optionally filtering by partial name
      * 
-     * @param {string} dataSetPartialName - optional search parameter 
-     * @param {number} page - page of results to retrieve, defaults to first page = 0
-     * @param {number} pageSize - how many results per page, defaults to 50
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f231
+     * @param {DataSetListQuery} query - optional query object
      */
-    list(dataSetPartialName = '', page = 0, pageSize = 50) {
-        var parameters = {
-            page: page,
-            pageSize: pageSize
-        };
-        if (dataSetPartialName.length > 0) {
-            Object.defineProperty(parameters, 'partialName', {
-                value: dataSetPartialName,
-                enumerable: true
-            });
+    list(query?: DataSetListQuery) {
+        var parameters = {};
+        if (query) {
+            if (query.partialName) {
+                Object.defineProperty(parameters, 'partialName', {
+                    value: query.partialName,
+                    enumerable: true
+                });
+            }
+
+            addListQueryParameters(query, parameters);
         }
         return this._apiConnection.get('data', this.FetchTransformFunction, parameters);
     }
@@ -93,7 +89,6 @@ export default class DataSetClient {
      * 
      * @param {string} dataSetName - Name of the dataset from which to remove data
      * @param {DataSetRemoveCriteria} - Optional removal criteria for the given dataset.
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f235
      */
     remove(dataSetName: string, criteria?: DataSetRemoveCriteria) {
         var parameters = {};

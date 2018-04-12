@@ -1,6 +1,6 @@
 import ApiClientBase from './ApiClientBase';
 import { SessionListQuery, ResultInterval, PredictionDomain, AnalyzeImpactOptions, ForecastOptions, ModelSessionOptions, SessionExtraParameters } from './Types';
-import { formatDate } from './Util';
+import { formatDate, addListQueryParameters } from './Util';
 
 /**
  * Class for interacting with Session specific features of the Nexosis API.
@@ -19,7 +19,6 @@ export default class SessionClient extends ApiClientBase {
      * @param {object} columnMetadata - a json object consistent with metadata schema ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
      * @param {string} statusCallbackUrl - a url which will be requested when status changes
      * @return {Promise<object,any>} The session result object with details on what was submitted
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41aa
      */
     analyzeImpact(options: AnalyzeImpactOptions);
     analyzeImpact(dataSourceName: string, startDate: Date | string, endDate: Date | string, eventName: string, targetColumn?: string, resultInterval?: ResultInterval, columnMetadata?: object, statusCallbackUrl?: string);
@@ -49,7 +48,6 @@ export default class SessionClient extends ApiClientBase {
      * @param {object} columnMetadata - a json object consistent with metadata schema ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
      * @param {string} statusCallbackUrl - a url which will be requested when status changes
      * @return {Promise<object,any>} The session result object with details on what was submitted
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41ab
      */
     createForecast(options: ForecastOptions);
     createForecast(dataSourceName: string, startDate: Date | string, endDate: Date | string, targetColumn?: string, resultInterval?: ResultInterval, columnMetadata?: object, statusCallbackUrl?: string);
@@ -76,7 +74,6 @@ export default class SessionClient extends ApiClientBase {
      * @param {object} columnMetadata - A json object consistent with metadata schema  ({"columns": {"mycolumnname":{"dataType": "date", "role" : "timestamp"}}})
      * @param {string} statusCallbackUrl - A url which will be requested when status changes.
      * @return {Promise<object,any>} The session result object with details on what was submitted
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59d79fa1adf47c0d60484fe9
      */
     trainModel(options: ModelSessionOptions);
     trainModel(dataSourceName: string, predictionDomain: PredictionDomain, targetColumn?: string, columnMetadata?: object, statusCallbackUrl?: string, extraParameters?: SessionExtraParameters);
@@ -95,8 +92,7 @@ export default class SessionClient extends ApiClientBase {
      * Get details of a session by sessionId
      * 
      * @param {string} id - a session id returned from a previous request to start a session. 
-     * @return {Promise<object,any>} The session result object with details on what was submitted
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a8
+     * @return {Promise<object,any>} The session result object with details of the session
      */
     get(id: string) {
         return this._apiConnection.get(`sessions/${id}`, this.FetchTransformFunction);
@@ -106,8 +102,7 @@ export default class SessionClient extends ApiClientBase {
      * Get status header only of a session by sessionId
      * 
      * @param {string} id - a session id returned from a previous request to start a session. 
-     * @return {Promise<object,any>} The session header with status
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a9
+     * @return {Promise<object,any>} The session header with the current status of the session.
      */
     status(id: string) {
         return this._apiConnection.head(`sessions/${id}`, this.FetchTransformFunction).then(headers => {
@@ -119,7 +114,6 @@ export default class SessionClient extends ApiClientBase {
      * Remove a session and its results from your account
      * 
      * @param {string} id - a session id returned from a previous request to start a session. 
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/593949c4e0ef6e0cb481aa31
      */
     remove(id: string) {
         return this._apiConnection.delete(`sessions/${id}`, this.FetchTransformFunction);
@@ -129,8 +123,7 @@ export default class SessionClient extends ApiClientBase {
      * Get the results of a session
      * 
      * @param {string} id - a session id returned from a previous request to start a session. 
-     * @return {Promise<object,any>} The session with all result rows
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a7
+     * @return {Promise<object,any>} The session with all result data.
      */
     results(id: string) {
         return this._apiConnection.get(`sessions/${id}/results`, this.FetchTransformFunction);
@@ -141,12 +134,13 @@ export default class SessionClient extends ApiClientBase {
      * 
      * @param {string} id - a session id returned from a previous request to start a session. 
      * @param {string} predictionInterval - a specific interval from the session's availablePredictionIntervals
-     * @return {Promise<object,any>} The session with all result rows
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a7
+     * @return {Promise<object,any>} The session with all result data using the given interval.
      */
     resultsByInterval(id: string, predictionInterval: number) {
         return this._apiConnection.get(`sessions/${id}/results`, this.FetchTransformFunction, { "predictionInterval": predictionInterval });
     }
+
+
 
     /**
      * 
@@ -159,13 +153,31 @@ export default class SessionClient extends ApiClientBase {
 
     /**
      * 
+     * Time series anomaly detection is used to identify anomalous target values and impute those values with smoothed values that can 
+     * result in better predictions. These values are returned regardless of whether the smoothed dataset results in better predictions.
+     * This is currently implemented only for time series forecasts.
+     * 
+     * @param {string} id - completed time series session id
+     * @param {number} page - Zero-based page number of results to retrieve.
+     * @param {number} pageSize - Count of results to retrieve in each page (max 1000).
+     * @return {Promise<object,any>} The session result object with the outliers and input features.
+     */
+    timeSeriesOutliers(id: string, page = 0, pageSize = 50) {
+        var parameters = {
+            page: page,
+            pageSize: pageSize
+        };
+        return this._apiConnection.get(`sessions/${id}/results/outliers`, this.FetchTransformFunction, parameters);
+    }
+
+    /**
+     * 
      * Gets the scores of the entire dataset generated by a particular completed anomalies session
      * 
      * @param {string} id - completed classification model building id
      * @param {number} page - Zero-based page number of models to retrieve.
      * @param {number} pageSize - Count of models to retrieve in each page (max 1000).
-     * @return {Promise<object,any>} The session result object with details on what was submitted
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5a424a854b389e11709f48da
+     * @return {Promise<object,any>} The session result object with the anomaly scores, and input features.
      */
     anomalyScoreResults(id: string, page = 0, pageSize = 50) {
         var parameters = {
@@ -177,13 +189,29 @@ export default class SessionClient extends ApiClientBase {
 
     /**
      * 
+     * Gets the scores of the entire dataset generated by a particular completed anomalies session
+     * 
+     * @param {string} id - completed classification model building id
+     * @param {number} page - Zero-based page number of models to retrieve.
+     * @param {number} pageSize - Count of models to retrieve in each page (max 1000).
+     * @return {Promise<object,any>} The session result object with the anomaly scores, Mahalanobis distance, and input features.
+     */
+    anomalyDistanceMetrics(id: string, page = 0, pageSize = 50) {
+        var parameters = {
+            page: page,
+            pageSize: pageSize
+        };
+        return this._apiConnection.get(`sessions/${id}/results/mahalanobisdistances`, this.FetchTransformFunction, parameters);
+    }
+
+    /**
+     * 
      * Gets the class scores for each result of a particular completed classification model session
      * 
      * @param {string} id - completed classification model building id
      * @param {number} page - Zero-based page number of models to retrieve.
      * @param {number} pageSize - Count of models to retrieve in each page (max 1000).
-     * @return {Promise<object,any>} The session result object with details on what was submitted
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5a424a854b389e11709f48da
+     * @return {Promise<object,any>} The session result object with target data and the class scores related to that target.
      */
     classScoreResults(id: string, page = 0, pageSize = 50) {
         var parameters = {
@@ -194,23 +222,35 @@ export default class SessionClient extends ApiClientBase {
     }
 
     /**
-     * List all sessions, optionally limited by search params. Will return all sessions otherwise.
      * 
-     * @param {object} query - Optional query object, limiting the results to the matching sessions.
+     * Gets the feature importance score for each column in the data source used in a session.
+     * Will only return values if the 'supportsFeatureImportance' field on the session result is 'true'.
+     * 
+     * @param {string} id - completed session id
      * @param {number} page - Zero-based page number of models to retrieve.
      * @param {number} pageSize - Count of models to retrieve in each page (max 1000).
-     * @return {Promise<object,any>} The session result object with details on what was submitted
-     * @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/59149d7da730020f20dd41a6
+     * @return {Promise<object,any>} The session result object with details on the feature importance of each feature used.
      */
-    list(query?: SessionListQuery, page = 0, pageSize = 50) {
+    featureImportanceResults(id: string, page = 0, pageSize = 50) {
         var parameters = {
             page: page,
             pageSize: pageSize
         };
+        return this._apiConnection.get(`sessions/${id}/results/featureimportance`, this.FetchTransformFunction, parameters);
+    }
+
+    /**
+     * List all sessions, optionally limited by search params. Will return all sessions otherwise.
+     * 
+     * @param {object} query - Optional query object, limiting the results to the matching sessions.
+     * @return {Promise<object,any>} The session result object with details on what was submitted
+     */
+    list(query?: SessionListQuery) {
+        var parameters = { };
         if (query) {
-            if (query.dataSetName) {
-                Object.defineProperty(parameters, 'dataSetName', {
-                    value: query.dataSetName,
+            if (query.dataSourceName) {
+                Object.defineProperty(parameters, 'dataSourceName', {
+                    value: query.dataSourceName,
                     enumerable: true
                 });
             }
@@ -235,6 +275,16 @@ export default class SessionClient extends ApiClientBase {
                     enumerable: true
                 });
             }
+
+            if (query.modelId) {
+                Object.defineProperty(parameters, 'modelId', {
+                    value: query.modelId,
+                    enumerable: true
+                });
+            }
+
+            addListQueryParameters(query, parameters);
+
         }
 
         return this._apiConnection.get('sessions', this.FetchTransformFunction, parameters);

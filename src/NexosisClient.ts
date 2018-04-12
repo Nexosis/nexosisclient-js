@@ -28,6 +28,9 @@ export default class NexosisClient extends ApiClientBase {
                     sessionCount: {
                         current: parseInt(headers.get('nexosis-account-sessioncount-current'), 10),
                         allotted: parseInt(headers.get('nexosis-account-sessioncount-allotted'), 10)
+                    },
+                    dataSetSize: {
+                        allotted: parseInt(headers.get('nexosis-account-datasetsize-allotted'), 10)
                     }
                 };
             });

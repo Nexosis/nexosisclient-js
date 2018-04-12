@@ -1,6 +1,6 @@
 import ApiClientBase from './ApiClientBase';
 import { ModelSummaryQuery, PredictionExtraParameters } from './Types';
-import { formatDate } from './Util';
+import { formatDate, addListQueryParameters } from './Util';
 
 export default class ModelClient extends ApiClientBase {
 
@@ -20,11 +20,8 @@ export default class ModelClient extends ApiClientBase {
      * @param {number} page - Zero-based page number of models to retrieve.
      * @param {number} pageSize - Count of models to retrieve in each page (max 1000).
      */
-    list(query?: ModelSummaryQuery, page = 0, pageSize = 50) {
-        var parameters = {
-            page: page,
-            pageSize: pageSize
-        };
+    list(query?: ModelSummaryQuery) {
+        var parameters = { };
 
         if (query) {
             if (query.dataSourceName) {
@@ -47,6 +44,8 @@ export default class ModelClient extends ApiClientBase {
                     enumerable: true
                 });
             }
+
+            addListQueryParameters(query, parameters);
         }
         return this._apiConnection.get('models', this.FetchTransformFunction, parameters);
     }

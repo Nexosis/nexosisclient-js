@@ -6,7 +6,7 @@
         resHumanReadable: true
     },
     req: {
-        url: "/models?page=0&pageSize=50&dataSourceName=js-housing-data",
+        url: "/models?dataSourceName=js-housing-data",
         method: "GET",
         headers: {
             "content-type": "application/json",
